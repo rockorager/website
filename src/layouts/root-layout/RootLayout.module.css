@@ -1,0 +1,50 @@
+.rootLayout {
+  & a {
+		color: var(--brand-color);
+    font-family: var(--font-display);
+    font-weight: 400;
+		text-decoration: none;
+  }
+
+  & p, span, li {
+	  color: var(--gray-1);
+    font-family: var(--font-body);
+    font-weight: 300;
+		line-height: 1.6em;
+		font-size: 18px;
+    & strong {
+      font-weight: 700;
+    }
+    & a {
+      text-decoration: underline;
+    }
+  }
+
+  & h1, h2, h3, h4, h5, h6 {
+	  color: var(--gray-1);
+    font-family: var(--font-display);
+    font-weight: 500;
+    & strong {
+      font-weight: 700;
+    }
+  }
+
+	& h1 {
+		font-size: 52px;
+	}
+	& h2 {
+		font-size: 40px;
+	}
+	& h3 {
+		font-size: 30px;
+	}
+	& h4 {
+		font-size: 26px;
+	}
+	& h5 {
+		font-size: 20px;
+	}
+	& h6 {
+		font-size: 18px;
+	}
+}

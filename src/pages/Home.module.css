@@ -1,0 +1,18 @@
+.homePage {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+
+  & .centerWrapper {
+    --padding: 24px;
+    max-width: calc(400px + 2 * var(--padding));
+    padding-left: var(--padding);
+    padding-right: var(--padding);
+  }
+
+  & .buttonList {
+    margin-top: 12px;
+    display: flex;
+    gap: 12px;
+  }
+}
