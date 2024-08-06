@@ -1,0 +1,27 @@
+.customMDX {
+  & > p {
+    margin: 0.8em 0;
+  }
+  & > blockquote {
+    border-left: 3px solid var(--brand-color);
+    padding: 6px 20px;
+    display: block;
+    margin: 32px 20px;
+    & p {
+      font-style: italic;
+    }
+  }
+  & a {
+    color: var(--brand-color);
+  }
+  & > ul, & > ol {
+    padding-left: 42px;
+    margin: 16px 0;
+  }
+  & .image {
+    max-width: 100%;
+    border: 1px solid var(--gray-5);
+    margin: 32px auto;
+    display: block;
+  }
+}
