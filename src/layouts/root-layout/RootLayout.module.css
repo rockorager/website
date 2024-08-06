@@ -6,12 +6,12 @@
 		text-decoration: none;
   }
 
-  & p, span, li {
-	  color: var(--gray-1);
+  & p, li {
+    color: var(--gray-1);
     font-family: var(--font-body);
     font-weight: 300;
-		line-height: 1.6em;
-		font-size: 18px;
+    line-height: 1.6em;
+    font-size: 18px;
     & strong {
       font-weight: 700;
     }
@@ -28,7 +28,6 @@
       font-weight: 700;
     }
   }
-
 	& h1 {
 		font-size: 52px;
 	}

@@ -1,3 +1,4 @@
+import CustomMDX from "@/components/custom-mdx";
 import RootLayout from "@/layouts/root-layout";
 import {
   DocsPageData,
@@ -8,6 +9,7 @@ import {
 // This is the location that we expect our docs mdx files to be located,
 // relative to the root of the Next.js project.
 const DOCS_DIRECTORY = "./docs";
+const GITHUB_REPO_URL = "https://github.com/ghostty-org/website";
 
 export async function getStaticPaths() {
   const docsPageSlugs = await loadAllDocsPageSlugs(DOCS_DIRECTORY);
@@ -43,7 +45,7 @@ interface DocsPageProps {
 }
 
 export default function DocsPage({
-  docsPageData: { title, description, content },
+  docsPageData: { title, description, content, relativeFilePath },
 }: DocsPageProps) {
   return (
     <RootLayout
@@ -56,12 +58,12 @@ export default function DocsPage({
       <h1>{title}</h1>
       <p>{description}</p>
       <br />
-
-      <code>{JSON.stringify(content)}</code>
-      <br />
+      <CustomMDX content={content} />
       <br />
       <div>
-        <a href="">EDIT ON GITHUB</a>
+        <a href={`${GITHUB_REPO_URL}/edit/main/${relativeFilePath}`}>
+          Edit on GitHub
+        </a>
       </div>
     </RootLayout>
   );
