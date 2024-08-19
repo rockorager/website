@@ -48,9 +48,13 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header></header>
+      <header>
+        <h6>Header</h6>
+      </header>
       {children}
-      <footer></footer>
+      <footer>
+        <h6>Footer</h6>
+      </footer>
     </div>
   );
 }

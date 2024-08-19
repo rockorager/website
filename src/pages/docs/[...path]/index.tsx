@@ -57,7 +57,9 @@ export default function DocsPage({
       }}
     >
       <main className={s.docsPage}>
-        <div className={s.sidebar}></div>
+        <div className={s.sidebar}>
+          <h6>Sidebar</h6>
+        </div>
         <div className={s.contentWrapper}>
           <div className={s.heading}>
             <h1>{title}</h1>
