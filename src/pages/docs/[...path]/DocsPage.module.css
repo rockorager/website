@@ -1,0 +1,39 @@
+.docsPage {
+  display: flex;
+  justify-content: center;
+  margin-top: 0px;
+  max-width: 100%;
+
+  --sidebar-width: 240px;
+
+  & .sidebar {
+    min-width: var(--sidebar-width);
+    border-right: 1px solid var(--gray-6);
+    @media (max-width: 784px) {
+      display: none;
+    }
+    /* Temporary labeling */
+    background: var(--gray-8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & .heading {
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--gray-6);
+  }
+
+  & .contentWrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 88px auto;
+    padding: 0 24px;
+    max-width: min(800px, calc(100vw - var(--sidebar-width)));
+
+    @media (max-width: 784px) {
+      max-width: 100%;
+      margin: 54px auto;
+    }
+  }
+}

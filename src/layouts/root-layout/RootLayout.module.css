@@ -1,4 +1,26 @@
 .rootLayout {
+  & header {
+    width: 100%;
+    height: 64px;
+    border-bottom: 1px solid var(--gray-6);
+    /* Temporary labeling */
+    background: var(--gray-8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  & footer {
+    width: 100%;
+    height: 128px;
+    border-top: 1px solid var(--gray-6);
+    /* Temporary labeling */
+    background: var(--gray-8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   & a {
 		color: var(--brand-color);
     font-family: var(--font-display);

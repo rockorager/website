@@ -22,13 +22,15 @@ export interface PageMeta {
   description: string;
 }
 
-interface RootLayoutProps {
+export interface RootLayoutProps {
   meta: PageMeta;
   children?: React.ReactNode;
+  className?: string;
 }
 
 export default function RootLayout({
   meta: { title, description },
+  className,
   children,
 }: RootLayoutProps) {
   return (
@@ -36,7 +38,8 @@ export default function RootLayout({
       className={classNames(
         s.rootLayout,
         displayFont.variable,
-        bodyFont.variable
+        bodyFont.variable,
+        className
       )}
     >
       <Head>
@@ -45,7 +48,13 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <header>
+        <h6>Header</h6>
+      </header>
       {children}
+      <footer>
+        <h6>Footer</h6>
+      </footer>
     </div>
   );
 }
