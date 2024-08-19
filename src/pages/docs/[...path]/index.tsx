@@ -5,6 +5,7 @@ import {
   loadAllDocsPageSlugs,
   loadDocsPage,
 } from "@/lib/fetch-docs";
+import s from "./DocsPage.module.css";
 
 // This is the location that we expect our docs mdx files to be located,
 // relative to the root of the Next.js project.
@@ -55,16 +56,23 @@ export default function DocsPage({
           "Fast, native, feature-rich terminal emulator pushing modern features.",
       }}
     >
-      <h1>{title}</h1>
-      <p>{description}</p>
-      <br />
-      <CustomMDX content={content} />
-      <br />
-      <div>
-        <a href={`${GITHUB_REPO_URL}/edit/main/${relativeFilePath}`}>
-          Edit on GitHub
-        </a>
-      </div>
+      <main className={s.docsPage}>
+        <div className={s.sidebar}></div>
+        <div className={s.contentWrapper}>
+          <div className={s.heading}>
+            <h1>{title}</h1>
+            <p>{description}</p>
+          </div>
+
+          <CustomMDX content={content} />
+          <br />
+          <div>
+            <a href={`${GITHUB_REPO_URL}/edit/main/${relativeFilePath}`}>
+              Edit on GitHub
+            </a>
+          </div>
+        </div>
+      </main>
     </RootLayout>
   );
 }
