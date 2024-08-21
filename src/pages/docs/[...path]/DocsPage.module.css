@@ -5,6 +5,7 @@
   max-width: 100%;
 
   --sidebar-width: 240px;
+  --nav-height: 64px; /* Total height, including padding */
 
   & .sidebar {
     min-width: var(--sidebar-width);
@@ -12,11 +13,18 @@
     @media (max-width: 784px) {
       display: none;
     }
-    /* Temporary labeling */
-    background: var(--gray-8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    & .sidebarContent {
+      position: sticky;
+      top: var(--nav-height);
+      height: calc(100vh - var(--nav-height));
+
+      /* Temporary labeling */
+      background: var(--gray-8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   & .heading {

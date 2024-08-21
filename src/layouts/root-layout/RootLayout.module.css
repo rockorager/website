@@ -1,5 +1,11 @@
 .rootLayout {
+  overflow: auto;
+  height: 100vh;
+
   & header {
+    position: sticky;
+    top: 0;
+
     width: 100%;
     height: 64px;
     border-bottom: 1px solid var(--gray-6);
@@ -28,7 +34,14 @@
 		text-decoration: none;
   }
 
-  & p, li {
+  & table {
+    & th, td {
+      text-align: left;
+      padding-right: 28px;
+    }
+  }
+
+  & p, li, table {
     color: var(--gray-1);
     font-family: var(--font-body);
     font-weight: 300;

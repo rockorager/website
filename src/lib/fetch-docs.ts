@@ -2,6 +2,7 @@ import matter from "gray-matter";
 import recurse, { Item } from "klaw-sync";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
+import remarkGfm from "remark-gfm";
 const nodePath = require("path");
 
 const MDX_EXTENSION = ".mdx";
@@ -49,7 +50,11 @@ async function loadDocsPageFromRelativeFilePath(
     relativeFilePath,
     title: mdxFileContent.data.title,
     description: mdxFileContent.data.description,
-    content: await serialize(mdxFileContent.content),
+    content: await serialize(mdxFileContent.content, {
+      mdxOptions: {
+        remarkPlugins: [remarkGfm],
+      },
+    }),
   };
 }
 
