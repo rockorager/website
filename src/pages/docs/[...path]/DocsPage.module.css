@@ -5,7 +5,6 @@
   max-width: 100%;
 
   --sidebar-width: 240px;
-  --nav-height: 64px; /* Total height, including padding */
 
   & .sidebar {
     min-width: var(--sidebar-width);
@@ -16,8 +15,8 @@
 
     & .sidebarContent {
       position: sticky;
-      top: var(--nav-height);
-      height: calc(100vh - var(--nav-height));
+      top: var(--header-height);
+      height: calc(100vh - var(--header-height));
 
       /* Temporary labeling */
       background: var(--gray-8);
