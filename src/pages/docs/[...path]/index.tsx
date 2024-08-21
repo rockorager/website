@@ -1,4 +1,5 @@
 import CustomMDX from "@/components/custom-mdx";
+import NavTree from "@/components/nav-tree";
 import RootLayout from "@/layouts/root-layout";
 import {
   DocsPageData,
@@ -56,13 +57,14 @@ export default function DocsPage({
           "Fast, native, feature-rich terminal emulator pushing modern features.",
       }}
     >
-      <main className={s.docsPage}>
+      {/* TODO: Fix usage of main here to just be the customMDX */}
+      <div className={s.docsPage}>
         <div className={s.sidebar}>
-          <div className={s.sidebarContent}>
-            <h6>Sidebar</h6>
+          <div className={s.sidebarContentWrapper}>
+            <NavTree className={s.sidebarNavTree} />
           </div>
         </div>
-        <div className={s.contentWrapper}>
+        <main className={s.contentWrapper}>
           <div className={s.heading}>
             <h1>{title}</h1>
             <p>{description}</p>
@@ -75,8 +77,8 @@ export default function DocsPage({
               Edit on GitHub
             </a>
           </div>
-        </div>
-      </main>
+        </main>
+      </div>
     </RootLayout>
   );
 }
