@@ -1,5 +1,5 @@
 import CustomMDX from "@/components/custom-mdx";
-import NavTree from "@/components/nav-tree";
+import NavTree, { NavTreeNodesFixture } from "@/components/nav-tree";
 import RootLayout from "@/layouts/root-layout";
 import {
   DocsPageData,
@@ -57,11 +57,15 @@ export default function DocsPage({
           "Fast, native, feature-rich terminal emulator pushing modern features.",
       }}
     >
-      {/* TODO: Fix usage of main here to just be the customMDX */}
       <div className={s.docsPage}>
         <div className={s.sidebar}>
           <div className={s.sidebarContentWrapper}>
-            <NavTree className={s.sidebarNavTree} />
+            {/* TODO: Remove fixture usage */}
+            <NavTree
+              rootPath="/docs"
+              className={s.sidebarNavTree}
+              nodes={NavTreeNodesFixture}
+            />
           </div>
         </div>
         <main className={s.contentWrapper}>

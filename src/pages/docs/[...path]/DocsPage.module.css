@@ -4,7 +4,7 @@
   margin-top: 0px;
   max-width: 100%;
 
-  --sidebar-min-width: 240px;
+  --sidebar-min-width: 320px;
   & .sidebar {
     min-width: var(--sidebar-min-width);
     @media (max-width: 784px) {
@@ -15,8 +15,10 @@
       top: var(--header-height);
       height: calc(100vh - var(--header-height));
       border-right: 1px solid var(--gray-6);
+      padding: 24px 16px 48px;
       & > .sidebarNavTree {
         height: 100%;
+        overflow: scroll;
       }
     }
   }
