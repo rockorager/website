@@ -71,6 +71,9 @@ async function convertPathTreeToNavTreeNodes(
         const isIndex = path === "index";
         const fullPath = isIndex ? basePath : `${basePath}/${path}`;
         const activePagePath = `/${activePageSlug}`;
+        // TODO: this is pretty inefficient to load the entire docs page
+        // just to get the title, this should be fixed in the future if
+        // we adopt this strategy of automatically generating the nav.
         const docsPage = await loadDocsPage(docsDirectory, fullPath);
         return {
           type: "link",
