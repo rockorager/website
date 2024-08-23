@@ -35,6 +35,7 @@
     margin: 88px auto;
     padding: 0 24px;
     max-width: min(800px, calc(100vw - var(--sidebar-min-width)));
+    flex-grow: 1;
 
     @media (max-width: 784px) {
       max-width: 100%;
