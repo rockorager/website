@@ -1,10 +1,12 @@
 import CustomMDX from "@/components/custom-mdx";
+import NavTree, { NavTreeNode } from "@/components/nav-tree";
 import RootLayout from "@/layouts/root-layout";
 import {
   DocsPageData,
   loadAllDocsPageSlugs,
   loadDocsPage,
 } from "@/lib/fetch-docs";
+import { loadDocsNavTreeData } from "@/lib/fetch-nav";
 import s from "./DocsPage.module.css";
 
 // This is the location that we expect our docs mdx files to be located,
@@ -33,19 +35,24 @@ interface StaticPropsParams {
 }
 
 export async function getStaticProps({ params: { path } }: StaticPropsParams) {
-  const docsPageData = await loadDocsPage(DOCS_DIRECTORY, path.join("/"));
+  const activePageSlug = path.join("/");
+  const navTreeData = await loadDocsNavTreeData(DOCS_DIRECTORY, activePageSlug);
+  const docsPageData = await loadDocsPage(DOCS_DIRECTORY, activePageSlug);
   return {
     props: {
+      navTreeData,
       docsPageData,
     },
   };
 }
 
 interface DocsPageProps {
+  navTreeData: NavTreeNode[];
   docsPageData: DocsPageData;
 }
 
 export default function DocsPage({
+  navTreeData,
   docsPageData: { title, description, content, relativeFilePath },
 }: DocsPageProps) {
   return (
@@ -56,13 +63,17 @@ export default function DocsPage({
           "Fast, native, feature-rich terminal emulator pushing modern features.",
       }}
     >
-      <main className={s.docsPage}>
+      <div className={s.docsPage}>
         <div className={s.sidebar}>
-          <div className={s.sidebarContent}>
-            <h6>Sidebar</h6>
+          <div className={s.sidebarContentWrapper}>
+            <NavTree
+              rootPath="/docs"
+              className={s.sidebarNavTree}
+              nodes={navTreeData}
+            />
           </div>
         </div>
-        <div className={s.contentWrapper}>
+        <main className={s.contentWrapper}>
           <div className={s.heading}>
             <h1>{title}</h1>
             <p>{description}</p>
@@ -75,8 +86,8 @@ export default function DocsPage({
               Edit on GitHub
             </a>
           </div>
-        </div>
-      </main>
+        </main>
+      </div>
     </RootLayout>
   );
 }
