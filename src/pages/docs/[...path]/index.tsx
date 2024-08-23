@@ -1,11 +1,12 @@
 import CustomMDX from "@/components/custom-mdx";
-import NavTree, { NavTreeNodesFixture } from "@/components/nav-tree";
+import NavTree, { NavTreeNode } from "@/components/nav-tree";
 import RootLayout from "@/layouts/root-layout";
 import {
   DocsPageData,
   loadAllDocsPageSlugs,
   loadDocsPage,
 } from "@/lib/fetch-docs";
+import { loadDocsNavTreeData } from "@/lib/fetch-nav";
 import s from "./DocsPage.module.css";
 
 // This is the location that we expect our docs mdx files to be located,
@@ -34,19 +35,24 @@ interface StaticPropsParams {
 }
 
 export async function getStaticProps({ params: { path } }: StaticPropsParams) {
-  const docsPageData = await loadDocsPage(DOCS_DIRECTORY, path.join("/"));
+  const activePageSlug = path.join("/");
+  const navTreeData = await loadDocsNavTreeData(DOCS_DIRECTORY, activePageSlug);
+  const docsPageData = await loadDocsPage(DOCS_DIRECTORY, activePageSlug);
   return {
     props: {
+      navTreeData,
       docsPageData,
     },
   };
 }
 
 interface DocsPageProps {
+  navTreeData: NavTreeNode[];
   docsPageData: DocsPageData;
 }
 
 export default function DocsPage({
+  navTreeData,
   docsPageData: { title, description, content, relativeFilePath },
 }: DocsPageProps) {
   return (
@@ -60,11 +66,10 @@ export default function DocsPage({
       <div className={s.docsPage}>
         <div className={s.sidebar}>
           <div className={s.sidebarContentWrapper}>
-            {/* TODO: Remove fixture usage */}
             <NavTree
               rootPath="/docs"
               className={s.sidebarNavTree}
-              nodes={NavTreeNodesFixture}
+              nodes={navTreeData}
             />
           </div>
         </div>

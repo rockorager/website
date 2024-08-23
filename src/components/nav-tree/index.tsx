@@ -1,20 +1,19 @@
 import classNames from "classnames";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import s from "./NavTree.module.css";
 
-type Node = FolderNode | LinkNode | BreakNode | TitleNode;
+export type NavTreeNode = FolderNode | LinkNode | BreakNode | TitleNode;
 
-// TODO: open: true | false
-type FolderNode = {
+export type FolderNode = {
   type: "folder";
   title: string;
   path: string;
   open?: boolean;
-  children: Node[];
+  children: NavTreeNode[];
 };
 
-type LinkNode = {
+export type LinkNode = {
   type: "link";
   title: string;
   path: string;
@@ -33,41 +32,8 @@ type TitleNode = {
 interface NavTreeProps {
   className?: string;
   rootPath: string;
-  nodes: Node[];
+  nodes: NavTreeNode[];
 }
-
-// TODO: Just a temporary fixture to test things
-export const NavTreeNodesFixture: Node[] = [
-  {
-    type: "link",
-    title: "Bash",
-    path: "/bash",
-  },
-  {
-    type: "link",
-    title: "README",
-    path: "/readme",
-    active: true,
-  },
-  {
-    type: "folder",
-    title: "Terminal",
-    path: "/terminal",
-    open: true,
-    children: [
-      {
-        type: "link",
-        path: "/",
-        title: "Overview",
-      },
-      {
-        type: "link",
-        path: "/configuration",
-        title: "Configuration",
-      },
-    ],
-  },
-];
 
 export default function NavTree({ className, rootPath, nodes }: NavTreeProps) {
   return (
@@ -81,7 +47,7 @@ export default function NavTree({ className, rootPath, nodes }: NavTreeProps) {
 
 interface NavTreeNodesListProps {
   path: string;
-  nodes: Node[];
+  nodes: NavTreeNode[];
 }
 
 function NavTreeNodesList({ path, nodes }: NavTreeNodesListProps) {
@@ -98,7 +64,7 @@ function NavTreeNodesList({ path, nodes }: NavTreeNodesListProps) {
   );
 }
 
-function Node({ path, node }: { path: string; node: Node }) {
+function Node({ path, node }: { path: string; node: NavTreeNode }) {
   switch (node.type) {
     case "folder":
       return <FolderNode path={path} node={node} />;
