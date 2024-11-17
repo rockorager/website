@@ -1,17 +1,12 @@
 import classNames from "classnames";
-import { Nunito, Outfit } from "next/font/google";
+import localFont from "next/font/local";
 import s from "./Text.module.css";
 
-const displayFont = Outfit({
-  subsets: ["latin"],
+// https://github.com/orioncactus/pretendard
+export const pretendardVariable = localFont({
+  src: "./font/PretendardVariable.woff2",
   display: "auto",
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const bodyFont = Nunito({
-  subsets: ["latin"],
-  display: "auto",
-  weight: ["300", "400", "500", "600", "700"],
+  variable: "--pretendard-variable",
 });
 
 interface TextProps {
@@ -35,8 +30,7 @@ export default function Text({
     <Tag
       id={id}
       className={classNames(s.text, className, {
-        [displayFont.className]: font === "display",
-        [bodyFont.className]: font === "body",
+        [pretendardVariable.className]: font === "display" || font === "body",
         [s.weightLight]: weight === "300",
         [s.weightMedium]: weight === "400",
         [s.weightHeavy]: weight === "500",
