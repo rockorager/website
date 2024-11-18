@@ -23,7 +23,7 @@ ul.nodesList {
         width: 100%;
         text-align: left;
         font-weight: 500;
-        color: var(--gray-2);
+        color: var(--gray-4);
         font-size: var(--node-font-size);
         line-height: var(--node-font-size);
         padding: var(--node-padding);
@@ -33,7 +33,8 @@ ul.nodesList {
         justify-content: space-between;
         align-items: center;
         &:hover {
-          background: var(--gray-8);
+          color: var(--gray-9);
+          background: var(--brand-color);
         }
       }
       & svg {
@@ -52,19 +53,22 @@ ul.nodesList {
     & .linkNode {
       display: block;
       font-weight: 300;
-      color: var(--gray-2);
+      color: var(--gray-4);
       font-size: var(--node-font-size);
       line-height: var(--node-font-size);
       padding: var(--node-padding);
       border-radius: var(--node-border-radius);
       text-decoration: none;
       &.active {
-        background: var(--gray-7);
-        color: var(--gray-1);
+        background: var(--brand-color);
+        color: var(--gray-9);
       }
       &:hover {
-        background: var(--gray-8);
-        color: var(--gray-1);
+        /* TODO: this should be slightly different than the 'active' color
+        so there is a visual distinction between the hover state on an
+        active element. */
+        background: var(--brand-color);
+        color: var(--gray-9);
       }
     }
   }
