@@ -31,11 +31,11 @@
     background-color: var(--brand-color);
     &:hover  {
       @media(hover: hover) {
-        background-color: hsl(var(--brand-color-hsl)/.9);
+        background-color: hsl(var(--brand-color-hsl)/.7);
       }
     }
     &:active {
-      background-color: hsl(var(--brand-color-hsl)/.9);
+      background-color: hsl(var(--brand-color-hsl)/.7);
     }
   }
 
