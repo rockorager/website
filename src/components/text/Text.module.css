@@ -44,12 +44,12 @@
 		font-size: 18px;
 	}
 	& > code {
-		background: var(--gray-8);
-		border: 1px solid var(--gray-6);
+		background: var(--gray-2);
+		border: 1px solid var(--gray-3);
 		border-radius: 4px;
 		padding: 1px 6px;
 		margin: -1px 0;
-		color: #cf3636;
+		color: var(--gray-9);
 		font-size: 16px;
 	}
 }
