@@ -1,5 +1,5 @@
 .text {
-	color: var(--gray-1);
+	color: var(--gray-0);
 	&.weightLight {
 		font-weight: 300;
 		& strong {
