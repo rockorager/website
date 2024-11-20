@@ -8,7 +8,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-  background: var(--gray-1);
+  background: var(--gray-0);
 }
 
 html,
@@ -16,7 +16,8 @@ body {
   max-width: 100vw;
   --brand-color: #0000E6;
   --brand-color-hsl: 240 100% 45%;
-  --gray-1: #0F0F11; /* Background color */
+  --gray-0: #0F0F11; /* Background color */
+  --gray-1: #16161A; /* Blocks */
   --gray-2: #242428; /* HRs */
   --gray-3: #4C4C50; /* Unfocused Font, Code Background */
   --gray-4: #828286; /* Body Font */

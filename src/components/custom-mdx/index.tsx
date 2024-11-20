@@ -1,7 +1,7 @@
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
 import CodeBlock from "../codeblock";
 import JumplinkHeader from "../jumplink-header";
-import { LI, P } from "../text";
+import { LI, BodyParagraph } from "../text";
 import s from "./CustomMDX.module.css";
 
 interface CustomMDXProps {
@@ -21,7 +21,7 @@ export default function CustomMDX({ content }: CustomMDXProps) {
           h5: (props) => JumplinkHeader({ ...props, as: "h5" }),
           h6: (props) => JumplinkHeader({ ...props, as: "h6" }),
           li: LI,
-          p: P,
+          p: BodyParagraph,
           pre: CodeBlock,
           img: (props) => (
             // eslint-disable-next-line @next/next/no-img-element
