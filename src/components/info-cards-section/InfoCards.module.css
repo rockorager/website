@@ -1,14 +1,10 @@
 .infoCardsSection {
   & .sectionTitle {
-    font-size: 34px;
     max-width: 772px;
     margin-bottom: 100px;
-
     @media(max-width: 768px) {
-      font-size: 28px;
       margin-bottom: 50px;
     }
-
   }
 }
 
@@ -45,16 +41,11 @@
         color: var(--brand-color);
       }
     }
-
     & > h3 {
-      margin-top: 16px;
-      font-size: 18px;
-      font-weight: 400;
+      margin-top: 22px;
     }
-
     & > p {
-      margin-top: 4px;
-      font-size: 14px;
+      margin-top: 8px;
     }
   }
 }

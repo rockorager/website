@@ -15,7 +15,7 @@ interface TextProps {
   id?: string;
   as: "p" | "span" | "li" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   font?: "display" | "body";
-  weight?: "300" | "400" | "500";
+  weight?: "regular" | "medium";
 }
 
 export default function Text({
@@ -24,16 +24,15 @@ export default function Text({
   className,
   id,
   font = "body",
-  weight = "300",
+  weight = "regular",
 }: TextProps) {
   return (
     <Tag
       id={id}
       className={classNames(s.text, className, {
         [pretendardVariable.className]: font === "display" || font === "body",
-        [s.weightLight]: weight === "300",
-        [s.weightMedium]: weight === "400",
-        [s.weightHeavy]: weight === "500",
+        [s.weightRegular]: weight === "regular",
+        [s.weightMedium]: weight === "medium",
       })}
     >
       {children}
@@ -46,7 +45,7 @@ type SpecificTagTextProps = Omit<TextProps, "as">;
 export function LI(props: SpecificTagTextProps) {
   return Text({
     font: "body",
-    weight: "300",
+    weight: "regular",
     as: "li",
     ...props,
   });
@@ -55,7 +54,7 @@ export function LI(props: SpecificTagTextProps) {
 export function P(props: SpecificTagTextProps) {
   return Text({
     font: "body",
-    weight: "300",
+    weight: "regular",
     as: "p",
     ...props,
   });
@@ -64,7 +63,7 @@ export function P(props: SpecificTagTextProps) {
 export function Span(props: SpecificTagTextProps) {
   return Text({
     font: "body",
-    weight: "300",
+    weight: "regular",
     as: "span",
     ...props,
   });
@@ -73,7 +72,7 @@ export function Span(props: SpecificTagTextProps) {
 export function H1(props: SpecificTagTextProps) {
   return Text({
     font: "display",
-    weight: "500",
+    weight: "medium",
     as: "h1",
     ...props,
   });
@@ -82,7 +81,7 @@ export function H1(props: SpecificTagTextProps) {
 export function H2(props: SpecificTagTextProps) {
   return Text({
     font: "display",
-    weight: "500",
+    weight: "medium",
     as: "h2",
     ...props,
   });
@@ -91,7 +90,7 @@ export function H2(props: SpecificTagTextProps) {
 export function H3(props: SpecificTagTextProps) {
   return Text({
     font: "display",
-    weight: "500",
+    weight: "medium",
     as: "h3",
     ...props,
   });
@@ -100,7 +99,7 @@ export function H3(props: SpecificTagTextProps) {
 export function H4(props: SpecificTagTextProps) {
   return Text({
     font: "display",
-    weight: "500",
+    weight: "medium",
     as: "h4",
     ...props,
   });
@@ -109,7 +108,7 @@ export function H4(props: SpecificTagTextProps) {
 export function H5(props: SpecificTagTextProps) {
   return Text({
     font: "display",
-    weight: "500",
+    weight: "medium",
     as: "h5",
     ...props,
   });
@@ -118,7 +117,7 @@ export function H5(props: SpecificTagTextProps) {
 export function H6(props: SpecificTagTextProps) {
   return Text({
     font: "display",
-    weight: "500",
+    weight: "medium",
     as: "h6",
     ...props,
   });

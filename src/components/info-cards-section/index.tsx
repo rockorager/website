@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { ReactNode } from "react";
 import SectionWrapper from "../section-wrapper";
+import { H1, H3, P } from "../text";
 import s from "./InfoCards.module.css";
 
 interface InfoCardsSectionProps {
@@ -22,14 +23,14 @@ export default function InfoCardsSection({
 }: InfoCardsSectionProps) {
   return (
     <SectionWrapper className={classNames(s.infoCardsSection, className)}>
-      <h2 className={s.sectionTitle}>{title}</h2>
+      <H1 className={s.sectionTitle}>{title}</H1>
       <ul className={s.infoCards}>
         {infoCards.map((infoCard, i) => {
           return (
             <li key={i}>
               <div className={s.iconContainer}>{infoCard.icon}</div>
-              <h3>{infoCard.title}</h3>
-              <p>{infoCard.description}</p>
+              <H3>{infoCard.title}</H3>
+              <P>{infoCard.description}</P>
             </li>
           );
         })}

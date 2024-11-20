@@ -1,5 +1,6 @@
 import CustomMDX from "@/components/custom-mdx";
 import NavTree, { NavTreeNode } from "@/components/nav-tree";
+import { H1, P } from "@/components/text";
 import RootLayout from "@/layouts/root-layout";
 import {
   DocsPageData,
@@ -75,8 +76,8 @@ export default function DocsPage({
         </div>
         <main className={s.contentWrapper}>
           <div className={s.heading}>
-            <h1>{title}</h1>
-            <p>{description}</p>
+            <H1>{title}</H1>
+            <P>{description}</P>
           </div>
 
           <CustomMDX content={content} />

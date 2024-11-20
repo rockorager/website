@@ -1,4 +1,4 @@
-import { pretendardVariable } from "@/components/text";
+import { H4, pretendardVariable } from "@/components/text";
 import classNames from "classnames";
 import Head from "next/head";
 import s from "./RootLayout.module.css";
@@ -34,11 +34,11 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header>
-        <h6>Header</h6>
+        <H4>Header</H4>
       </header>
       {children}
       <footer>
-        <h6>Footer</h6>
+        <H4>Footer</H4>
       </footer>
     </div>
   );
