@@ -1,4 +1,5 @@
 import InfoCardsSection from "@/components/info-cards-section";
+import AnimatedTerminalPOC from "@/components/terminal-animated-poc";
 import RootLayout from "@/layouts/root-layout";
 import {
   AppWindow,
@@ -6,10 +7,11 @@ import {
   FileCheck,
   Files,
   MessageSquareWarning,
+  Section,
   SquareTerminal,
 } from "lucide-react";
 import s from "./Home.module.css";
-import Terminal from "@/components/terminal";
+import SectionWrapper from "@/components/section-wrapper";
 
 export default function Home() {
   return (
@@ -21,20 +23,9 @@ export default function Home() {
       }}
     >
       <main className={s.homePage}>
-        <Terminal
-          width={80}
-          height={30}
-          title="Ghostty"
-          lines={[
-            "> Hello world",
-            "hello world",
-            "hello world",
-            "hello world",
-            "hello world",
-            "hello world1",
-            "wow",
-          ]}
-        />
+        <SectionWrapper>
+          <AnimatedTerminalPOC className={s.terminal} />
+        </SectionWrapper>
 
         <InfoCardsSection
           title="Ghostty is a cross-platform, GPU-accelerated terminal emulator designed to eerily-enhance and expand CLI capabilities."

@@ -47,10 +47,10 @@ export default function Terminal({
       <Code className={s.content}>
         {lines?.map((line, i) => {
           return (
-            <span key={i + line}>
+            <div key={i + line}>
               {line}
               <br />
-            </span>
+            </div>
           );
         })}
         <div ref={codeEndRef} />
