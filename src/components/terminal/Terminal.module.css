@@ -1,0 +1,55 @@
+.terminal {
+  --columns: 50;
+  --rows: 4;
+  --code-margin-top: 12px;
+  --control-size: 10px;
+  --padding: 10px;
+
+  /* TODO: These values are coupled, and slightly dependent on the font renderer */
+  --content-font-size: 14px;
+  --content-character-width: 8.6px;
+  --content-character-height: 18px;
+
+  width: calc((var(--columns) * var(--content-character-width)) + (2 * var(--padding)));
+  height: calc((var(--rows) * var(--content-character-height)) + (2 * var(--padding)) + var(--control-size) + var(--code-margin-top) );
+  background: var(--gray-0);
+  border: 1px solid var(--gray-2);
+  border-radius: 10px;
+  padding: var(--padding);
+
+  display: flex;
+  flex-direction: column;
+
+  & .header {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    position: relative;
+
+    & .windowControls {
+      list-style: none;
+      display: flex;
+      gap: 6px;
+
+      & li {
+        width: var(--control-size);
+        height: var(--control-size);
+        border-radius: var(--control-size);
+        background: var(--gray-3);
+      }
+    }
+    & .title {
+      position: absolute;
+      left: 50%; transform: translateX(-50%);
+      font-size: 14px;
+    }
+  }
+
+  & .content {
+    font-size: var(--content-font-size);
+    margin-top: var(--code-margin-top);
+    color: var(--gray-6);
+    overflow: scroll;
+    scroll-behavior: smooth;
+  }
+}

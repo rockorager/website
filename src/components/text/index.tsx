@@ -1,4 +1,5 @@
 import classNames from "classnames";
+import { Source_Code_Pro } from "next/font/google";
 import localFont from "next/font/local";
 import s from "./Text.module.css";
 
@@ -9,12 +10,18 @@ export const pretendardVariable = localFont({
   variable: "--pretendard-variable",
 });
 
+const sourceCodePro = Source_Code_Pro({
+  subsets: ["latin"],
+  display: "auto",
+  weight: ["400"],
+});
+
 interface TextProps {
   children?: React.ReactNode;
   className?: string;
   id?: string;
-  as: "p" | "span" | "li" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-  font?: "display" | "body";
+  as: "code" | "p" | "span" | "li" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  font?: "display" | "body" | "code";
   weight?: "light" | "regular" | "medium";
 }
 
@@ -31,6 +38,7 @@ export default function Text({
       id={id}
       className={classNames(s.text, className, {
         [pretendardVariable.className]: font === "display" || font === "body",
+        [sourceCodePro.className]: font === "code",
         [s.weightLight]: weight === "light",
         [s.weightMedium]: weight === "medium",
       })}
@@ -41,6 +49,15 @@ export default function Text({
 }
 
 type SpecificTagTextProps = Omit<TextProps, "as">;
+
+export function Code(props: SpecificTagTextProps) {
+  return Text({
+    font: "code",
+    weight: "light",
+    as: "code",
+    ...props,
+  });
+}
 
 export function LI(props: SpecificTagTextProps) {
   return Text({

@@ -9,6 +9,7 @@ import {
   SquareTerminal,
 } from "lucide-react";
 import s from "./Home.module.css";
+import Terminal from "@/components/terminal";
 
 export default function Home() {
   return (
@@ -20,6 +21,21 @@ export default function Home() {
       }}
     >
       <main className={s.homePage}>
+        <Terminal
+          width={80}
+          height={30}
+          title="Ghostty"
+          lines={[
+            "> Hello world",
+            "hello world",
+            "hello world",
+            "hello world",
+            "hello world",
+            "hello world1",
+            "wow",
+          ]}
+        />
+
         <InfoCardsSection
           title="Ghostty is a cross-platform, GPU-accelerated terminal emulator designed to eerily-enhance and expand CLI capabilities."
           infoCards={[
