@@ -1,42 +1,56 @@
 import classNames from "classnames";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Code, P } from "../text";
 import s from "./Terminal.module.css";
 
 interface TerminalProps {
   className?: string;
-  width: number;
-  height: number;
+  columns: number;
+  rows: number;
   title?: string;
   lines?: string[];
 }
 
-export default function Terminal({ className, title, lines }: TerminalProps) {
+export default function Terminal({
+  columns,
+  rows,
+  className,
+  title,
+  lines,
+}: TerminalProps) {
   const codeEndRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
-    if (codeEndRef.current) {
-      codeEndRef.current?.scrollIntoView({ behavior: "instant" });
-    }
+    codeEndRef.current?.scrollIntoView({
+      behavior: "instant",
+      block: "nearest",
+    });
   }, [lines]);
 
   return (
-    <div className={classNames(s.terminal, className)}>
+    <div
+      className={classNames(s.terminal, className)}
+      style={
+        {
+          "--columns": columns,
+          "--rows": rows,
+        } as React.CSSProperties
+      }
+    >
       <div className={s.header}>
         <ul className={s.windowControls}>
           <li></li>
           <li></li>
           <li></li>
         </ul>
-
         <P className={s.title}>{title}</P>
       </div>
       <Code className={s.content}>
-        {lines?.map((line) => {
+        {lines?.map((line, i) => {
           return (
-            <>
+            <span key={i + line}>
               {line}
               <br />
-            </>
+            </span>
           );
         })}
         <div ref={codeEndRef} />
