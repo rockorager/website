@@ -15,7 +15,7 @@ interface TextProps {
   id?: string;
   as: "p" | "span" | "li" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   font?: "display" | "body";
-  weight?: "regular" | "medium";
+  weight?: "light" | "regular" | "medium";
 }
 
 export default function Text({
@@ -24,14 +24,14 @@ export default function Text({
   className,
   id,
   font = "body",
-  weight = "regular",
+  weight = "light",
 }: TextProps) {
   return (
     <Tag
       id={id}
       className={classNames(s.text, className, {
         [pretendardVariable.className]: font === "display" || font === "body",
-        [s.weightRegular]: weight === "regular",
+        [s.weightLight]: weight === "light",
         [s.weightMedium]: weight === "medium",
       })}
     >
@@ -45,16 +45,27 @@ type SpecificTagTextProps = Omit<TextProps, "as">;
 export function LI(props: SpecificTagTextProps) {
   return Text({
     font: "body",
-    weight: "regular",
+    weight: "light",
     as: "li",
     ...props,
+  });
+}
+
+export function BodyParagraph(props: SpecificTagTextProps) {
+  const { className, ...otherProps } = props;
+  return Text({
+    font: "body",
+    weight: "regular",
+    as: "p",
+    className: classNames(s.body, className),
+    ...otherProps,
   });
 }
 
 export function P(props: SpecificTagTextProps) {
   return Text({
     font: "body",
-    weight: "regular",
+    weight: "light",
     as: "p",
     ...props,
   });
@@ -63,7 +74,7 @@ export function P(props: SpecificTagTextProps) {
 export function Span(props: SpecificTagTextProps) {
   return Text({
     font: "body",
-    weight: "regular",
+    weight: "light",
     as: "span",
     ...props,
   });
