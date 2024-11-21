@@ -1,4 +1,5 @@
 import InfoCardsSection from "@/components/info-cards-section";
+import SectionWrapper from "@/components/section-wrapper";
 import AnimatedTerminalPOC from "@/components/terminal-animated-poc";
 import RootLayout from "@/layouts/root-layout";
 import {
@@ -7,11 +8,9 @@ import {
   FileCheck,
   Files,
   MessageSquareWarning,
-  Section,
   SquareTerminal,
 } from "lucide-react";
 import s from "./Home.module.css";
-import SectionWrapper from "@/components/section-wrapper";
 
 export default function Home() {
   return (

@@ -19,8 +19,8 @@ export default function AnimatedTerminalPOC({
   return (
     <Terminal
       className={className}
-      columns={60}
-      rows={18}
+      columns={80}
+      rows={8}
       title="Ghostty"
       lines={lines}
     />

@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { Source_Code_Pro } from "next/font/google";
 import localFont from "next/font/local";
 import s from "./Text.module.css";
+import { UIEventHandler } from "react";
 
 // https://github.com/orioncactus/pretendard
 export const pretendardVariable = localFont({
@@ -23,6 +24,7 @@ interface TextProps {
   as: "code" | "p" | "span" | "li" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   font?: "display" | "body" | "code";
   weight?: "light" | "regular" | "medium";
+  onScroll?: UIEventHandler<HTMLElement>;
 }
 
 export default function Text({
@@ -32,10 +34,12 @@ export default function Text({
   id,
   font = "body",
   weight = "light",
+  onScroll,
 }: TextProps) {
   return (
     <Tag
       id={id}
+      onScroll={onScroll}
       className={classNames(s.text, className, {
         [pretendardVariable.className]: font === "display" || font === "body",
         [sourceCodePro.className]: font === "code",
