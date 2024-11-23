@@ -14,6 +14,7 @@ export const jetbrainsMono = localFont({
   src: "./font/JetbrainsMono-Regular.woff2",
   display: "auto",
   weight: "400",
+  variable: "--jetbrains-mono",
 });
 
 interface TextProps {
