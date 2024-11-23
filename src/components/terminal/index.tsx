@@ -34,12 +34,12 @@ export default function Terminal({
     }
   };
 
-  const lastLineRef = useRef<HTMLInputElement>(null);
+  const codeRef = useRef<HTMLElement>(null);
   useEffect(() => {
     if (autoScroll) {
-      lastLineRef.current?.scrollIntoView({
+      codeRef.current?.scrollTo({
+        top: codeRef.current.scrollHeight,
         behavior: "instant",
-        block: "nearest",
       });
     }
   }, [lines?.length, autoScroll]);
@@ -66,7 +66,7 @@ export default function Terminal({
         </ul>
         <P className={s.title}>{title}</P>
       </div>
-      <Code className={s.content} onScroll={handleScroll}>
+      <Code ref={codeRef} className={s.content} onScroll={handleScroll}>
         {lines?.map((line, i) => {
           return (
             <div key={i + line}>
@@ -75,7 +75,6 @@ export default function Terminal({
             </div>
           );
         })}
-        <div ref={lastLineRef} />
       </Code>
     </div>
   );

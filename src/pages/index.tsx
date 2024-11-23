@@ -22,12 +22,9 @@ export default function Home() {
       }}
     >
       <main className={s.homePage}>
-        {/*
-        TODO: Temporarily disabling this as it is scrolling the entire page with scrollIntoView
         <SectionWrapper>
           <AnimatedTerminalPOC className={s.terminal} />
         </SectionWrapper>
-        */}
 
         <InfoCardsSection
           title="Ghostty is a cross-platform, GPU-accelerated terminal emulator designed to eerily-enhance and expand CLI capabilities."
