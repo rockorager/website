@@ -37,7 +37,7 @@ export default function TabbedTerminalsSection({
                 <li
                   key={tab.title}
                   className={classNames({
-                    [s.activeTab]: isActiveTab,
+                    [s.active]: isActiveTab,
                   })}
                   onClick={() => setActiveTabIndex(i)}
                 >
