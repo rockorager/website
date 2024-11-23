@@ -7,6 +7,7 @@ interface TerminalProps {
   className?: string;
   columns: number;
   rows: number;
+  fontSize?: "small" | "medium" | "large";
   title?: string;
   lines?: string[];
 }
@@ -14,6 +15,7 @@ interface TerminalProps {
 export default function Terminal({
   columns,
   rows,
+  fontSize = "medium",
   className,
   title,
   lines,
@@ -40,11 +42,15 @@ export default function Terminal({
         block: "nearest",
       });
     }
-  }, [lines?.length]);
+  }, [lines?.length, autoScroll]);
 
   return (
     <div
-      className={classNames(s.terminal, className)}
+      className={classNames(s.terminal, className, {
+        [s.fontSmall]: fontSize === "small",
+        [s.fontMedium]: fontSize === "medium",
+        [s.fontLarge]: fontSize === "large",
+      })}
       style={
         {
           "--columns": columns,

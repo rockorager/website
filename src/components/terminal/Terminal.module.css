@@ -3,12 +3,23 @@
   --control-size: 10px;
   --padding: 10px;
 
-  /* TODO: These values are coupled, and slightly dependent on the font renderer */
-  --content-font-size: 14px;
-  --content-character-width: 8.6px;
-  --content-character-height: 18px;
+  &.fontSmall {
+    --content-font-size: 12px;
+    --content-character-width: 7.2px;
+    --content-character-height: 16.5px;
+  }
+  &.fontMedium {
+    --content-font-size: 14px;
+    --content-character-width: 8.4px;
+    --content-character-height: 19px;
+  }
+  &.fontLarge {
+    --content-font-size: 16px;
+    --content-character-width: 9.6px;
+    --content-character-height: 21.5px;
+  }
 
-  width: calc((var(--columns) * var(--content-character-width)) + (2 * var(--padding)));
+  width: calc((var(--columns) * var(--content-character-width)) + (2 * var(--padding)) + 2px);
   height: calc((var(--rows) * var(--content-character-height)) + (2 * var(--padding)) + var(--control-size) + var(--code-margin-top) );
   background: var(--gray-0);
   border: 1px solid var(--gray-2);
@@ -39,7 +50,7 @@
     & .title {
       position: absolute;
       left: 50%; transform: translateX(-50%);
-      font-size: 14px;
+      font-size: var(--content-font-size);
     }
   }
 
@@ -47,7 +58,8 @@
     font-size: var(--content-font-size);
     margin-top: var(--code-margin-top);
     color: var(--gray-6);
-    overflow: scroll;
+    overflow-y: scroll;
+    word-wrap: break-word;
     scroll-behavior: smooth;
   }
 }
