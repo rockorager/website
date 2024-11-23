@@ -1,4 +1,6 @@
 import InfoCardsSection from "@/components/info-cards-section";
+import SectionWrapper from "@/components/section-wrapper";
+import AnimatedTerminalPOC from "@/components/terminal-animated-poc";
 import RootLayout from "@/layouts/root-layout";
 import {
   AppWindow,
@@ -20,6 +22,10 @@ export default function Home() {
       }}
     >
       <main className={s.homePage}>
+        <SectionWrapper>
+          <AnimatedTerminalPOC className={s.terminal} />
+        </SectionWrapper>
+
         <InfoCardsSection
           title="Ghostty is a cross-platform, GPU-accelerated terminal emulator designed to eerily-enhance and expand CLI capabilities."
           infoCards={[

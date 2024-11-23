@@ -1,4 +1,4 @@
-import { H4, pretendardVariable } from "@/components/text";
+import { H4, pretendardVariable, jetbrainsMono } from "@/components/text";
 import classNames from "classnames";
 import Head from "next/head";
 import s from "./RootLayout.module.css";
@@ -24,6 +24,7 @@ export default function RootLayout({
       className={classNames(
         s.rootLayout,
         pretendardVariable.variable,
+        jetbrainsMono.variable,
         className
       )}
     >

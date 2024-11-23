@@ -1,21 +1,30 @@
 import classNames from "classnames";
 import localFont from "next/font/local";
+import { UIEventHandler } from "react";
 import s from "./Text.module.css";
 
 // https://github.com/orioncactus/pretendard
 export const pretendardVariable = localFont({
-  src: "./font/PretendardVariable.woff2",
+  src: "./font/pretendard-variable.woff2",
   display: "auto",
   variable: "--pretendard-variable",
+});
+
+export const jetbrainsMono = localFont({
+  src: "./font/jetbrains-mono-regular.woff2",
+  display: "auto",
+  weight: "400",
+  variable: "--jetbrains-mono",
 });
 
 interface TextProps {
   children?: React.ReactNode;
   className?: string;
   id?: string;
-  as: "p" | "span" | "li" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-  font?: "display" | "body";
+  as: "code" | "p" | "span" | "li" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  font?: "display" | "body" | "code";
   weight?: "light" | "regular" | "medium";
+  onScroll?: UIEventHandler<HTMLElement>;
 }
 
 export default function Text({
@@ -25,12 +34,15 @@ export default function Text({
   id,
   font = "body",
   weight = "light",
+  onScroll,
 }: TextProps) {
   return (
     <Tag
       id={id}
+      onScroll={onScroll}
       className={classNames(s.text, className, {
         [pretendardVariable.className]: font === "display" || font === "body",
+        [jetbrainsMono.className]: font === "code",
         [s.weightLight]: weight === "light",
         [s.weightMedium]: weight === "medium",
       })}
@@ -41,6 +53,15 @@ export default function Text({
 }
 
 type SpecificTagTextProps = Omit<TextProps, "as">;
+
+export function Code(props: SpecificTagTextProps) {
+  return Text({
+    font: "code",
+    weight: "regular",
+    as: "code",
+    ...props,
+  });
+}
 
 export function LI(props: SpecificTagTextProps) {
   return Text({
