@@ -1,8 +1,7 @@
 import classNames from "classnames";
-import { Source_Code_Pro } from "next/font/google";
 import localFont from "next/font/local";
-import s from "./Text.module.css";
 import { UIEventHandler } from "react";
+import s from "./Text.module.css";
 
 // https://github.com/orioncactus/pretendard
 export const pretendardVariable = localFont({
@@ -11,10 +10,10 @@ export const pretendardVariable = localFont({
   variable: "--pretendard-variable",
 });
 
-const sourceCodePro = Source_Code_Pro({
-  subsets: ["latin"],
+export const jetbrainsMono = localFont({
+  src: "./font/JetbrainsMono-Regular.woff2",
   display: "auto",
-  weight: ["400"],
+  weight: "400",
 });
 
 interface TextProps {
@@ -42,7 +41,7 @@ export default function Text({
       onScroll={onScroll}
       className={classNames(s.text, className, {
         [pretendardVariable.className]: font === "display" || font === "body",
-        [sourceCodePro.className]: font === "code",
+        [jetbrainsMono.className]: font === "code",
         [s.weightLight]: weight === "light",
         [s.weightMedium]: weight === "medium",
       })}
@@ -57,7 +56,7 @@ type SpecificTagTextProps = Omit<TextProps, "as">;
 export function Code(props: SpecificTagTextProps) {
   return Text({
     font: "code",
-    weight: "light",
+    weight: "regular",
     as: "code",
     ...props,
   });
