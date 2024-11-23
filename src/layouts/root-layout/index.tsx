@@ -2,6 +2,7 @@ import { H4, pretendardVariable, jetbrainsMono } from "@/components/text";
 import classNames from "classnames";
 import Head from "next/head";
 import s from "./RootLayout.module.css";
+import Footer from "@/components/footer";
 
 export interface PageMeta {
   title: string;
@@ -38,9 +39,27 @@ export default function RootLayout({
         <H4>Header</H4>
       </header>
       {children}
-      <footer>
-        <H4>Footer</H4>
-      </footer>
+      <Footer
+        links={[
+          {
+            text: "About",
+            href: "/",
+          },
+          {
+            text: "Docs",
+            href: "/docs",
+          },
+          {
+            text: "Discord",
+            href: "https://discord.gg/ghostty",
+          },
+          {
+            text: "Github",
+            href: "https://github.com/ghostty-org",
+          },
+        ]}
+        copyright="© Ghostty 2024"
+      />
     </div>
   );
 }

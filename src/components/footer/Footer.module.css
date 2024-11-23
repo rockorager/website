@@ -1,0 +1,32 @@
+.footer {
+  background: var(--gray-0);
+  border-top: 1px solid var(--gray-2);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 40px;
+
+  & .linkList {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+
+    & a {
+      color: var(--gray-4);
+    }
+  }
+
+  @media(max-width: 768px) {
+    padding-left: 22px;
+    padding-right: 22px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    & .linkList {
+      margin-bottom: 38px;
+      gap: 32px;
+    }
+  }
+}
