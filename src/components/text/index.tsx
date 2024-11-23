@@ -5,7 +5,7 @@ import s from "./Text.module.css";
 
 // https://github.com/orioncactus/pretendard
 export const pretendardVariable = localFont({
-  src: "./font/PretendardVariable.woff2",
+  src: "./font/pretendard-variable.woff2",
   display: "auto",
   variable: "--pretendard-variable",
 });
