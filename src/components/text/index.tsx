@@ -11,7 +11,7 @@ export const pretendardVariable = localFont({
 });
 
 export const jetbrainsMono = localFont({
-  src: "./font/JetbrainsMono-Regular.woff2",
+  src: "./font/jetbrains-mono-regular.woff2",
   display: "auto",
   weight: "400",
   variable: "--jetbrains-mono",
