@@ -28,7 +28,7 @@ export default function TabbedTerminalsSection({
   return (
     <SectionWrapper className={classNames(s.tabbedTerminalsSection, className)}>
       <div className={s.content}>
-        <div>
+        <div className={s.primary}>
           <H1>{title}</H1>
           <ul className={s.tabs}>
             {terminalTabs.map((tab, i) => {
@@ -46,7 +46,17 @@ export default function TabbedTerminalsSection({
                     <ChevronDown size={16} />
                   </div>
                   {isActiveTab && (
-                    <P className={s.description}>{tab.description}</P>
+                    <div className={s.tabContent}>
+                      <Terminal
+                        className={s.terminal}
+                        fontSize="small"
+                        columns={70}
+                        rows={14}
+                        title="~"
+                        lines={terminalTabs[i].lines}
+                      />
+                      <P className={s.description}>{tab.description}</P>
+                    </div>
                   )}
                 </li>
               );
@@ -56,9 +66,9 @@ export default function TabbedTerminalsSection({
 
         <div className={s.spotlight}>
           <Terminal
-            fontSize="small"
-            columns={70}
-            rows={20}
+            fontSize="medium"
+            columns={60}
+            rows={16}
             title="~"
             lines={terminalTabs[activeTabIndex].lines}
           />
