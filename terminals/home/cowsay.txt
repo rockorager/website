@@ -1,0 +1,10 @@
+brandon@Brandons-Mac-Studio $ cowsay -W 10 "I dream in color"
+ __________
+/ I dream  \
+\ in color /
+ ----------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||

@@ -1,7 +1,13 @@
 import InfoCardsSection from "@/components/info-cards-section";
 import SectionWrapper from "@/components/section-wrapper";
+import TabbedTerminalsSection from "@/components/tabbed-terminals-section";
 import AnimatedTerminalPOC from "@/components/terminal-animated-poc";
+import TerminalCardsSection from "@/components/terminal-cards-section";
 import RootLayout from "@/layouts/root-layout";
+import {
+  loadAllTerminalFiles,
+  TerminalsMap,
+} from "@/lib/fetch-terminal-content";
 import {
   AppWindow,
   Cpu,
@@ -11,9 +17,19 @@ import {
   SquareTerminal,
 } from "lucide-react";
 import s from "./Home.module.css";
-import TabbedTerminalsSection from "@/components/tabbed-terminals-section";
 
-export default function Home() {
+export async function getStaticProps() {
+  return {
+    props: {
+      terminalData: await loadAllTerminalFiles("/home"),
+    },
+  };
+}
+interface HomePageProps {
+  terminalData: TerminalsMap;
+}
+
+export default function Home({ terminalData }: HomePageProps) {
   return (
     <RootLayout
       meta={{
@@ -76,55 +92,54 @@ export default function Home() {
               title: "Configuration",
               description:
                 "Built to enable CLI tool developers to create more feature rich, interactive applications.",
-              lines: [
-                "Last login: Fri Nov 22 20:31:52 on ttys005",
-                'brandon@Brandons-Mac-Studio $ cowsay "Hello Tab One"',
-                " ",
-                "  _____________",
-                "< Hello Tab One >",
-                "  -------------",
-                "         \\  ^__^",
-                "          \\ (oo)_________",
-                "            (__)\\        )/\\/",
-                "                ||----w-|",
-                "                ||     ||",
-              ],
+              lines: terminalData["home/tabbed-terminals/configuration"],
             },
             {
               title: "Modern, Opt-In Features",
               description:
                 "Built to enable CLI tool developers to create more feature rich, interactive applications.",
-              lines: [
-                "Last login: Fri Nov 22 20:31:52 on ttys005",
-                'brandon@Brandons-Mac-Studio $ cowsay "Hello Tab Two"',
-                " ",
-                "  _____________",
-                "< Hello Tab Two >",
-                "  -------------",
-                "         \\  ^__^",
-                "          \\ (oo)_________",
-                "            (__)\\        )/\\/",
-                "                ||----w-|",
-                "                ||     ||",
-              ],
+              lines: terminalData["home/tabbed-terminals/opt-in-features"],
             },
             {
               title: "Experimental Platform",
               description:
                 "Built to enable CLI tool developers to create more feature rich, interactive applications.",
-              lines: [
-                "Last login: Fri Nov 22 20:31:52 on ttys005",
-                'brandon@Brandons-Mac-Studio $ cowsay "Hello Tab Three"',
-                " ",
-                "  _______________",
-                "< Hello Tab Three >",
-                "  ---------------",
-                "         \\  ^__^",
-                "          \\ (oo)_________",
-                "            (__)\\        )/\\/",
-                "                ||----w-|",
-                "                ||     ||",
-              ],
+              lines:
+                terminalData["home/tabbed-terminals/experimental-platform"],
+            },
+          ]}
+        />
+
+        <TerminalCardsSection
+          title="Create richer, more interactive CLI applications. Wicked."
+          description="Modern, opt-in features offer CLI developers new ways to build richer, more interactive applications, all while ensuring full compatibility with existing shells and software."
+          cards={[
+            {
+              title: "Configuration",
+              description:
+                "Personalize your terminal experience with customized configurations, or select from over 300+ built-in themes.",
+              terminal: {
+                title: "~",
+                lines: terminalData["home/terminal-cards/1"],
+              },
+            },
+            {
+              title: "Modern, Opt-In Features",
+              description:
+                "Built to enable CLI tool developers to create more feature rich, interactive applications.",
+              terminal: {
+                title: "~",
+                lines: terminalData["home/terminal-cards/2"],
+              },
+            },
+            {
+              title: "Experimental Platform",
+              description:
+                "Built as a platform to experiment with modern, non-standard features, enhancing CLI application capabilities.",
+              terminal: {
+                title: "~",
+                lines: terminalData["home/terminal-cards/3"],
+              },
             },
           ]}
         />
