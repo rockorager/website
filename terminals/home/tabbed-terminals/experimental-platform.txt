@@ -1,0 +1,9 @@
+brandon@Brandons-Mac-Studio $ cowsay "It's Experimental"
+ ___________________
+< It's Experimental >
+ -------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||

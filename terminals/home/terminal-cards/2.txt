@@ -1,0 +1,10 @@
+brandon@Brandons-Mac-Studio $ cowsay -W 16 "I have lived without regret"
+ ________________
+/ I have lived   \
+\ without regret /
+ ----------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
