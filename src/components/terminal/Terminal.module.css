@@ -22,7 +22,7 @@
   width: calc((var(--columns) * var(--content-character-width)) + (2 * var(--padding)) + 2px);
   height: calc((var(--rows) * var(--content-character-height)) + (2 * var(--padding)) + var(--control-size) + var(--code-margin-top) );
   background: var(--gray-0);
-  border: 1px solid var(--gray-2);
+  border: 1px solid var(--gray-3);
   border-radius: 10px;
   padding: var(--padding);
 
@@ -61,5 +61,8 @@
     overflow-y: scroll;
     word-wrap: break-word;
     scroll-behavior: smooth;
+    & > div {
+      white-space: pre-wrap;
+    }
   }
 }

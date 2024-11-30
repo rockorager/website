@@ -68,12 +68,7 @@ export default function Terminal({
       </div>
       <Code ref={codeRef} className={s.content} onScroll={handleScroll}>
         {lines?.map((line, i) => {
-          return (
-            <div key={i + line}>
-              {line}
-              <br />
-            </div>
-          );
+          return <div key={i + line}>{line}</div>;
         })}
       </Code>
     </div>

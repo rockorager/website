@@ -11,6 +11,7 @@ import {
   SquareTerminal,
 } from "lucide-react";
 import s from "./Home.module.css";
+import TabbedTerminalsSection from "@/components/tabbed-terminals-section";
 
 export default function Home() {
   return (
@@ -64,6 +65,66 @@ export default function Home() {
               description:
                 "Multi-window, tabbing, and pane support for seamless session organization and switching.",
               icon: <AppWindow size={28} strokeWidth={1} />,
+            },
+          ]}
+        />
+
+        <TabbedTerminalsSection
+          title="Built to spook the boundaries of terminal emulation."
+          terminalTabs={[
+            {
+              title: "Configuration",
+              description:
+                "Built to enable CLI tool developers to create more feature rich, interactive applications.",
+              lines: [
+                "Last login: Fri Nov 22 20:31:52 on ttys005",
+                'brandon@Brandons-Mac-Studio $ cowsay "Hello Tab One"',
+                " ",
+                "  _____________",
+                "< Hello Tab One >",
+                "  -------------",
+                "         \\  ^__^",
+                "          \\ (oo)_________",
+                "            (__)\\        )/\\/",
+                "                ||----w-|",
+                "                ||     ||",
+              ],
+            },
+            {
+              title: "Modern, Opt-In Features",
+              description:
+                "Built to enable CLI tool developers to create more feature rich, interactive applications.",
+              lines: [
+                "Last login: Fri Nov 22 20:31:52 on ttys005",
+                'brandon@Brandons-Mac-Studio $ cowsay "Hello Tab Two"',
+                " ",
+                "  _____________",
+                "< Hello Tab Two >",
+                "  -------------",
+                "         \\  ^__^",
+                "          \\ (oo)_________",
+                "            (__)\\        )/\\/",
+                "                ||----w-|",
+                "                ||     ||",
+              ],
+            },
+            {
+              title: "Experimental Platform",
+              description:
+                "Built to enable CLI tool developers to create more feature rich, interactive applications.",
+              lines: [
+                "Last login: Fri Nov 22 20:31:52 on ttys005",
+                'brandon@Brandons-Mac-Studio $ cowsay "Hello Tab Three"',
+                " ",
+                "  _______________",
+                "< Hello Tab Three >",
+                "  ---------------",
+                "         \\  ^__^",
+                "          \\ (oo)_________",
+                "            (__)\\        )/\\/",
+                "                ||----w-|",
+                "                ||     ||",
+              ],
             },
           ]}
         />
