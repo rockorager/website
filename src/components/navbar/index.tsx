@@ -4,6 +4,7 @@ import GridContainer, { NavAndFooterGridConfig } from "../grid-container";
 import Link, { ButtonLink, SimpleLink } from "../link";
 import GhosttyWordmark from "./ghostty-wordmark.svg";
 import s from "./Navbar.module.css";
+import { Menu } from "lucide-react";
 
 export interface NavbarProps {
   className?: string;
@@ -19,7 +20,7 @@ export default function Navbar({ className, links, cta }: NavbarProps) {
         gridConfig={NavAndFooterGridConfig}
       >
         <Image src={GhosttyWordmark} alt="Ghostty" />
-        <div className={s.linksWrapper}>
+        <div className={s.desktopLinks}>
           {links && (
             <ul className={s.linkList}>
               {links.map((link) => {
@@ -41,6 +42,7 @@ export default function Navbar({ className, links, cta }: NavbarProps) {
             />
           )}
         </div>
+        <Menu className={s.menuToggle} />
       </GridContainer>
     </nav>
   );
