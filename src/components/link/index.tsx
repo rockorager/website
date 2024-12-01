@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import { SquareArrowOutUpRight } from "lucide-react";
+import NextLink from "next/link";
 import { pretendardVariable } from "../text";
 import s from "./Link.module.css";
 
@@ -21,7 +22,7 @@ export default function Link({
 }: LinkProps) {
   const isExternal = !href.startsWith("/");
   return (
-    <a
+    <NextLink
       className={classNames(s.link, pretendardVariable.className, className, {
         [s.weightLight]: weight === "light",
         [s.weightRegular]: weight === "regular",
@@ -31,7 +32,7 @@ export default function Link({
       target={isExternal ? "_blank" : ""}
     >
       {text} {isExternal && <SquareArrowOutUpRight size={16} />}
-    </a>
+    </NextLink>
   );
 }
 
