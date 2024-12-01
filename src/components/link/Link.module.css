@@ -18,4 +18,22 @@
       }
     }
   }
+  &.weightLight {
+    font-weight: 300;
+    & strong {
+      font-weight: 400;
+    }
+  }
+  &.weightRegular{
+    font-weight: 400;
+    & strong {
+      font-weight: 500;
+    }
+  }
+  &.weightMedium {
+    font-weight: 500;
+    & strong {
+      font-weight: 600;
+    }
+  }
 }
