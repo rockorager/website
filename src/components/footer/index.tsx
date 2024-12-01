@@ -1,12 +1,12 @@
 import classNames from "classnames";
 import GridContainer, { NavAndFooterGridConfig } from "../grid-container";
-import Link, { LinkProps } from "../link";
+import Link, { SimpleLink } from "../link";
 import { P } from "../text";
 import s from "./Footer.module.css";
 
 interface FooterProps {
   className?: string;
-  links?: LinkProps[];
+  links?: SimpleLink[];
   copyright: string;
 }
 
