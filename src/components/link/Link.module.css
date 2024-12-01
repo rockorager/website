@@ -18,4 +18,51 @@
       }
     }
   }
+  &.weightLight {
+    font-weight: 300;
+    & strong {
+      font-weight: 400;
+    }
+  }
+  &.weightRegular{
+    font-weight: 400;
+    & strong {
+      font-weight: 500;
+    }
+  }
+  &.weightMedium {
+    font-weight: 500;
+    & strong {
+      font-weight: 600;
+    }
+  }
+}
+
+.buttonLink {
+  &.brand {
+    --buttonColor: var(--brand-color);
+  }
+  &.neutral {
+    --buttonColor: var(--gray-3);
+  }
+  border: 1px solid var(--buttonColor);
+  &:hover {
+    background-color: var(--buttonColor);
+  }
+
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color .15s;
+  &.small {
+    font-size: 14px;
+    padding: 4px 12px;
+  }
+  &.medium {
+    font-size: 15px;
+    padding: 6px 18px;
+  }
+  &.large {
+    font-size: 16px;
+    padding: 10px 34px;
+  }
 }

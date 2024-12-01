@@ -2,29 +2,10 @@
   overflow: auto;
   height: 100vh;
 
-  /* The total height of the header, including all padding, etc.
-     this is needed to calculate sticky positioning for other elements. */
-  --header-height: 64px;
-
   font-family: var(--pretendard-variable);
-
-  & header {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-
-    width: 100%;
-    height: var(--header-height);
-    background: var(--gray-0);
-    border-bottom: 1px solid var(--gray-2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 
   & a {
 		color: var(--gray-9);
-		text-decoration: underline;
   }
 
   & table {

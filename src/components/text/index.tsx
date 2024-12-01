@@ -49,6 +49,7 @@ const Text = forwardRef<HTMLElement, TextProps>(function Text(
         [pretendardVariable.className]: font === "display" || font === "body",
         [jetbrainsMono.className]: font === "code",
         [s.weightLight]: weight === "light",
+        [s.weightRegular]: weight === "regular",
         [s.weightMedium]: weight === "medium",
       })}
     >
