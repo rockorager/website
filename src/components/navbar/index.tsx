@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import { Menu } from "lucide-react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import GridContainer, { NavAndFooterGridConfig } from "../grid-container";
 import Link, { ButtonLink, SimpleLink } from "../link";
 import GhosttyWordmark from "./ghostty-wordmark.svg";
@@ -13,9 +14,7 @@ export interface NavbarProps {
 }
 
 export default function Navbar({ className, links, cta }: NavbarProps) {
-  if (typeof window !== "undefined") {
-    console.log(window.location.pathname);
-  }
+  const pathname = usePathname();
   return (
     <nav className={classNames(s.navbar, className)}>
       <GridContainer
@@ -31,9 +30,7 @@ export default function Navbar({ className, links, cta }: NavbarProps) {
                   <li key={link.text}>
                     <Link
                       className={classNames({
-                        [s.active]:
-                          typeof window !== "undefined" &&
-                          link.href === window.location.pathname,
+                        [s.active]: pathname == link.href,
                       })}
                       {...link}
                     />
