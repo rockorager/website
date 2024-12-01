@@ -6,6 +6,7 @@ import GridContainer, { NavAndFooterGridConfig } from "../grid-container";
 import Link, { ButtonLink, SimpleLink } from "../link";
 import GhosttyWordmark from "./ghostty-wordmark.svg";
 import s from "./Navbar.module.css";
+import NextLink from "next/link";
 
 export interface NavbarProps {
   className?: string;
@@ -21,7 +22,9 @@ export default function Navbar({ className, links, cta }: NavbarProps) {
         className={s.gridContainer}
         gridConfig={NavAndFooterGridConfig}
       >
-        <Image src={GhosttyWordmark} alt="Ghostty" />
+        <NextLink href="/">
+          <Image src={GhosttyWordmark} alt="Ghostty" />
+        </NextLink>
         <div className={s.desktopLinks}>
           {links && (
             <ul className={s.linkList}>
