@@ -1,8 +1,29 @@
-import { H4, pretendardVariable, jetbrainsMono } from "@/components/text";
+import Footer from "@/components/footer";
+import { SimpleLink } from "@/components/link";
+import Navbar from "@/components/navbar";
+import { jetbrainsMono, pretendardVariable } from "@/components/text";
 import classNames from "classnames";
 import Head from "next/head";
 import s from "./RootLayout.module.css";
-import Footer from "@/components/footer";
+
+const navLinks: Array<SimpleLink> = [
+  {
+    text: "About",
+    href: "/",
+  },
+  {
+    text: "Docs",
+    href: "/docs",
+  },
+  {
+    text: "Discord",
+    href: "https://discord.gg/ghostty",
+  },
+  {
+    text: "Github",
+    href: "https://github.com/ghostty-org",
+  },
+];
 
 export interface PageMeta {
   title: string;
@@ -35,31 +56,15 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header>
-        <H4>Header</H4>
-      </header>
-      {children}
-      <Footer
-        links={[
-          {
-            text: "About",
-            href: "/",
-          },
-          {
-            text: "Docs",
-            href: "/docs",
-          },
-          {
-            text: "Discord",
-            href: "https://discord.gg/ghostty",
-          },
-          {
-            text: "Github",
-            href: "https://github.com/ghostty-org",
-          },
-        ]}
-        copyright="© Ghostty 2024"
+      <Navbar
+        links={navLinks}
+        cta={{
+          href: "/downloads",
+          text: "Download",
+        }}
       />
+      {children}
+      <Footer links={navLinks} copyright="© Ghostty 2024" />
     </div>
   );
 }

@@ -13,6 +13,10 @@ body {
 
 html,
 body {
+  /* The total height of the header, including all padding, etc.
+    this is needed to calculate sticky positioning for other elements. */
+  --header-height: 72px;
+
   max-width: 100vw;
   --brand-color: #0000E6;
   --brand-color-hsl: 240 100% 45%;

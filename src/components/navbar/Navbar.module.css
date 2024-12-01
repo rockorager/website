@@ -1,0 +1,36 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  height: var(--header-height);
+  background: var(--gray-0);
+  border-bottom: 1px solid var(--gray-2);
+
+  & .gridContainer {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & .linksWrapper {
+      display: flex;
+      align-items: center;
+
+    }
+
+    & .linkList {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+
+      & a {
+        color: var(--gray-4);
+        text-decoration: none;
+      }
+    }
+
+    & .cta {
+      margin-left: 30px;
+    }
+  }
+}
