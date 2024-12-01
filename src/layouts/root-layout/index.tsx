@@ -59,7 +59,7 @@ export default function RootLayout({
       <Navbar
         links={navLinks}
         cta={{
-          href: "/downloads",
+          href: "/download",
           text: "Download",
         }}
       />
