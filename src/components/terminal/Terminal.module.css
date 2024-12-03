@@ -3,17 +3,32 @@
   --control-size: 10px;
   --padding: 10px;
 
+  &.fontXTiny {
+    --title-font-size: 12px;
+    --content-font-size: 6px;
+    --content-character-width: 3.6px;
+    --content-character-height: 9px;
+  }
+  &.fontTiny {
+    --title-font-size: 14px;
+    --content-font-size: 10px;
+    --content-character-width: 6px;
+    --content-character-height: 13.8px;
+  }
   &.fontSmall {
+    --title-font-size: 14px;
     --content-font-size: 12px;
     --content-character-width: 7.2px;
-    --content-character-height: 16.5px;
+    --content-character-height: 16.6px;
   }
   &.fontMedium {
+    --title-font-size: 16px;
     --content-font-size: 14px;
     --content-character-width: 8.4px;
-    --content-character-height: 19px;
+    --content-character-height: 19.1px;
   }
   &.fontLarge {
+    --title-font-size: 16px;
     --content-font-size: 16px;
     --content-character-width: 9.6px;
     --content-character-height: 21.5px;
@@ -50,7 +65,7 @@
     & .title {
       position: absolute;
       left: 50%; transform: translateX(-50%);
-      font-size: var(--content-font-size);
+      font-size: var(--title-font-size);
     }
   }
 
@@ -63,6 +78,9 @@
     scroll-behavior: smooth;
     & > div {
       white-space: pre-wrap;
+      & :global(.b) {
+        color: var(--brand-color);
+      }
     }
   }
 }

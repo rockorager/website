@@ -3,13 +3,14 @@ import React, { UIEvent, useEffect, useRef, useState } from "react";
 import { Code, P } from "../text";
 import s from "./Terminal.module.css";
 
-interface TerminalProps {
+export interface TerminalProps {
   className?: string;
   columns: number;
   rows: number;
-  fontSize?: "small" | "medium" | "large";
+  fontSize?: "xtiny" | "tiny" | "small" | "medium" | "large";
   title?: string;
   lines?: string[];
+  whitespacePadding?: number;
 }
 
 export default function Terminal({
@@ -19,6 +20,7 @@ export default function Terminal({
   className,
   title,
   lines,
+  whitespacePadding = 0,
 }: TerminalProps) {
   const [autoScroll, setAutoScroll] = useState(true);
   const handleScroll = (e: UIEvent<HTMLElement>) => {
@@ -44,16 +46,19 @@ export default function Terminal({
     }
   }, [lines?.length, autoScroll]);
 
+  const padding = " ".repeat(whitespacePadding);
   return (
     <div
       className={classNames(s.terminal, className, {
+        [s.fontXTiny]: fontSize === "xtiny",
+        [s.fontTiny]: fontSize === "tiny",
         [s.fontSmall]: fontSize === "small",
         [s.fontMedium]: fontSize === "medium",
         [s.fontLarge]: fontSize === "large",
       })}
       style={
         {
-          "--columns": columns,
+          "--columns": columns + 2 * whitespacePadding,
           "--rows": rows,
         } as React.CSSProperties
       }
@@ -68,7 +73,14 @@ export default function Terminal({
       </div>
       <Code ref={codeRef} className={s.content} onScroll={handleScroll}>
         {lines?.map((line, i) => {
-          return <div key={i + line}>{line}</div>;
+          return (
+            <div
+              key={i + line}
+              dangerouslySetInnerHTML={{
+                __html: `${padding}${line}${padding}`,
+              }}
+            />
+          );
         })}
       </Code>
     </div>

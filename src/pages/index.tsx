@@ -1,9 +1,9 @@
 import InfoCardsSection from "@/components/info-cards-section";
 import SectionWrapper from "@/components/section-wrapper";
 import TabbedTerminalsSection from "@/components/tabbed-terminals-section";
-import AnimatedTerminalPOC from "@/components/terminal-animated-poc";
 import TerminalCardsSection from "@/components/terminal-cards-section";
 import RootLayout from "@/layouts/root-layout";
+import React, { useLayoutEffect, useState } from "react";
 import {
   loadAllTerminalFiles,
   TerminalsMap,
@@ -17,6 +17,7 @@ import {
   SquareTerminal,
 } from "lucide-react";
 import s from "./Home.module.css";
+import AnimatedTerminal from "@/components/animated-terminal";
 
 export async function getStaticProps() {
   return {
@@ -29,7 +30,27 @@ interface HomePageProps {
   terminalData: TerminalsMap;
 }
 
+function useWindowWidth() {
+  const [width, setWidth] = useState(0);
+  useLayoutEffect(() => {
+    function updateSize() {
+      setWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  return width;
+}
+
 export default function Home({ terminalData }: HomePageProps) {
+  const animationFrames = Object.keys(terminalData)
+    .filter((k) => {
+      return k.startsWith("home/animation_frames");
+    })
+    .map((k) => terminalData[k]);
+
+  const windowWidth = useWindowWidth();
   return (
     <RootLayout
       meta={{
@@ -39,9 +60,28 @@ export default function Home({ terminalData }: HomePageProps) {
       }}
     >
       <main className={s.homePage}>
-        <SectionWrapper>
-          <AnimatedTerminalPOC className={s.terminal} />
-        </SectionWrapper>
+        <section className={s.terminalWrapper}>
+          <AnimatedTerminal
+            title={"Ghostty"}
+            fontSize={
+              windowWidth > 1300
+                ? "medium"
+                : windowWidth > 1100
+                ? "small"
+                : windowWidth > 674
+                ? "tiny"
+                : "xtiny"
+            }
+            whitespacePadding={
+              windowWidth > 950 ? 20 : windowWidth > 850 ? 10 : 0
+            }
+            className={s.animatedTerminal}
+            columns={100}
+            rows={41}
+            frames={animationFrames}
+            frameLengthMs={31}
+          />
+        </section>
 
         <InfoCardsSection
           title="Ghostty is a cross-platform, GPU-accelerated terminal emulator designed to eerily-enhance and expand CLI capabilities."
