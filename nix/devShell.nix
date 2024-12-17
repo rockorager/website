@@ -1,7 +1,9 @@
-{ mkShell
-, bash
-, nodejs_22
-}: mkShell rec {
+{
+  mkShell,
+  bash,
+  nodejs_22,
+}:
+mkShell rec {
   name = "ghostty.org";
 
   packages = [
