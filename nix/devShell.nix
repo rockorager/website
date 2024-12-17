@@ -1,5 +1,6 @@
 {
   mkShell,
+  alejandra,
   bash,
   nodejs_22,
 }:
@@ -12,7 +13,9 @@ mkShell rec {
     # This ensures that the Makefile works. Alternately, we can just
     # fix the Makefile.
     bash
-
     nodejs_22
+
+    # Required for CI for format checking.
+    alejandra
   ];
 }
