@@ -9,6 +9,7 @@ import {
 } from "@/lib/fetch-docs";
 import { loadDocsNavTreeData } from "@/lib/fetch-nav";
 import s from "./DocsPage.module.css";
+import Breadcrumbs from "@/components/breadcrumbs";
 
 // This is the location that we expect our docs mdx files to be located,
 // relative to the root of the Next.js project.
@@ -75,6 +76,24 @@ export default function DocsPage({
           </div>
         </div>
         <main className={s.contentWrapper}>
+          <div className={s.breadcrumbsBar}>
+            <Breadcrumbs
+              breadcrumbs={[
+                {
+                  text: "Ghostty",
+                  href: "/docs/ghostty",
+                },
+                {
+                  text: "Details",
+                },
+                {
+                  text: "Bash",
+                  href: "/docs/ghostty/details/bash",
+                },
+              ]}
+            />
+          </div>
+
           <div className={s.heading}>
             <H1>{title}</H1>
             <P>{description}</P>
