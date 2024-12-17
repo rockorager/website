@@ -1,6 +1,7 @@
 .link {
   display: flex;
   align-items: center;
+  text-decoration: none;
   & svg {
     margin-left: 4px;
     & path {
@@ -9,6 +10,7 @@
     }
   }
   &:hover {
+    text-decoration: underline;
     & svg {
       /* Note: This is targeting the arrow paths. It's possible
       that the path order changes and this breaks, but it seems
