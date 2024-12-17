@@ -21,7 +21,7 @@ const navLinks: Array<SimpleLink> = [
   },
   {
     text: "Github",
-    href: "https://github.com/ghostty-org",
+    href: "https://github.com/ghostty-org/ghostty",
   },
 ];
 
