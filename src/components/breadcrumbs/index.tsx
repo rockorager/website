@@ -6,7 +6,7 @@ import s from "./Breadcrumbs.module.css";
 
 export interface Breadcrumb {
   text: string;
-  href?: string;
+  href: string | null;
 }
 
 interface BreadcrumbsProps {
