@@ -58,13 +58,7 @@ export default function DocsPage({
   docsPageData: { title, description, content, relativeFilePath },
 }: DocsPageProps) {
   return (
-    <RootLayout
-      meta={{
-        title: `Ghostty: ${title}`,
-        description:
-          "Fast, native, feature-rich terminal emulator pushing modern features.",
-      }}
-    >
+    <RootLayout meta={{ title, description }}>
       <div className={s.docsPage}>
         <div className={s.sidebar}>
           <div className={s.sidebarContentWrapper}>
