@@ -2,6 +2,7 @@ import classNames from "classnames";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 import s from "./NavTree.module.css";
+import Link from "../link";
 
 export type NavTreeNode = FolderNode | LinkNode | BreakNode | TitleNode;
 
@@ -114,13 +115,12 @@ function FolderNode({ path, node }: { path: string; node: FolderNode }) {
 
 function LinkNode({ path, node }: { path: string; node: LinkNode }) {
   return (
-    <a
+    <Link
       href={path + node.path}
       className={classNames(s.linkNode, {
         [s.active]: node.active,
       })}
-    >
-      {node.title}
-    </a>
+      text={node.title}
+    />
   );
 }
