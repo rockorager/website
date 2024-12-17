@@ -1,9 +1,8 @@
+import AnimatedTerminal from "@/components/animated-terminal";
 import InfoCardsSection from "@/components/info-cards-section";
-import SectionWrapper from "@/components/section-wrapper";
 import TabbedTerminalsSection from "@/components/tabbed-terminals-section";
 import TerminalCardsSection from "@/components/terminal-cards-section";
 import RootLayout from "@/layouts/root-layout";
-import React, { useLayoutEffect, useState } from "react";
 import {
   loadAllTerminalFiles,
   TerminalsMap,
@@ -16,8 +15,8 @@ import {
   MessageSquareWarning,
   SquareTerminal,
 } from "lucide-react";
+import { useLayoutEffect, useState } from "react";
 import s from "./Home.module.css";
-import AnimatedTerminal from "@/components/animated-terminal";
 
 export async function getStaticProps() {
   return {
