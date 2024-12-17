@@ -1,3 +1,5 @@
+SHELL := /usr/bin/env bash
+
 .PHONY: dev
 dev: node_modules/.installed .env.local
 	source .env.local && npm run dev
