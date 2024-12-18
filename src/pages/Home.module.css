@@ -1,6 +1,6 @@
 .homePage {
   & .terminalWrapper {
-    padding-top: 70px;
+    padding-top: 32px;
     padding-bottom: 20px;
     display: grid;
     place-content: center;
