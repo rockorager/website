@@ -1,6 +1,6 @@
 <h1>
   <p align="center">
-    <img src="https://user-images.githubusercontent.com/1299/199110421-9ff5fc30-a244-441e-9882-26070662adf9.png" alt="Logo" width="100">
+    <img src="https://github.com/user-attachments/assets/fe853809-ba8b-400b-83ab-a9a0da25be8a" alt="Logo" width="128">
     <br>Ghostty Website
   </p>
 </h1>
@@ -24,7 +24,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to view th
 
 If you don't have node configured, you can also build the website locally with Docker.
 
-This approach will compile a [production build](https://nextjs.org/docs/pages/building-your-application/deploying#production-builds), which is  less ideal for local development.
+This approach will compile a [production build](https://nextjs.org/docs/pages/building-your-application/deploying#production-builds), which is less ideal for local development.
 
 ```bash
 make docker
