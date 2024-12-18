@@ -23,6 +23,24 @@ meaning. They have no encoding format; you send the bytes as-is.
 |------|------|-------------|
 | [BEL](/docs/vt/control/bel) | `0x07`  | Alert the user (beep) |
 | [BS](/docs/vt/control/bs) | `0x08`  | Move cursor backward one position |
+| [TAB](/docs/vt/control/tab) | `0x09`  | Move cursor right to the next tab stop |
+| [LF](/docs/vt/control/lf) | `0x0A`  | Move cursor down one line, scrolling if necessary |
+
+## Escape Sequences
+
+Escape sequences are in the format below. An example escape sequence
+is `ESC D`. Below the syntax is a table of supported escape sequences
+in Ghostty.
+
+```
+esc_sequence = "0x1B" intermediates final
+intermediates = [0x20-0x2F]*
+final = [0x30-0x7E]
+```
+
+| Name | Sequence | Description |
+|------|----------|-------------|
+| [IND](/docs/vt/esc/ind) | `ESC D` | Move cursor down, scrolling if necessary |
 
 ## CSI Sequences
 
@@ -42,3 +60,5 @@ final = [0x40-0x7E]
 | Name | Sequence | Description |
 |------|----------|-------------|
 | [CUB](/docs/vt/csi/cub) | `CSI Pn D` | Move cursor left |
+| [CHT](/docs/vt/csi/cht) | `CSI Pn I` | Move cursor right `n` tabs |
+| [TBC](/docs/vt/csi/tbc) | `CSI Pn g` | Clear one or all tab stops |
