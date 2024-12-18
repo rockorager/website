@@ -50,10 +50,10 @@
   border: 1px solid var(--buttonColor);
   &:hover {
     background-color: var(--buttonColor);
+    text-decoration: none;
   }
 
   border-radius: 6px;
-  text-decoration: none;
   transition: background-color .15s;
   &.small {
     font-size: 14px;
