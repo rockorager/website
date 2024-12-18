@@ -56,9 +56,7 @@ export default function Home({ terminalData }: HomePageProps) {
           <AnimatedTerminal
             title={"👻 Ghostty"}
             fontSize={
-              windowWidth > 1300
-                ? "medium"
-                : windowWidth > 1100
+              windowWidth > 1100
                 ? "small"
                 : windowWidth > 674
                 ? "tiny"
