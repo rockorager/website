@@ -1,29 +1,7 @@
-import Footer from "@/components/footer";
-import { SimpleLink } from "@/components/link";
-import Navbar from "@/components/navbar";
 import { jetbrainsMono, pretendardVariable } from "@/components/text";
 import classNames from "classnames";
 import Head from "next/head";
 import s from "./RootLayout.module.css";
-
-const navLinks: Array<SimpleLink> = [
-  {
-    text: "About",
-    href: "/",
-  },
-  {
-    text: "Docs",
-    href: "/docs",
-  },
-  {
-    text: "Discord",
-    href: "https://discord.gg/ghostty",
-  },
-  {
-    text: "Github",
-    href: "https://github.com/ghostty-org/ghostty",
-  },
-];
 
 export interface PageMeta {
   title: string;
@@ -58,15 +36,7 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
         <link rel="shortcut icon" href="/favicon.ico" />
       </Head>
-      <Navbar
-        links={navLinks}
-        cta={{
-          href: "/download",
-          text: "Download",
-        }}
-      />
       {children}
-      <Footer links={navLinks} copyright="© Ghostty 2024" />
     </div>
   );
 }

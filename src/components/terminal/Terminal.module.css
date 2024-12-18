@@ -73,9 +73,12 @@
     font-size: var(--content-font-size);
     margin-top: var(--code-margin-top);
     color: var(--gray-6);
-    overflow-y: scroll;
     word-wrap: break-word;
     scroll-behavior: smooth;
+    overflow-y: scroll;
+    &.disableScrolling {
+      overflow-y: hidden;
+    }
     & > div {
       white-space: pre-wrap;
       & :global(.b) {
