@@ -1,7 +1,7 @@
 import Breadcrumbs, { Breadcrumb } from "@/components/breadcrumbs";
 import CustomMDX from "@/components/custom-mdx";
 import NavTree, { NavTreeNode } from "@/components/nav-tree";
-import { H1, P } from "@/components/text";
+import { H1, H5, P } from "@/components/text";
 import NavFooterLayout from "@/layouts/nav-footer-layout";
 import {
   DocsPageData,
@@ -74,6 +74,9 @@ export default function DocsPage({
       <div className={s.docsPage}>
         <div className={s.sidebar}>
           <div className={s.sidebarContentWrapper}>
+            <H5 className={s.documentationTitle} weight="medium">
+              Documentation
+            </H5>
             <NavTree
               rootPath={DOCS_PAGES_ROOT_PATH}
               className={s.sidebarNavTree}

@@ -5,7 +5,7 @@
 
 ul.nodesList {
   --node-font-size: 16px;
-  --node-padding: 12px 8px;
+  --node-padding: 12px 6px;
   --node-border-radius: 5px;
 
   display: flex;
@@ -23,7 +23,7 @@ ul.nodesList {
         width: 100%;
         text-align: left;
         font-weight: 500;
-        color: var(--gray-4);
+        color: var(--gray-5);
         font-size: var(--node-font-size);
         line-height: var(--node-font-size);
         padding: var(--node-padding);
@@ -34,7 +34,7 @@ ul.nodesList {
         align-items: center;
         &:hover {
           color: var(--gray-9);
-          background: var(--brand-color);
+          background: var(--gray-2);
         }
       }
       & svg {
@@ -59,14 +59,11 @@ ul.nodesList {
       padding: var(--node-padding);
       border-radius: var(--node-border-radius);
       text-decoration: none;
-      &.active {
-        background: var(--brand-color);
+      &:hover {
+        background: var(--gray-2);
         color: var(--gray-9);
       }
-      &:hover {
-        /* TODO: this should be slightly different than the 'active' color
-        so there is a visual distinction between the hover state on an
-        active element. */
+      &.active {
         background: var(--brand-color);
         color: var(--gray-9);
       }
