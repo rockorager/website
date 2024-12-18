@@ -14,7 +14,7 @@
       position: sticky;
       top: var(--header-height);
       height: calc(100vh - var(--header-height));
-      border-right: 1px solid var(--gray-6);
+      border-right: 1px solid var(--gray-2);
       padding: 24px 14px 48px;
       & > .sidebarNavTree {
         padding: 2px; /* guarantee space for focus border */
