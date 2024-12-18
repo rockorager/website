@@ -8,8 +8,11 @@ description: |-
 Programs running in terminals use **control sequences** to interact with the
 terminal. Control sequences are a series of special characters that the terminal
 interprets as commands. This is sometimes referred as **VT sequences** or
-**escape codes**. This section will document all of the control sequences that
-Ghostty supports.
+**escape codes**.
+
+Control sequences are typically poorly specified, so this section
+serves both as a reference of what Ghostty supports as well as
+a possible reference for other terminal emulators.
 
 ## Control Characters
 
@@ -18,4 +21,24 @@ meaning. They have no encoding format; you send the bytes as-is.
 
 | Name | Byte | Description |
 |------|------|-------------|
-| [BEL](/docs/vt/bel) | `0x07`  | Alert the user (beep) |
+| [BEL](/docs/vt/control/bel) | `0x07`  | Alert the user (beep) |
+| [BS](/docs/vt/control/bs) | `0x08`  | Move cursor backward one position |
+
+## CSI Sequences
+
+CSI sequences are in the format below. An example CSI sequence
+is `ESC [ 1 ; 2 m`. Below the syntax is a table of supported
+CSI sequences in Ghostty.
+
+```
+csi_sequence = "0x1B" "[" params intermediates final
+params = param | param sep params
+param = [0-9]
+sep = ";" | ":"
+intermediates = [0x20-0x2F]*
+final = [0x40-0x7E]
+```
+
+| Name | Sequence | Description |
+|------|----------|-------------|
+| [CUB](/docs/vt/csi/cub) | `CSI Pn D` | Move cursor left |
