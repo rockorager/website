@@ -88,7 +88,9 @@ export default function DocsPage({
 
           <div className={s.heading}>
             <H1>{title}</H1>
-            <P>{description}</P>
+            <P className={s.description} weight="regular">
+              {description}
+            </P>
           </div>
 
           <CustomMDX content={content} />
