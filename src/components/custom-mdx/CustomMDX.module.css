@@ -2,15 +2,6 @@
   & > p {
     margin: 0.8em 0;
   }
-  & > blockquote {
-    border-left: 3px solid var(--gray-9);
-    padding: 6px 20px;
-    display: block;
-    margin: 32px 20px;
-    & p {
-      font-style: italic;
-    }
-  }
   & a {
     color: var(--brand-color);
   }

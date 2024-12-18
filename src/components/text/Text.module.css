@@ -18,12 +18,18 @@
     }
   }
   &p, &span, &li {
-    color: var(--gray-4);
     font-size: 16px;
     line-height: 1.4em;
+    color: var(--gray-4);
+    & strong {
+      color: var(--gray-5);
+    }
     &.body {
       color: var(--gray-5);
       line-height: 1.6em;
+      & strong {
+        color: var(--gray-6);
+      }
     }
   }
   &h1, &h2, &h3, &h4, &h5, &h6 {

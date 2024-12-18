@@ -3,6 +3,7 @@ import CodeBlock from "../codeblock";
 import JumplinkHeader from "../jumplink-header";
 import { LI, BodyParagraph } from "../text";
 import s from "./CustomMDX.module.css";
+import Blockquote from "../blockquote";
 
 interface CustomMDXProps {
   content: MDXRemoteSerializeResult;
@@ -23,6 +24,7 @@ export default function CustomMDX({ content }: CustomMDXProps) {
           li: LI,
           p: BodyParagraph,
           pre: CodeBlock,
+          blockquote: Blockquote,
           img: (props) => (
             // eslint-disable-next-line @next/next/no-img-element
             <img className={s.image} src={props.src} alt={props.alt} />
