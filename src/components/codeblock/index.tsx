@@ -1,14 +1,7 @@
 import classNames from "classnames";
-import "highlight.js/styles/gruvbox-dark.css";
-import { Source_Code_Pro } from "next/font/google";
 import Highlight from "react-highlight";
+import { jetbrainsMono } from "../text";
 import s from "./CodeBlock.module.css";
-
-const font = Source_Code_Pro({
-  subsets: ["latin"],
-  display: "auto",
-  weight: ["400"],
-});
 
 interface CodeblockProps {
   children?: React.ReactNode;
@@ -16,7 +9,7 @@ interface CodeblockProps {
 
 export default function CodeBlock({ children }: CodeblockProps) {
   return (
-    <Highlight className={classNames(s.codeBlock, font.className)}>
+    <Highlight className={classNames(s.codeBlock, jetbrainsMono.className)}>
       {children}
     </Highlight>
   );
