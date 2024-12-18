@@ -5,7 +5,7 @@
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--brand-color) 75%, transparent);
+  background: color-mix(in srgb, var(--brand-color) 60%, transparent);
 }
 
 html,
