@@ -10,16 +10,18 @@
     @media (max-width: 784px) {
       display: none;
     }
+    border-right: 1px solid var(--gray-2);
     & .sidebarContentWrapper {
       position: sticky;
       top: var(--header-height);
-      height: calc(100vh - var(--header-height));
-      border-right: 1px solid var(--gray-2);
-      padding: 24px 14px 48px;
+      min-height: calc(100vh - var(--header-height) - var(--footer-height));
+      max-height: calc(100vh - var(--header-height));
+      padding: 24px 14px;
+      overflow: scroll;
+
       & > .sidebarNavTree {
         padding: 2px; /* guarantee space for focus border */
         height: 100%;
-        overflow: scroll;
       }
     }
   }
