@@ -4,6 +4,7 @@ import JumplinkHeader from "../jumplink-header";
 import { LI, BodyParagraph } from "../text";
 import s from "./CustomMDX.module.css";
 import Blockquote from "../blockquote";
+import VTSequence from "../vt-sequence";
 
 interface CustomMDXProps {
   content: MDXRemoteSerializeResult;
@@ -29,6 +30,7 @@ export default function CustomMDX({ content }: CustomMDXProps) {
             // eslint-disable-next-line @next/next/no-img-element
             <img className={s.image} src={props.src} alt={props.alt} />
           ),
+          VTSequence,
         }}
       />
     </div>

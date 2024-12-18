@@ -1,0 +1,9 @@
+.vtsequence {
+  display: flex;
+  color: white; /* can't be right, temporary */
+
+  & .vtelem {
+    border: 1px solid #FFF;
+    text-align: center;
+  }
+}

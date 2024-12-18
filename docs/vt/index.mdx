@@ -1,0 +1,21 @@
+---
+title: Terminal API (VT)
+description: |-
+  Available APIs for developers writing applications that run in
+  Ghostty.
+---
+
+Programs running in terminals use **control sequences** to interact with the
+terminal. Control sequences are a series of special characters that the terminal
+interprets as commands. This is sometimes referred as **VT sequences** or
+**escape codes**. This section will document all of the control sequences that
+Ghostty supports.
+
+## Control Characters
+
+Control characters are single byte characters that have a special
+meaning. They have no encoding format; you send the bytes as-is.
+
+| Name | Byte | Description |
+|------|------|-------------|
+| [BEL](/docs/vt/bel) | `0x07`  | Alert the user (beep) |
