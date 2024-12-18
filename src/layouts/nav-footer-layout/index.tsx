@@ -5,10 +5,6 @@ import Footer from "@/components/footer";
 
 const navLinks: Array<SimpleLink> = [
   {
-    text: "About",
-    href: "/",
-  },
-  {
     text: "Docs",
     href: "/docs",
   },
@@ -34,7 +30,16 @@ export default function NavFooterLayout(props: RootLayoutProps) {
         }}
       />
       {children}
-      <Footer links={navLinks} copyright="© Ghostty 2024" />
+      <Footer
+        links={[
+          ...navLinks,
+          {
+            text: "Download",
+            href: "/download",
+          },
+        ]}
+        copyright="© Ghostty 2024"
+      />
     </RootLayout>
   );
 }
