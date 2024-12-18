@@ -23,7 +23,7 @@ ul.nodesList {
         width: 100%;
         text-align: left;
         font-weight: 500;
-        color: var(--gray-5);
+        color: var(--gray-6);
         font-size: var(--node-font-size);
         line-height: var(--node-font-size);
         padding: var(--node-padding);
@@ -53,7 +53,7 @@ ul.nodesList {
     & .linkNode {
       display: block;
       font-weight: 300;
-      color: var(--gray-4);
+      color: var(--gray-5);
       font-size: var(--node-font-size);
       line-height: var(--node-font-size);
       padding: var(--node-padding);
