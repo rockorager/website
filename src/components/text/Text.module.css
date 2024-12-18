@@ -31,6 +31,10 @@
         color: var(--gray-6);
       }
     }
+    & code {
+      font-size: 15px;
+      line-height: 1.25em;
+    }
   }
   &h1, &h2, &h3, &h4, &h5, &h6 {
     color: var(--gray-9);
@@ -79,7 +83,5 @@
     padding: 1px 6px;
     margin: -1px 0;
     color: var(--gray-9);
-    font-size: 15px;
-    line-height: 1.25em;
   }
 }
