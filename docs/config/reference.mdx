@@ -18,7 +18,9 @@ The font families to use.
 
 You can generate the list of valid values using the CLI:
 
-    ghostty +list-fonts
+```
+ghostty +list-fonts
+```
 
 This configuration can be repeated multiple times to specify preferred
 fallback fonts when the requested codepoint is not available in the primary
@@ -53,8 +55,10 @@ If you want to overwrite a previous set value rather than append a fallback,
 specify the value as `""` (empty string) to reset the list and then set the
 new values. For example:
 
-    font-family = ""
-    font-family = "My Favorite Font"
+```
+font-family = ""
+font-family = "My Favorite Font"
+```
 
 Setting any of these as CLI arguments will automatically clear the
 values set in configuration files so you don't need to specify
@@ -291,16 +295,16 @@ legacy method such as `wcswidth`.
 
 Valid values are:
 
-  * `legacy` - Use a legacy method to determine grapheme width, such as
-    wcswidth This maximizes compatibility with legacy programs but may result
-    in incorrect grapheme width for certain graphemes such as skin-tone
-    emoji, non-English characters, etc.
+* `legacy` - Use a legacy method to determine grapheme width, such as
+  wcswidth This maximizes compatibility with legacy programs but may result
+  in incorrect grapheme width for certain graphemes such as skin-tone
+  emoji, non-English characters, etc.
 
-    This is called "legacy" and not something more specific because the
-    behavior is undefined and we want to retain the ability to modify it.
-    For example, we may or may not use libc `wcswidth` now or in the future.
+  This is called "legacy" and not something more specific because the
+  behavior is undefined and we want to retain the ability to modify it.
+  For example, we may or may not use libc `wcswidth` now or in the future.
 
-  * `unicode` - Use the Unicode standard to determine grapheme width.
+* `unicode` - Use the Unicode standard to determine grapheme width.
 
 If a running program explicitly enables terminal mode 2027, then `unicode`
 width will be forced regardless of this configuration. When mode 2027 is
