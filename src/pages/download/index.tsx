@@ -1,11 +1,11 @@
-import RootLayout from "@/layouts/root-layout";
-import s from "./DownloadPage.module.css";
-import { H1 } from "@/components/text";
 import SectionWrapper from "@/components/section-wrapper";
+import { H1 } from "@/components/text";
+import NavFooterLayout from "@/layouts/nav-footer-layout";
+import s from "./DownloadPage.module.css";
 
 export default function Download() {
   return (
-    <RootLayout
+    <NavFooterLayout
       meta={{
         title: "Ghostty",
         description:
@@ -18,6 +18,6 @@ export default function Download() {
           <H1>Download Page TODO</H1>
         </SectionWrapper>
       </main>
-    </RootLayout>
+    </NavFooterLayout>
   );
 }

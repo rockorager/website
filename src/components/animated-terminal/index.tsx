@@ -36,6 +36,7 @@ export default function AnimatedTerminal({
       title={title}
       fontSize={fontSize}
       lines={frames[currentFrame]}
+      disableScrolling={true}
     />
   );
 }

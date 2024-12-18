@@ -11,6 +11,7 @@ export interface TerminalProps {
   title?: string;
   lines?: string[];
   whitespacePadding?: number;
+  disableScrolling?: boolean;
 }
 
 export default function Terminal({
@@ -21,6 +22,7 @@ export default function Terminal({
   title,
   lines,
   whitespacePadding = 0,
+  disableScrolling = false,
 }: TerminalProps) {
   const [autoScroll, setAutoScroll] = useState(true);
   const handleScroll = (e: UIEvent<HTMLElement>) => {
@@ -71,7 +73,13 @@ export default function Terminal({
         </ul>
         <P className={s.title}>{title}</P>
       </div>
-      <Code ref={codeRef} className={s.content} onScroll={handleScroll}>
+      <Code
+        ref={codeRef}
+        className={classNames(s.content, {
+          [s.disableScrolling]: disableScrolling,
+        })}
+        onScroll={handleScroll}
+      >
         {lines?.map((line, i) => {
           return (
             <div

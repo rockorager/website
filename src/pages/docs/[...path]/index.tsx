@@ -1,16 +1,16 @@
+import Breadcrumbs, { Breadcrumb } from "@/components/breadcrumbs";
 import CustomMDX from "@/components/custom-mdx";
 import NavTree, { NavTreeNode } from "@/components/nav-tree";
 import { H1, P } from "@/components/text";
-import RootLayout from "@/layouts/root-layout";
+import NavFooterLayout from "@/layouts/nav-footer-layout";
 import {
   DocsPageData,
   loadAllDocsPageSlugs,
   loadDocsPage,
 } from "@/lib/fetch-docs";
 import { loadDocsNavTreeData } from "@/lib/fetch-nav";
-import s from "./DocsPage.module.css";
-import Breadcrumbs, { Breadcrumb } from "@/components/breadcrumbs";
 import { navTreeToBreadcrumbs } from "@/lib/nav-tree-to-breadcrumbs";
+import s from "./DocsPage.module.css";
 
 // This is the location that we expect our docs mdx files to be located,
 // relative to the root of the Next.js project.
@@ -70,7 +70,7 @@ export default function DocsPage({
   breadcrumbs,
 }: DocsPageProps) {
   return (
-    <RootLayout meta={{ title, description }}>
+    <NavFooterLayout meta={{ title, description }}>
       <div className={s.docsPage}>
         <div className={s.sidebar}>
           <div className={s.sidebarContentWrapper}>
@@ -100,6 +100,6 @@ export default function DocsPage({
           </div>
         </main>
       </div>
-    </RootLayout>
+    </NavFooterLayout>
   );
 }
