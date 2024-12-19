@@ -1,0 +1,28 @@
+.callout {
+  &.note {
+    --callout-color: #586EEC;
+  }
+  &.tip {
+    --callout-color: #50BE47;
+  }
+  &.important{
+    --callout-color: #A760CE;
+  }
+  &.warning{
+    --callout-color: #f3aa35;
+  }
+  &.caution{
+    --callout-color: #f33535;
+  }
+  border-left: 3px solid var(--callout-color);
+
+  & .header {
+    display: flex;
+    flex-align: center;
+    margin-bottom: 14px;
+    color: var(--callout-color);
+    & .icon {
+      margin-right: 8px;
+    }
+  }
+}
