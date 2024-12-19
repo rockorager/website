@@ -60,7 +60,7 @@ ul.nodesList {
 
     & .linkNode {
       display: block;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--gray-5);
       font-size: var(--node-font-size);
       line-height: var(--node-font-size);
