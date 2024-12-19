@@ -10,27 +10,25 @@ terminal. Control sequences are a series of special characters that the terminal
 interprets as commands. This is sometimes referred as **VT sequences** or
 **escape codes**.
 
-Control sequences are typically poorly specified, so this section
-serves both as a reference of what Ghostty supports as well as
-a possible reference for other terminal emulators.
+This page will document the types and syntax of control sequences
+within Ghostty. For a full list of supported sequences, see the
+[reference](/docs/vt/reference).
 
 ## Control Characters
 
 Control characters are single byte characters that have a special
 meaning. They have no encoding format; you send the bytes as-is.
+For example, [backspace](/docs/vt/control/bs) is `0x08`,
+[linefeed](/docs/vt/control/lf) is `0x0A`, etc.
 
-| Name | Byte | Description |
-|------|------|-------------|
-| [BEL](/docs/vt/control/bel) | `0x07`  | Alert the user (beep) |
-| [BS](/docs/vt/control/bs) | `0x08`  | Move cursor backward one position |
-| [TAB](/docs/vt/control/tab) | `0x09`  | Move cursor right to the next tab stop |
-| [LF](/docs/vt/control/lf) | `0x0A`  | Move cursor down one line, scrolling if necessary |
+There are very few control characters, but they're important
+to be aware of because the single byte value impacts the terminal
+state.
 
 ## Escape Sequences
 
 Escape sequences are in the format below. An example escape sequence
-is `ESC D`. Below the syntax is a table of supported escape sequences
-in Ghostty.
+is `ESC D`.
 
 ```
 esc_sequence = "0x1B" intermediates final
@@ -38,15 +36,10 @@ intermediates = [0x20-0x2F]*
 final = [0x30-0x7E]
 ```
 
-| Name | Sequence | Description |
-|------|----------|-------------|
-| [IND](/docs/vt/esc/ind) | `ESC D` | Move cursor down, scrolling if necessary |
-
 ## CSI Sequences
 
 CSI sequences are in the format below. An example CSI sequence
-is `ESC [ 1 ; 2 m`. Below the syntax is a table of supported
-CSI sequences in Ghostty.
+is `ESC [ 1 ; 2 m`.
 
 ```
 csi_sequence = "0x1B" "[" params intermediates final
@@ -56,9 +49,3 @@ sep = ";" | ":"
 intermediates = [0x20-0x2F]*
 final = [0x40-0x7E]
 ```
-
-| Name | Sequence | Description |
-|------|----------|-------------|
-| [CUB](/docs/vt/csi/cub) | `CSI Pn D` | Move cursor left |
-| [CHT](/docs/vt/csi/cht) | `CSI Pn I` | Move cursor right `n` tabs |
-| [TBC](/docs/vt/csi/tbc) | `CSI Pn g` | Clear one or all tab stops |

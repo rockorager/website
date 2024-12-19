@@ -13,7 +13,7 @@
     {
       "type": "folder",
       "path": "/config",
-      "title": "Config",
+      "title": "Configuration",
       "children": [
         {
           "type": "link",
@@ -28,22 +28,14 @@
       ]
     },
     {
-      "type": "break"
-    },
-    {
       "type": "link",
       "path": "/features",
       "title": "Features"
     },
     {
-      "type": "link",
-      "path": "/readme",
-      "title": "README"
-    },
-    {
       "type": "folder",
-      "path": "/stuff",
-      "title": "Stuff",
+      "path": "/vt",
+      "title": "Terminal API (VT)",
       "children": [
         {
           "type": "link",
@@ -51,33 +43,9 @@
           "title": "Overview"
         },
         {
-          "type": "folder",
-          "path": "/details",
-          "title": "Details",
-          "children": [
-            {
-              "type": "link",
-              "path": "/bash",
-              "title": "Bash"
-            },
-            {
-              "type": "link",
-              "path": "/example",
-              "title": "Example"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "folder",
-      "path": "/vt",
-      "title": "Vt",
-      "children": [
-        {
           "type": "link",
-          "path": "/",
-          "title": "Overview"
+          "path": "/reference",
+          "title": "Reference"
         },
         {
           "type": "folder",
@@ -113,6 +81,11 @@
             },
             {
               "type": "link",
+              "path": "/cr",
+              "title": "Carriage Return (CR)"
+            },
+            {
+              "type": "link",
               "path": "/lf",
               "title": "Linefeed (LF)"
             },
@@ -125,13 +98,65 @@
         },
         {
           "type": "folder",
-          "path": "/csi",
-          "title": "Csi",
+          "path": "/esc",
+          "title": "ESC",
           "children": [
             {
               "type": "link",
-              "path": "/cub",
-              "title": "Cursor Backward (CUB)"
+              "path": "/decaln",
+              "title": "Screen Alignment Test (DECALN)"
+            },
+            {
+              "type": "link",
+              "path": "/deckpam",
+              "title": "Keypad Application Mode (DECKPAM)"
+            },
+            {
+              "type": "link",
+              "path": "/deckpnm",
+              "title": "Keypad Numeric Mode (DECKPNM)"
+            },
+            {
+              "type": "link",
+              "path": "/decrc",
+              "title": "Restore Cursor (DECRC)"
+            },
+            {
+              "type": "link",
+              "path": "/decsc",
+              "title": "Save Cursor (DECSC)"
+            },
+            {
+              "type": "link",
+              "path": "/decscusr",
+              "title": "Set Cursor Style (DECSCUSR)"
+            },
+            {
+              "type": "link",
+              "path": "/ind",
+              "title": "Index (IND)"
+            },
+            {
+              "type": "link",
+              "path": "/ri",
+              "title": "Reverse Index (RI)"
+            },
+            {
+              "type": "link",
+              "path": "/ris",
+              "title": "Reset to Initial State (RIS)"
+            }
+          ]
+        },
+        {
+          "type": "folder",
+          "path": "/csi",
+          "title": "CSI",
+          "children": [
+            {
+              "type": "link",
+              "path": "/cbt",
+              "title": "Cursor Backward Tabulation (CBT)"
             },
             {
               "type": "link",
@@ -140,20 +165,170 @@
             },
             {
               "type": "link",
+              "path": "/cnl",
+              "title": "Cursor Next Line (CNL)"
+            },
+            {
+              "type": "link",
+              "path": "/cpl",
+              "title": "Cursor Preceding Line (CPL)"
+            },
+            {
+              "type": "link",
+              "path": "/cub",
+              "title": "Cursor Backward (CUB)"
+            },
+            {
+              "type": "link",
+              "path": "/cud",
+              "title": "Cursor Down (CUD)"
+            },
+            {
+              "type": "link",
+              "path": "/cuf",
+              "title": "Cursor Forward (CUF)"
+            },
+            {
+              "type": "link",
+              "path": "/cup",
+              "title": "Cursor Position (CUP)"
+            },
+            {
+              "type": "link",
+              "path": "/cuu",
+              "title": "Cursor Up (CUU)"
+            },
+            {
+              "type": "link",
+              "path": "/dch",
+              "title": "Delete Character (DCH)"
+            },
+            {
+              "type": "link",
+              "path": "/decslrm",
+              "title": "Set Left and Right Margins (DECSLRM)"
+            },
+            {
+              "type": "link",
+              "path": "/decstbm",
+              "title": "Set Top and Bottom Margins (DECSTBM)"
+            },
+            {
+              "type": "link",
+              "path": "/dl",
+              "title": "Delete Line (DL)"
+            },
+            {
+              "type": "link",
+              "path": "/dsr",
+              "title": "Device Status Report (DSR)"
+            },
+            {
+              "type": "link",
+              "path": "/ech",
+              "title": "Erase Character (ECH)"
+            },
+            {
+              "type": "link",
+              "path": "/ed",
+              "title": "Erase in Display (ED)"
+            },
+            {
+              "type": "link",
+              "path": "/el",
+              "title": "Erase in Line (EL)"
+            },
+            {
+              "type": "link",
+              "path": "/hpa",
+              "title": "Horizontal Position Absolute (HPA)"
+            },
+            {
+              "type": "link",
+              "path": "/hpr",
+              "title": "Horizontal Position Relative (HPR)"
+            },
+            {
+              "type": "link",
+              "path": "/ich",
+              "title": "Insert Character (ICH)"
+            },
+            {
+              "type": "link",
+              "path": "/il",
+              "title": "Insert Line (IL)"
+            },
+            {
+              "type": "link",
+              "path": "/rep",
+              "title": "Repeat (REP)"
+            },
+            {
+              "type": "link",
+              "path": "/sd",
+              "title": "Scroll Down (SD)"
+            },
+            {
+              "type": "link",
+              "path": "/su",
+              "title": "Scroll Up (SU)"
+            },
+            {
+              "type": "link",
               "path": "/tbc",
               "title": "Tab Clear (TBC)"
+            },
+            {
+              "type": "link",
+              "path": "/vpa",
+              "title": "Vertical Position Absolute (VPA)"
+            },
+            {
+              "type": "link",
+              "path": "/vpr",
+              "title": "Vertical Position Relative (VPR)"
+            },
+            {
+              "type": "link",
+              "path": "/xtshiftescape",
+              "title": "Shift-Escape Behavior (XTSHIFTESCAPE)"
             }
           ]
+        }
+      ]
+    },
+    {
+      "type": "break"
+    },
+    {
+      "type": "link",
+      "path": "/readme",
+      "title": "README"
+    },
+    {
+      "type": "folder",
+      "path": "/stuff",
+      "title": "Stuff",
+      "children": [
+        {
+          "type": "link",
+          "path": "/",
+          "title": "Overview"
         },
         {
           "type": "folder",
-          "path": "/esc",
-          "title": "Esc",
+          "path": "/details",
+          "title": "Details",
           "children": [
             {
               "type": "link",
-              "path": "/ind",
-              "title": "Index (IND)"
+              "path": "/bash",
+              "title": "Bash"
+            },
+            {
+              "type": "link",
+              "path": "/example",
+              "title": "Example"
             }
           ]
         }
