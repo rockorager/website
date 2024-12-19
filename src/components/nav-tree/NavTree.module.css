@@ -33,21 +33,25 @@ ul.nodesList {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
         &:hover {
           color: var(--gray-9);
           background: var(--gray-2);
         }
       }
+
       & svg {
         transition: transform 0.2s;
       }
+
       &.isOpen {
         --svg-rotation: -180deg;
         & svg {
           transform: rotate(var(--svg-rotation));
         }
       }
-      & > .children {
+
+      &>.children {
         margin-left: 12px;
       }
     }
@@ -67,10 +71,12 @@ ul.nodesList {
       padding: var(--node-padding);
       border-radius: var(--node-border-radius);
       text-decoration: none;
+
       &:hover {
         background: var(--gray-2);
         color: var(--gray-9);
       }
+
       &.active {
         background: var(--brand-color);
         color: var(--gray-9);

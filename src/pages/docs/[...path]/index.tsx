@@ -11,6 +11,7 @@ import {
 import { loadDocsNavTreeData } from "@/lib/fetch-nav";
 import { navTreeToBreadcrumbs } from "@/lib/nav-tree-to-breadcrumbs";
 import s from "./DocsPage.module.css";
+import ScrollToTopButton from "@/components/scroll-to-top";
 
 // This is the location that we expect our docs mdx files to be located,
 // relative to the root of the Next.js project.
@@ -92,6 +93,7 @@ export default function DocsPage({
           </div>
         </div>
         <main className={s.contentWrapper}>
+          <ScrollToTopButton />
           <div className={s.breadcrumbsBar}>
             <Breadcrumbs breadcrumbs={breadcrumbs} />
           </div>
