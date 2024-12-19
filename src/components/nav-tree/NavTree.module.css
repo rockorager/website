@@ -17,6 +17,7 @@ ul.nodesList {
     width: 100%;
 
     & .folderNode {
+      --svg-rotation: 0deg; /* Resets rotation when nested */
       & button {
         border-style: none;
         background: none;
@@ -41,8 +42,9 @@ ul.nodesList {
         transition: transform 0.2s;
       }
       &.isOpen {
+        --svg-rotation: -180deg;
         & svg {
-          transform: rotate(-180deg);
+          transform: rotate(var(--svg-rotation));
         }
       }
       & > .children {
