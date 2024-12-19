@@ -70,7 +70,17 @@ export default function DocsPage({
   breadcrumbs,
 }: DocsPageProps) {
   return (
-    <NavFooterLayout meta={{ title, description }}>
+    <NavFooterLayout
+      meta={{
+        title: breadcrumbs
+          .slice(1)
+          .reverse()
+          .slice(0, 2)
+          .map((breadcrumb) => breadcrumb.text)
+          .join(" - "),
+        description,
+      }}
+    >
       <div className={s.docsPage}>
         <div className={s.sidebar}>
           <div className={s.sidebarContentWrapper}>
