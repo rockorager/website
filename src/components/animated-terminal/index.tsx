@@ -3,7 +3,7 @@ import Terminal, { TerminalProps } from "../terminal";
 
 export type AnimationFrame = string[];
 
-export type AnimatedTerminalPocProps = Omit<TerminalProps, "lines"> & {
+export type AnimatedTerminalProps = Omit<TerminalProps, "lines"> & {
   frames: AnimationFrame[];
   frameLengthMs: number;
 };
@@ -17,10 +17,11 @@ export default function AnimatedTerminal({
   frames,
   whitespacePadding,
   frameLengthMs,
-}: AnimatedTerminalPocProps) {
+}: AnimatedTerminalProps) {
   const [currentFrame, setCurrentFrame] = useState(0);
   useEffect(() => {
-    const reducedMotion = window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+    const reducedMotion =
+      window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
 
     if (reducedMotion) {
       setCurrentFrame(20);
