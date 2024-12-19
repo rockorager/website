@@ -32,7 +32,7 @@
   & :global(.footnotes) {
     & > ol > li {
       &:target {
-        border-radius: 15px;
+        border-radius: 5px;
         animation: footnote-highlight 1.5s ease-in-out;
       }
       & a {
