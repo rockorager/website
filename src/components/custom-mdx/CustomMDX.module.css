@@ -2,9 +2,6 @@
   & > p {
     margin: 0.8em 0;
   }
-  & a {
-    color: var(--brand-color);
-  }
   & > ul, & > ol {
     padding-left: 42px;
     margin: 16px 0;
