@@ -54,6 +54,11 @@
           "children": [
             {
               "type": "link",
+              "path": "/sequences",
+              "title": "Control Sequences"
+            },
+            {
+              "type": "link",
               "path": "/cursor",
               "title": "Cursor"
             },

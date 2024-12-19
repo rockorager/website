@@ -1,0 +1,77 @@
+---
+title: Control Sequences
+description: |-
+  Control sequences are a way for programs to interact with the terminal.
+---
+
+Control sequences are used to do things like move the cursor, change
+text color, clear the screen, and more. They are the primary way
+that programs interact with the terminal.
+
+Programs running within terminals only have a single way to communicate
+with the terminal: writing bytes to the connected file descriptor
+(typically a pty). In order to differentiate between text to be
+displayed and commands to be executed, terminals use special syntax
+known collectively as **control sequences**.
+
+Due to the historical nature of terminals, control sequences come
+in a handful of different formats. Most begin with an escape character
+(`0x1B`), so control sequences are sometimes referred to as
+**escape codes** or **escape sequences**.
+
+There are five types of control sequences:
+
+- Control Characters
+- Escape Sequences
+- CSI Sequences
+- DCS Sequences
+- APC Sequences
+
+Each type of control sequence has a different format and purpose.
+They are described below along with their specific syntax. The
+[reference](/docs/vt/reference) contains a full list of supported
+control sequences grouped by type.
+
+## Control Characters
+
+Control characters are single byte characters that have a special
+meaning. They have no encoding format; you send the bytes as-is.
+For example, [backspace](/docs/vt/control/bs) is `0x08`,
+[linefeed](/docs/vt/control/lf) is `0x0A`, etc.
+
+There are very few control characters, but they're important
+to be aware of because the single byte value impacts the terminal
+state.
+
+## Escape Sequences
+
+Escape sequences are in the format below. An example escape sequence
+is `ESC D`.
+
+```
+esc_sequence = "0x1B" intermediates final
+intermediates = [0x20-0x2F]*
+final = [0x30-0x7E]
+```
+
+## CSI Sequences
+
+CSI sequences are in the format below. An example CSI sequence
+is `ESC [ 1 ; 2 m`.
+
+```
+csi_sequence = "0x1B" "[" params intermediates final
+params = param | param sep params
+param = [0-9]
+sep = ";" | ":"
+intermediates = [0x20-0x2F]*
+final = [0x40-0x7E]
+```
+
+## DCS Sequences
+
+Ghostty supports DCS sequences but these aren't yet documented.
+
+## APC Sequences
+
+Ghostty supports APC sequences but these aren't yet documented.
