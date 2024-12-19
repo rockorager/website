@@ -11,8 +11,7 @@ import {
 import { loadDocsNavTreeData } from "@/lib/fetch-nav";
 import { navTreeToBreadcrumbs } from "@/lib/nav-tree-to-breadcrumbs";
 import s from "./DocsPage.module.css";
-import { useEffect, useRef, useState } from "react";
-import { ArrowUp } from "lucide-react";
+import ScrollToTopButton from "@/components/scroll-to-top";
 
 // This is the location that we expect our docs mdx files to be located,
 // relative to the root of the Next.js project.
@@ -65,38 +64,6 @@ interface DocsPageProps {
   docsPageData: DocsPageData;
   breadcrumbs: Breadcrumb[];
 }
-
-const ScrollToTopButton = () => {
-  const [showScrollToTopButton, setShowScrollToTopButton] = useState(false);
-  const setScrollToTopButtonRef = useRef<HTMLButtonElement>(
-    null
-  );
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 100) {
-        setShowScrollToTopButton(true);
-      } else {
-        setShowScrollToTopButton(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  return (
-    showScrollToTopButton &&
-    <button
-      ref={setScrollToTopButtonRef}
-      className={s.scrollToTopButton}
-      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-    >
-      <ArrowUp size={16} />
-    </button>
-  );
-};
 
 export default function DocsPage({
   navTreeData,
