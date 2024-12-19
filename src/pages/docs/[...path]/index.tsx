@@ -11,7 +11,7 @@ import {
 import { loadDocsNavTreeData } from "@/lib/fetch-nav";
 import { navTreeToBreadcrumbs } from "@/lib/nav-tree-to-breadcrumbs";
 import s from "./DocsPage.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUp } from "lucide-react";
 
 // This is the location that we expect our docs mdx files to be located,
@@ -68,9 +68,9 @@ interface DocsPageProps {
 
 const ScrollToTopButton = () => {
   const [showScrollToTopButton, setShowScrollToTopButton] = useState(false);
-  const [scrollToTopButtonRef, setScrollToTopButtonRef] =
-    useState<HTMLButtonElement | null>(null);
-
+  const setScrollToTopButtonRef = useRef<HTMLButtonElement>(
+    null
+  );
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
