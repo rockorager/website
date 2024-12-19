@@ -20,6 +20,13 @@ export default function AnimatedTerminal({
 }: AnimatedTerminalPocProps) {
   const [currentFrame, setCurrentFrame] = useState(0);
   useEffect(() => {
+    const reducedMotion = window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
+
+    if (reducedMotion) {
+      setCurrentFrame(20);
+      return;
+    }
+
     const interval = setInterval(() => {
       setCurrentFrame((currentFrame) => {
         return (currentFrame + 1) % frames.length;
@@ -27,6 +34,7 @@ export default function AnimatedTerminal({
     }, frameLengthMs);
     return () => clearInterval(interval);
   }, []);
+
   return (
     <Terminal
       className={className}
