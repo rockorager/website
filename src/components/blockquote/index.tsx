@@ -1,9 +1,15 @@
+import classNames from "classnames";
 import s from "./Blockquote.module.css";
 
 interface BlockquoteProps {
+  className?: string;
   children?: React.ReactNode;
 }
 
-export default function Blockquote({ children }: BlockquoteProps) {
-  return <blockquote className={s.blockquote}>{children}</blockquote>;
+export default function Blockquote({ className, children }: BlockquoteProps) {
+  return (
+    <blockquote className={classNames(s.blockquote, className)}>
+      {children}
+    </blockquote>
+  );
 }

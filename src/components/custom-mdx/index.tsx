@@ -4,6 +4,7 @@ import JumplinkHeader from "../jumplink-header";
 import { LI, BodyParagraph } from "../text";
 import s from "./CustomMDX.module.css";
 import Blockquote from "../blockquote";
+import Callout, { Note, Tip, Important, Warning, Caution } from "../callout";
 import VTSequence from "../vt-sequence";
 
 interface CustomMDXProps {
@@ -31,6 +32,13 @@ export default function CustomMDX({ content }: CustomMDXProps) {
             <img className={s.image} src={props.src} alt={props.alt} />
           ),
           VTSequence,
+          /* Callout Variants */
+          Callout,
+          Note,
+          Tip,
+          Important,
+          Warning,
+          Caution,
         }}
       />
     </div>
