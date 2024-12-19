@@ -8,7 +8,7 @@ import {
   loadAllDocsPageSlugs,
   loadDocsPage,
 } from "@/lib/fetch-docs";
-import { loadDocsNavTreeData } from "@/lib/fetch-nav-manual";
+import { loadDocsNavTreeData } from "@/lib/fetch-nav";
 import { navTreeToBreadcrumbs } from "@/lib/nav-tree-to-breadcrumbs";
 import s from "./DocsPage.module.css";
 
