@@ -28,7 +28,12 @@ export default function JumplinkHeader({
           [s.h6]: as === "h6",
         })}
       >
-        <Text className={className} as={as} font="display" weight="medium">
+        <Text
+          className={classNames(className, s.text)}
+          as={as}
+          font="display"
+          weight="medium"
+        >
           {children}
         </Text>
         <a href={`#${id}`} className={s.jumplinkCopy}>

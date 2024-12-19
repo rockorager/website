@@ -1,6 +1,12 @@
 .jumplinkHeader {
   display: inline;
   scroll-margin-top: var(--header-height);
+  &:target {
+    & .text {
+      animation: jumplink-highlight 1.5s ease-in-out;
+      border-radius: 8px;
+    }
+  }
 
   & .content {
     display: flex;
@@ -61,5 +67,18 @@
     width: 16px;
     height: 16px;
     color: var(--gray-9);
+  }
+}
+
+@keyframes jumplink-highlight {
+  from {
+    background-color: color-mix(in srgb, var(--brand-color) 60%, transparent);
+    padding: 6px 16px;
+    margin: -6px -16px;
+  }
+  to {
+    background-color: transparent;
+    padding: 0px;
+    margin: 0px;
   }
 }
