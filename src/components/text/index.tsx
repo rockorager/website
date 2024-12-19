@@ -1,5 +1,8 @@
 import classNames from "classnames";
 import localFont from "next/font/local";
+
+import { JetBrains_Mono } from 'next/font/google';
+
 import { forwardRef, UIEventHandler } from "react";
 import s from "./Text.module.css";
 
@@ -10,12 +13,11 @@ export const pretendardVariable = localFont({
   variable: "--pretendard-variable",
 });
 
-// https://www.jetbrains.com/lp/mono/
-export const jetbrainsMono = localFont({
-  src: "./font/jetbrains-mono-regular.woff2",
+export const jetbrainsMono = JetBrains_Mono({
   display: "auto",
   weight: "400",
   variable: "--jetbrains-mono",
+  subsets: ["latin"]
 });
 
 interface TextProps {
