@@ -5,7 +5,7 @@
   & svg {
     margin-left: 4px;
     & path {
-      transition-duration: .1s;
+      transition-duration: 0.1s;
       transition-timing-function: ease-in-out;
     }
   }
@@ -16,26 +16,26 @@
       that the path order changes and this breaks, but it seems
       unlikely enough to justify adding this nice polish. */
       & path:not(:first-of-type) {
-        transform: translate(2px,-2px);
+        transform: translate(2px, -2px);
       }
     }
   }
   &.weightLight {
-    font-weight: 300;
-    & strong {
-      font-weight: 400;
-    }
-  }
-  &.weightRegular{
     font-weight: 400;
     & strong {
       font-weight: 500;
     }
   }
-  &.weightMedium {
+  &.weightRegular {
     font-weight: 500;
     & strong {
       font-weight: 600;
+    }
+  }
+  &.weightMedium {
+    font-weight: 600;
+    & strong {
+      font-weight: 700;
     }
   }
 }
@@ -54,7 +54,7 @@
   }
 
   border-radius: 6px;
-  transition: background-color .15s;
+  transition: background-color 0.15s;
   &.small {
     font-size: 14px;
     padding: 4px 12px;
