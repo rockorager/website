@@ -13,10 +13,12 @@
       display: none;
     }
 
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
     border-right: 1px solid var(--gray-2);
     position: sticky;
     top: var(--header-height);
-    overflow: scroll;
     max-height: calc(100vh - var(--header-height));
     min-height: calc(100vh - var(--header-height) - var(--footer-height));
 
