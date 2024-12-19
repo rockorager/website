@@ -1,7 +1,4 @@
 .rootLayout {
-  overflow: auto;
-  height: 100vh;
-
   font-family: var(--pretendard-variable);
 
   & a {
