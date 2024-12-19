@@ -74,12 +74,12 @@ function contextualizeNavTreeNode(
       case "break":
         return t;
       case "folder":
-        const nextAccSlug = `${accumulatedSlug}${t.path.substring(1)}/`;
+        var nextAccSlug = `${accumulatedSlug}${t.path.substring(1)}/`;
         return {
           type: "folder",
           title: t.title,
           path: t.path,
-          open: activePageSlug.startsWith(nextAccSlug),
+          open: activePageSlug.startsWith(nextAccSlug.slice(0, -1)),
           children: t.children.map(
             contextualizeNavTreeNode(activePageSlug, nextAccSlug)
           ),
