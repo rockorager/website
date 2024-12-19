@@ -10,7 +10,9 @@
 
 ## Local Development
 
-### via Node (recommended)
+The official development environment is defined by Nix. You do not need
+to use Nix to develop the website, but the Nix environment is the
+only supported development environment.
 
 To spin up a local server, you can simply run `make`.
 
@@ -18,16 +20,10 @@ To spin up a local server, you can simply run `make`.
 make
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to view the website.
+Open [http://localhost:3000](http://localhost:3000) with your browser
+to view the website.
 
-### via Docker
+## Contributing
 
-If you don't have node configured, you can also build the website locally with Docker.
-
-This approach will compile a [production build](https://nextjs.org/docs/pages/building-your-application/deploying#production-builds), which is less ideal for local development.
-
-```bash
-make docker
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to view the website.
+If you would like to contribute to the website, please read the
+[contributing guidelines](CONTRIBUTING.md).
