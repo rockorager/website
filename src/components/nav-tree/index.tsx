@@ -21,11 +21,11 @@ export type LinkNode = {
   active?: boolean;
 };
 
-type BreakNode = {
+export type BreakNode = {
   type: "break";
 };
 
-type TitleNode = {
+export type TitleNode = {
   type: "title";
   title: string;
 };

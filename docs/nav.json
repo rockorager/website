@@ -1,0 +1,160 @@
+{
+  "items": [
+    {
+      "type": "link",
+      "path": "/getting-started",
+      "title": "Getting Started"
+    },
+    {
+      "type": "link",
+      "path": "/about",
+      "title": "About Ghostty"
+    },
+    {
+      "type": "folder",
+      "path": "/config",
+      "title": "Config",
+      "children": [
+        {
+          "type": "link",
+          "path": "/",
+          "title": "Overview"
+        },
+        {
+          "type": "link",
+          "path": "/reference",
+          "title": "Reference"
+        }
+      ]
+    },
+    {
+      "type": "link",
+      "path": "/features",
+      "title": "Features"
+    },
+    {
+      "type": "link",
+      "path": "/readme",
+      "title": "README"
+    },
+    {
+      "type": "folder",
+      "path": "/stuff",
+      "title": "Stuff",
+      "children": [
+        {
+          "type": "link",
+          "path": "/",
+          "title": "Overview"
+        },
+        {
+          "type": "folder",
+          "path": "/details",
+          "title": "Details",
+          "children": [
+            {
+              "type": "link",
+              "path": "/bash",
+              "title": "Bash"
+            },
+            {
+              "type": "link",
+              "path": "/example",
+              "title": "Example"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "path": "/vt",
+      "title": "Vt",
+      "children": [
+        {
+          "type": "link",
+          "path": "/",
+          "title": "Overview"
+        },
+        {
+          "type": "folder",
+          "path": "/concepts",
+          "title": "Concepts",
+          "children": [
+            {
+              "type": "link",
+              "path": "/cursor",
+              "title": "Cursor"
+            },
+            {
+              "type": "link",
+              "path": "/screen",
+              "title": "Screen"
+            }
+          ]
+        },
+        {
+          "type": "folder",
+          "path": "/control",
+          "title": "Control",
+          "children": [
+            {
+              "type": "link",
+              "path": "/bs",
+              "title": "Backspace (BS)"
+            },
+            {
+              "type": "link",
+              "path": "/bel",
+              "title": "Bell (BEL) (Unimplemented)"
+            },
+            {
+              "type": "link",
+              "path": "/lf",
+              "title": "Linefeed (LF)"
+            },
+            {
+              "type": "link",
+              "path": "/tab",
+              "title": "Tab (TAB)"
+            }
+          ]
+        },
+        {
+          "type": "folder",
+          "path": "/csi",
+          "title": "Csi",
+          "children": [
+            {
+              "type": "link",
+              "path": "/cub",
+              "title": "Cursor Backward (CUB)"
+            },
+            {
+              "type": "link",
+              "path": "/cht",
+              "title": "Cursor Horizontal Tabulation (CHT)"
+            },
+            {
+              "type": "link",
+              "path": "/tbc",
+              "title": "Tab Clear (TBC)"
+            }
+          ]
+        },
+        {
+          "type": "folder",
+          "path": "/esc",
+          "title": "Esc",
+          "children": [
+            {
+              "type": "link",
+              "path": "/ind",
+              "title": "Index (IND)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

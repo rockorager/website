@@ -1,14 +1,14 @@
 import Breadcrumbs, { Breadcrumb } from "@/components/breadcrumbs";
 import CustomMDX from "@/components/custom-mdx";
 import NavTree, { NavTreeNode } from "@/components/nav-tree";
-import { H1, H5, P } from "@/components/text";
+import { H1, P } from "@/components/text";
 import NavFooterLayout from "@/layouts/nav-footer-layout";
 import {
   DocsPageData,
   loadAllDocsPageSlugs,
   loadDocsPage,
 } from "@/lib/fetch-docs";
-import { loadDocsNavTreeData } from "@/lib/fetch-nav";
+import { loadDocsNavTreeData } from "@/lib/fetch-nav-manual";
 import { navTreeToBreadcrumbs } from "@/lib/nav-tree-to-breadcrumbs";
 import s from "./DocsPage.module.css";
 
