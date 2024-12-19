@@ -50,6 +50,14 @@ ul.nodesList {
       }
     }
 
+    & .breakNode {
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      color: var(--gray-2);
+      margin: 20px 0;
+    }
+
     & .linkNode {
       display: block;
       font-weight: 300;

@@ -28,6 +28,9 @@
       ]
     },
     {
+      "type": "break"
+    },
+    {
       "type": "link",
       "path": "/features",
       "title": "Features"

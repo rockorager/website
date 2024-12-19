@@ -72,7 +72,7 @@ function Node({ path, node }: { path: string; node: NavTreeNode }) {
     case "link":
       return <LinkNode path={path} node={node} />;
     case "break":
-      return <BreakNode node={node} />;
+      return <BreakNode />;
     case "title":
       return <TitleNode node={node} />;
     default:
@@ -91,9 +91,8 @@ function TitleNode({ node }: { node: TitleNode }) {
   return <div></div>;
 }
 
-function BreakNode({ node }: { node: BreakNode }) {
-  // TODO
-  return <hr />;
+function BreakNode() {
+  return <hr className={s.breakNode} />;
 }
 
 function FolderNode({ path, node }: { path: string; node: FolderNode }) {

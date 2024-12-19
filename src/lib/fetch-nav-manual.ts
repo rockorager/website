@@ -103,6 +103,11 @@ function contextualizeNavTreeNode(
           path: t.path,
           active: activePageSlug === fullSlug,
         } as LinkNode;
+      default:
+        throw new Error(
+          `There is an unexpected item in the 'nav.json' file:
+${JSON.stringify(t, null, 2)}`
+        );
     }
   };
 }
