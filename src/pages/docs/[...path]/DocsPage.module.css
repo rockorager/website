@@ -5,11 +5,14 @@
   max-width: 100%;
 
   --sidebar-min-width: 320px;
+
   & .sidebar {
     min-width: var(--sidebar-min-width);
+
     @media (max-width: 784px) {
       display: none;
     }
+
     border-right: 1px solid var(--gray-2);
     position: sticky;
     top: var(--header-height);
@@ -19,8 +22,10 @@
 
     & .sidebarContentWrapper {
       padding: 24px 14px;
-      & > .sidebarNavTree {
-        padding: 2px; /* guarantee space for focus border */
+
+      &>.sidebarNavTree {
+        padding: 2px;
+        /* guarantee space for focus border */
         height: 100%;
       }
     }
@@ -34,8 +39,33 @@
   & .heading {
     padding: 30px 0;
     border-bottom: 1px solid var(--gray-2);
+
     & .description {
       color: var(--gray-5);
+    }
+  }
+
+  & .scrollToTopButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--gray-2);
+    color: var(--gray-9);
+    border-radius: 5px;
+    border: none;
+    padding: 8px 12px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background .2s;
+    z-index: 10;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background: var(--gray-3);
     }
   }
 
