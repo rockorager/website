@@ -13,7 +13,7 @@ const navLinks: Array<SimpleLink> = [
     href: "https://discord.gg/ghostty",
   },
   {
-    text: "Github",
+    text: "GitHub",
     href: "https://github.com/ghostty-org/ghostty",
   },
 ];
