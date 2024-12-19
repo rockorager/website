@@ -3,7 +3,6 @@ import {
   FolderNode,
   LinkNode,
   NavTreeNode,
-  TitleNode,
 } from "@/components/nav-tree";
 import { promises as fs } from "fs";
 
@@ -16,12 +15,10 @@ type NavFileFolderNode = Omit<Omit<FolderNode, "open">, "children"> & {
 };
 type NavFileLinkNode = Omit<LinkNode, "active">;
 type NavFileBreakNode = BreakNode;
-type NavFileTitleNode = TitleNode;
 type NavFileNavTreeNode =
   | NavFileFolderNode
   | NavFileLinkNode
-  | NavFileBreakNode
-  | NavFileTitleNode;
+  | NavFileBreakNode;
 type NavFile = {
   items: NavFileNavTreeNode[];
 };
@@ -75,8 +72,6 @@ function contextualizeNavTreeNode(
   return (t: NavFileNavTreeNode): NavTreeNode => {
     switch (t.type) {
       case "break":
-        return t;
-      case "title":
         return t;
       case "folder":
         const nextAccSlug = `${accumulatedSlug}${t.path.substring(1)}/`;
