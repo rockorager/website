@@ -28,9 +28,21 @@
       ]
     },
     {
-      "type": "link",
+      "type": "folder",
       "path": "/features",
-      "title": "Features"
+      "title": "Features",
+      "children": [
+        {
+          "type": "link",
+          "path": "/",
+          "title": "Overview"
+        },
+        {
+          "type": "link",
+          "path": "/theme",
+          "title": "Color Theme"
+        }
+      ]
     },
     {
       "type": "folder",
