@@ -4,7 +4,7 @@ import { useState } from "react";
 import s from "./NavTree.module.css";
 import Link from "../link";
 
-export type NavTreeNode = FolderNode | LinkNode | BreakNode | TitleNode;
+export type NavTreeNode = FolderNode | LinkNode | BreakNode;
 
 export type FolderNode = {
   type: "folder";
@@ -21,13 +21,8 @@ export type LinkNode = {
   active?: boolean;
 };
 
-type BreakNode = {
+export type BreakNode = {
   type: "break";
-};
-
-type TitleNode = {
-  type: "title";
-  title: string;
 };
 
 interface NavTreeProps {
@@ -72,9 +67,7 @@ function Node({ path, node }: { path: string; node: NavTreeNode }) {
     case "link":
       return <LinkNode path={path} node={node} />;
     case "break":
-      return <BreakNode node={node} />;
-    case "title":
-      return <TitleNode node={node} />;
+      return <BreakNode />;
     default:
       throw new Error(
         `Encountered an unexpected node type at ${path} \n\n ${JSON.stringify(
@@ -84,16 +77,8 @@ function Node({ path, node }: { path: string; node: NavTreeNode }) {
   }
 }
 
-// ======
-
-function TitleNode({ node }: { node: TitleNode }) {
-  // TODO
-  return <div></div>;
-}
-
-function BreakNode({ node }: { node: BreakNode }) {
-  // TODO
-  return <hr />;
+function BreakNode() {
+  return <hr className={s.breakNode} />;
 }
 
 function FolderNode({ path, node }: { path: string; node: FolderNode }) {
