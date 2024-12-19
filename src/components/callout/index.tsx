@@ -16,6 +16,7 @@ interface CalloutProps {
   type: CalloutType;
   children: React.ReactNode | string;
 }
+type SpecificCalloutProps = Omit<CalloutProps, "type">;
 
 export default function Callout({ type, children }: CalloutProps) {
   return (
@@ -60,4 +61,24 @@ function CalloutIcon({
     case "caution":
       return <OctagonAlert className={className} />;
   }
+}
+
+export function Note({ children }: SpecificCalloutProps) {
+  return <Callout type="note">{children}</Callout>;
+}
+
+export function Tip({ children }: SpecificCalloutProps) {
+  return <Callout type="tip">{children}</Callout>;
+}
+
+export function Important({ children }: SpecificCalloutProps) {
+  return <Callout type="important">{children}</Callout>;
+}
+
+export function Warning({ children }: SpecificCalloutProps) {
+  return <Callout type="warning">{children}</Callout>;
+}
+
+export function Caution({ children }: SpecificCalloutProps) {
+  return <Callout type="caution">{children}</Callout>;
 }
