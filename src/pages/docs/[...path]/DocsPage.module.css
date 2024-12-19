@@ -11,14 +11,14 @@
       display: none;
     }
     border-right: 1px solid var(--gray-2);
-    & .sidebarContentWrapper {
-      position: sticky;
-      top: var(--header-height);
-      min-height: calc(100vh - var(--header-height) - var(--footer-height));
-      max-height: calc(100vh - var(--header-height));
-      padding: 24px 14px;
-      overflow: scroll;
+    position: sticky;
+    top: var(--header-height);
+    overflow: scroll;
+    max-height: calc(100vh - var(--header-height));
+    min-height: calc(100vh - var(--header-height) - var(--footer-height));
 
+    & .sidebarContentWrapper {
+      padding: 24px 14px;
       & > .sidebarNavTree {
         padding: 2px; /* guarantee space for focus border */
         height: 100%;
