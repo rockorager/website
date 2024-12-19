@@ -40,7 +40,7 @@ ul.nodesList {
       }
 
       & svg {
-        transition: transform .2s;
+        transition: transform 0.2s;
       }
 
       &.isOpen {
@@ -55,10 +55,8 @@ ul.nodesList {
     }
 
     & .breakNode {
-      border-top: none;
-      border-left: none;
-      border-right: none;
-      color: var(--gray-2);
+      border: none;
+      border-bottom: 1px solid var(--gray-2);
       margin: 20px 0;
     }
 
