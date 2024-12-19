@@ -51,6 +51,7 @@ export default function Terminal({
   const padding = " ".repeat(whitespacePadding);
   return (
     <div
+      tabIndex={0}
       className={classNames(s.terminal, className, {
         [s.fontXTiny]: fontSize === "xtiny",
         [s.fontTiny]: fontSize === "tiny",

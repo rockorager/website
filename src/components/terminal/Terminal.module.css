@@ -1,7 +1,12 @@
 .terminal {
   --code-margin-top: 12px;
-  --control-size: 10px;
-  --padding: 10px;
+  --control-size: 12px;
+  --padding: 7px;
+
+  /* Mac's traffic light button colors */
+  --color-sunset-orange: #ff605c;
+  --color-pastel-orange: #ffbd44;
+  --color-malachite: #00ca4e;
 
   &.fontXTiny {
     --title-font-size: 12px;
@@ -53,7 +58,7 @@
     & .windowControls {
       list-style: none;
       display: flex;
-      gap: 6px;
+      gap: 8px;
 
       & li {
         width: var(--control-size);
@@ -66,6 +71,7 @@
       position: absolute;
       left: 50%; transform: translateX(-50%);
       font-size: var(--title-font-size);
+      top: 1px;
     }
   }
 
@@ -83,6 +89,22 @@
       white-space: pre-wrap;
       & :global(.b) {
         color: var(--brand-color);
+      }
+    }
+  }
+
+  &:focus {
+    & .header {
+      & .windowControls {
+        & li:first-child {
+          background: var(--color-sunset-orange);
+        }
+        & li:nth-child(2) {
+          background: var(--color-pastel-orange);
+        }
+        & li:last-child {
+          background: var(--color-malachite);
+        }
       }
     }
   }
