@@ -4,10 +4,10 @@
   margin-top: 0px;
   max-width: 100%;
 
-  --sidebar-min-width: 320px;
+  --sidebar-width: 320px;
 
   & .sidebar {
-    min-width: var(--sidebar-min-width);
+    width: var(--sidebar-width);
 
     @media (max-width: 784px) {
       display: none;
@@ -76,7 +76,7 @@
     flex-direction: column;
     margin: 38px auto 88px auto;
     padding: 0 24px;
-    max-width: min(800px, calc(100vw - var(--sidebar-min-width)));
+    max-width: min(800px, calc(100vw - var(--sidebar-width)));
     flex-grow: 1;
 
     @media (max-width: 784px) {
