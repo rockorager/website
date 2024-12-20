@@ -13,6 +13,12 @@
     display: block;
   }
 
+  & hr {
+    border: none;
+    border-bottom: 1px solid var(--gray-2);
+    margin: 42px 0;
+  }
+
   & sup {
     vertical-align: top;
     font-size: 0.65em;

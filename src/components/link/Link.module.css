@@ -41,6 +41,8 @@
 }
 
 .buttonLink {
+  display: flex;
+  justify-content: center;
   &.brand {
     --buttonColor: var(--brand-color);
   }

@@ -5,7 +5,9 @@ import { LI, BodyParagraph } from "../text";
 import s from "./CustomMDX.module.css";
 import Blockquote from "../blockquote";
 import Callout, { Note, Tip, Important, Warning, Caution } from "../callout";
+import CardLinks from "../card-links";
 import VTSequence from "../vt-sequence";
+import ButtonLinks from "../button-links";
 
 interface CustomMDXProps {
   content: MDXRemoteSerializeResult;
@@ -32,6 +34,8 @@ export default function CustomMDX({ content }: CustomMDXProps) {
             <img className={s.image} src={props.src} alt={props.alt} />
           ),
           VTSequence,
+          CardLinks,
+          ButtonLinks,
           /* Callout Variants */
           Callout,
           Note,
