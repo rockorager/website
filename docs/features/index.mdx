@@ -55,6 +55,30 @@ features that Ghostty supports:
   protocol, which allows terminal applications to render images
   directly in the terminal.
 
+### Platform-Native Features
+
+One of the primary [design goals](/docs/about) of Ghostty is to
+be look, feel, and behave like a purpose-built native application
+on each platform.
+Here is a list of some of the platform-native features that Ghostty has.
+
+### macOS
+
+- **Quick Terminal**: Lightweight terminal that animates down below the
+  menu bar for instant access without interrupting work.
+- **Native Tabs, Splits, etc.**: We use native macOS components for
+  UI elements such as tabs and splits as opposed to custom-drawn
+  text such as other terminal emulators.
+- **Proxy Icon**: Drag the proxy icon in the title bar to move or
+  access terminal session files, or navigate to the file path directly.
+- **Quick Look**: Tap text with three fingers or force touch to use macOS
+  Quick Look for definitions, web searches, and more.
+- **Secure Keyboard Entry**: Automatically detect password prompts
+  or manually enable secure keyboard entry to protect passwords from
+  other processes. You can know when secure keyboard entry is active
+  because an animated lock icon appears in the top-right corner of the
+  terminal.
+
 ## Terminal (VT) Features
 
 For terminal application developers, we believe Ghostty is one of
@@ -81,13 +105,14 @@ the following principles:
      "Widely accepted" is generally subjective based on popular
      opinion and usage.
 
-
 For a list of terminal developer features Ghostty supports, see the
 [reference](/docs/vt/reference)
 (but note at the time of writing this is still a work-in-progress).
 
 [^1]: If not, we want to know! Please
-[open an discussion](https://github.com/ghostty-org/ghostty/discussions).
+[open a discussion](https://github.com/ghostty-org/ghostty/discussions).
 [^2]: We may put some xterm behaviors behind a configuration flag if
 the behavior is questionable or not widely accepted.
 [^3]: If a behavior differs between the specification and the terminal that defined the protocol, we open a discussion to determine the correct behavior.
+
+
