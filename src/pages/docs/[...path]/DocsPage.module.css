@@ -113,6 +113,8 @@
     }
 
     & .sidecar {
+      position: sticky;
+      top: calc(var(--header-height) + var(--sidecar-margin));
       margin-left: var(--sidecar-margin);
       margin-right: var(--sidecar-margin);
       width: var(--sidecar-width);
