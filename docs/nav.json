@@ -19,6 +19,11 @@
           "type": "link",
           "path": "/build",
           "title": "Build from Source"
+        },
+        {
+          "type": "link",
+          "path": "/package",
+          "title": "Packaging Ghostty"
         }
       ]
     },
