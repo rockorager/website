@@ -35,7 +35,7 @@ export default function MemoizedCustomMDX({
     } else if (lastHeaderInView != null) {
       onHeadersInViewChanged([lastHeaderInView]);
     }
-  }, [headersInView, lastHeaderInView]);
+  }, [headersInView, lastHeaderInView, onHeadersInViewChanged]);
 
   const onHeaderInViewChanged = (inView: boolean, id: string) => {
     if (inView) {
