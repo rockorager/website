@@ -19,12 +19,17 @@ interface SidecarProps {
 // it does not make sense to have a single item in the sidecar.
 const MIN_SIDECAR_ITEMS = 2;
 
+// H4s and below will only display in the sidecar
+const MAX_SIDECAR_HEADER_DEPTH = 4;
+
 export default function Sidecar({
   className,
   title,
   items,
   inViewHeaderIDs,
 }: SidecarProps) {
+  items = items.filter((v) => v.depth <= MAX_SIDECAR_HEADER_DEPTH);
+
   // Calculate the first header that's in view
   var activeHeaderID: null | string;
   for (const item of items) {
