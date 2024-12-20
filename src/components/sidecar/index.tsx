@@ -13,6 +13,7 @@ interface SidecarProps {
   title: string;
   items: SidecarItem[];
   inViewHeaderIDs: string[];
+  hidden?: boolean;
 }
 
 // If there's less items than this, the sidecar content won't render
@@ -27,6 +28,7 @@ export default function Sidecar({
   title,
   items,
   inViewHeaderIDs,
+  hidden = false,
 }: SidecarProps) {
   items = items.filter((v) => v.depth <= MAX_SIDECAR_HEADER_DEPTH);
 
@@ -40,7 +42,7 @@ export default function Sidecar({
   }
   return (
     <div className={classNames(s.sidecar, className)}>
-      {items.length > MIN_SIDECAR_ITEMS && (
+      {items.length > MIN_SIDECAR_ITEMS && !hidden && (
         <>
           <H6 className={s.title}>{title}</H6>
           <ul>

@@ -70,7 +70,14 @@ interface DocsPageProps {
 
 export default function DocsPage({
   navTreeData,
-  docsPageData: { title, description, content, relativeFilePath, pageHeaders },
+  docsPageData: {
+    title,
+    description,
+    content,
+    relativeFilePath,
+    pageHeaders,
+    hideSidecar,
+  },
   breadcrumbs,
 }: DocsPageProps) {
   const [inViewHeaderIDs, setInViewHeaderIDs] = useState<string[]>([]);
@@ -126,6 +133,7 @@ export default function DocsPage({
 
           <Sidecar
             title="On this page"
+            hidden={hideSidecar}
             inViewHeaderIDs={inViewHeaderIDs}
             className={s.sidecar}
             items={pageHeaders}

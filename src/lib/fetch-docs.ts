@@ -21,6 +21,7 @@ export interface DocsPageData {
   slug: string;
   title: string;
   description: string;
+  hideSidecar: boolean;
   content: MDXRemoteSerializeResult;
   relativeFilePath: string;
   pageHeaders: PageHeader[];
@@ -103,6 +104,9 @@ async function loadDocsPageFromRelativeFilePath(
     relativeFilePath,
     title: mdxFileContent.data.title,
     description: mdxFileContent.data.description,
+    hideSidecar: mdxFileContent.data.hasOwnProperty("hideSidecar")
+      ? mdxFileContent.data.hideSidecar
+      : false,
     content,
     pageHeaders,
   };
