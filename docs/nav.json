@@ -12,6 +12,11 @@
       "children": [
         {
           "type": "link",
+          "path": "/binary",
+          "title": "Prebuilt Binaries"
+        },
+        {
+          "type": "link",
           "path": "/build",
           "title": "Build from Source"
         }
