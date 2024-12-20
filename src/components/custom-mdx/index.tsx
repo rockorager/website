@@ -132,7 +132,6 @@ function CustomMDX({ content, onHeaderInViewChanged }: CustomMDXProps) {
           Important,
           Warning,
           Caution,
-          callout: Callout,
           "callout-title": () => null,
         }}
       />
