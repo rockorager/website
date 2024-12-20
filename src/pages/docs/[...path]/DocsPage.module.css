@@ -5,6 +5,8 @@
   max-width: 100%;
 
   --sidebar-width: 320px;
+  --sidecar-margin: 24px;
+  --sidecar-width: 235px;
 
   & .sidebar {
     width: var(--sidebar-width);
@@ -77,16 +79,40 @@
   }
 
   & .contentWrapper {
-    display: flex;
-    flex-direction: column;
-    margin: 38px auto 88px auto;
-    padding: 0 24px;
-    max-width: min(800px, calc(100vw - var(--sidebar-width)));
-    flex-grow: 1;
 
-    @media (max-width: 784px) {
-      max-width: 100%;
-      margin: 24px auto 54px auto;
+    margin: 38px auto 88px auto;
+    display: flex;
+
+    & .docsContentWrapper {
+      display: flex;
+      flex-direction: column;
+      padding: 0 24px;
+
+      max-width: min(800px, calc(100vw - var(--sidebar-width) - var(--sidecar-width) - (2 * var(--sidecar-margin))));
+      @media(max-width: 1300px) {
+        max-width: min(800px, calc(100vw - var(--sidebar-width)));
+      }
+
+      flex-grow: 1;
+
+      @media (max-width: 784px) {
+        max-width: 100%;
+        margin: 24px auto 54px auto;
+      }
+    }
+
+    & .sidecar {
+      flex-shrink: shrink;
+      margin-left: var(--sidecar-margin);
+      margin-right: var(--sidecar-margin);
+      margin-top: 84px;
+      width: 235px;
+      height: 500px;
+      background: var(--gray-2);
+
+      @media(max-width: 1300px){
+        display: none;
+      }
     }
   }
 
