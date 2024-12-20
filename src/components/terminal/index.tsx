@@ -3,12 +3,7 @@ import React, { UIEvent, useEffect, useRef, useState } from "react";
 import { Code, P } from "../text";
 import s from "./Terminal.module.css";
 
-import {
-  X,
-  Menu,
-  Grip,
-  FolderPlus
-} from "lucide-react";
+import { X, Menu, Grip, FolderPlus } from "lucide-react";
 
 export interface TerminalProps {
   className?: string;
@@ -19,7 +14,6 @@ export interface TerminalProps {
   lines?: string[];
   whitespacePadding?: number;
   disableScrolling?: boolean;
-  platformStyle?: "macos" | "adwaita";
 }
 
 export default function Terminal({
@@ -27,12 +21,18 @@ export default function Terminal({
   rows,
   fontSize = "medium",
   className,
-  platformStyle,
   title,
   lines,
   whitespacePadding = 0,
   disableScrolling = false,
 }: TerminalProps) {
+  const [platformStyle, setPlatformStyle] = useState("macos");
+  useEffect(() => {
+    const userAgent = window?.navigator.userAgent;
+    const isLinux = /Linux/i.test(userAgent);
+    setPlatformStyle(isLinux ? "adwaita" : "macos");
+  }, []);
+
   const [autoScroll, setAutoScroll] = useState(true);
   const handleScroll = (e: UIEvent<HTMLElement>) => {
     const { scrollTop, scrollHeight, clientHeight } = e.target as HTMLElement;
@@ -61,16 +61,21 @@ export default function Terminal({
   return (
     <div
       tabIndex={0}
-      className={classNames(s.terminal, className, {
-        [s.fontXTiny]: fontSize === "xtiny",
-        [s.fontTiny]: fontSize === "tiny",
-        [s.fontSmall]: fontSize === "small",
-        [s.fontMedium]: fontSize === "medium",
-        [s.fontLarge]: fontSize === "large",
-      }, {
-        [s.adwaita]: platformStyle === "adwaita",
-        [s.macos]: platformStyle === "macos",
-      })}
+      className={classNames(
+        s.terminal,
+        className,
+        {
+          [s.fontXTiny]: fontSize === "xtiny",
+          [s.fontTiny]: fontSize === "tiny",
+          [s.fontSmall]: fontSize === "small",
+          [s.fontMedium]: fontSize === "medium",
+          [s.fontLarge]: fontSize === "large",
+        },
+        {
+          [s.adwaita]: platformStyle === "adwaita",
+          [s.macos]: platformStyle === "macos",
+        }
+      )}
       style={
         {
           "--columns": columns + 2 * whitespacePadding,
@@ -79,8 +84,8 @@ export default function Terminal({
       }
     >
       <div className={s.header}>
-        { platformStyle === "adwaita" && <AdwaitaButtons /> }
-        { platformStyle === "macos" && <MacosButtons /> }
+        {platformStyle === "adwaita" && <AdwaitaButtons />}
+        {platformStyle === "macos" && <MacosButtons />}
         <P className={s.title}>{title}</P>
       </div>
       <Code
@@ -110,25 +115,29 @@ function AdwaitaButtons() {
   // It is entirely intentional that the maximize/minimize buttons are missing.
   // Blame GNOME.
 
-  return <ul className={s.windowControls}>
-    <li className={s.circularButton}>
-      <X className={s.icon}/>
-    </li>
-    <li>
-      <Menu className={s.icon}/>
-    </li>
-    <li>
-      <Grip className={s.icon}/>
-    </li>
-    <li>
-      <FolderPlus className={s.icon}/>
-    </li>
-  </ul>
+  return (
+    <ul className={s.windowControls}>
+      <li className={s.circularButton}>
+        <X className={s.icon} />
+      </li>
+      <li>
+        <Menu className={s.icon} />
+      </li>
+      <li>
+        <Grip className={s.icon} />
+      </li>
+      <li>
+        <FolderPlus className={s.icon} />
+      </li>
+    </ul>
+  );
 }
 function MacosButtons() {
-  return <ul className={s.windowControls}>
-    <li className={s.circularButton} />
-    <li className={s.circularButton} />
-    <li className={s.circularButton} />
-  </ul>
+  return (
+    <ul className={s.windowControls}>
+      <li className={s.circularButton} />
+      <li className={s.circularButton} />
+      <li className={s.circularButton} />
+    </ul>
+  );
 }
