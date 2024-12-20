@@ -3,19 +3,34 @@ import { Link } from "lucide-react";
 import slugify from "slugify";
 import Text from "../text";
 import s from "./JumplinkHeader.module.css";
+import { useInView } from "react-intersection-observer";
+import { useEffect, useState } from "react";
 
 interface JumplinkHeaderProps {
   as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   className?: string;
   children?: React.ReactNode;
+  onInViewChanged?: (inView: boolean, id: string) => void;
 }
 
 export default function JumplinkHeader({
   className,
   children,
   as,
+  onInViewChanged,
 }: JumplinkHeaderProps) {
   const id = headerDeeplinkIdentifier(children);
+  const { ref, inView } = useInView({
+    // This is our header height!  This also impacts our
+    // margin below, but TBH I actually like it needing to
+    // peek out a little bit further before this triggers
+    rootMargin: "-72px",
+    threshold: 1,
+  });
+  useEffect(() => {
+    onInViewChanged && onInViewChanged(inView, id);
+  }, [inView]);
+
   return (
     <div className={s.jumplinkHeader} id={id}>
       <div
@@ -33,6 +48,7 @@ export default function JumplinkHeader({
           as={as}
           font="display"
           weight="medium"
+          ref={ref}
         >
           {children}
         </Text>

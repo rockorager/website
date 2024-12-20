@@ -1,6 +1,8 @@
 import Breadcrumbs, { Breadcrumb } from "@/components/breadcrumbs";
 import CustomMDX from "@/components/custom-mdx";
 import NavTree, { NavTreeNode } from "@/components/nav-tree";
+import ScrollToTopButton from "@/components/scroll-to-top";
+import Sidecar from "@/components/sidecar";
 import { H1, P } from "@/components/text";
 import NavFooterLayout from "@/layouts/nav-footer-layout";
 import {
@@ -10,9 +12,9 @@ import {
 } from "@/lib/fetch-docs";
 import { loadDocsNavTreeData } from "@/lib/fetch-nav";
 import { navTreeToBreadcrumbs } from "@/lib/nav-tree-to-breadcrumbs";
-import s from "./DocsPage.module.css";
-import ScrollToTopButton from "@/components/scroll-to-top";
 import { Pencil } from "lucide-react";
+import s from "./DocsPage.module.css";
+import { useState } from "react";
 
 // This is the location that we expect our docs mdx files to be located,
 // relative to the root of the Next.js project.
@@ -68,9 +70,17 @@ interface DocsPageProps {
 
 export default function DocsPage({
   navTreeData,
-  docsPageData: { title, description, content, relativeFilePath },
+  docsPageData: {
+    title,
+    description,
+    content,
+    relativeFilePath,
+    pageHeaders,
+    hideSidecar,
+  },
   breadcrumbs,
 }: DocsPageProps) {
+  const [inViewHeaderIDs, setInViewHeaderIDs] = useState<string[]>([]);
   return (
     <NavFooterLayout
       meta={{
@@ -107,7 +117,12 @@ export default function DocsPage({
                 {description}
               </P>
             </div>
-            <CustomMDX content={content} />
+            <CustomMDX
+              content={content}
+              onHeadersInViewChanged={(headerIDs) => {
+                setInViewHeaderIDs(headerIDs);
+              }}
+            />
             <br />
             <div>
               <a href={`${GITHUB_REPO_URL}/edit/main/${relativeFilePath}`}>
@@ -116,9 +131,13 @@ export default function DocsPage({
             </div>
           </div>
 
-          <div className={s.sidecar}>
-            <P>Sidecar</P>
-          </div>
+          <Sidecar
+            title="On this page"
+            hidden={hideSidecar}
+            inViewHeaderIDs={inViewHeaderIDs}
+            className={s.sidecar}
+            items={pageHeaders}
+          />
         </main>
       </div>
     </NavFooterLayout>
