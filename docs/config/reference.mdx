@@ -1,5 +1,5 @@
 ---
-title: Configuration Reference
+title: Reference
 description: Reference of all Ghostty configuration options.
 ---
 
@@ -117,10 +117,12 @@ instead if the requested style is not available. If the font has the
 requested style, then the font will be used as-is since the style is
 not synthetic.
 
-Warning! An easy mistake is to disable `bold` or `italic` but not
-`bold-italic`. Disabling only `bold` or `italic` will NOT disable either
-in the `bold-italic` style. If you want to disable `bold-italic`, you must
-explicitly disable it. You cannot partially disable `bold-italic`.
+<Warning>
+ An easy mistake is to disable `bold` or `italic` but not
+alic`. Disabling only `bold` or `italic` will NOT disable either
+bold-italic` style. If you want to disable `bold-italic`, you must
+ly disable it. You cannot partially disable `bold-italic`.
+</Warning>
 
 By default, synthetic styles are enabled.
 
@@ -825,9 +827,11 @@ user presses `ctrl+a` followed separately by `n`. In other software, this
 is sometimes called a leader key, a key chord, a key table, etc. There
 is no hardcoded limit on the number of parts in a sequence.
 
-Warning: if you define a sequence as a CLI argument to `ghostty`,
-you probably have to quote the keybind since `>` is a special character
-in most shells. Example: ghostty --keybind='ctrl+a>n=new_window'
+<Warning>
+ If you define a sequence as a CLI argument to `ghostty`,
+ably have to quote the keybind since `>` is a special character
+shells. Example: ghostty --keybind='ctrl+a>n=new_window'
+</Warning>
 
 A trigger sequence has some special handling:
 
@@ -1045,7 +1049,7 @@ Valid values:
   * `false` - windows won't have native decorations, i.e. titlebar and
      borders. On macOS this also disables tabs and tab overview.
 
-The "toggle_window_decoration" keybind action can be used to create
+The "toggle_window_decorations" keybind action can be used to create
 a keybinding to toggle this setting at runtime.
 
 Changing this configuration in your configuration and reloading will
@@ -1533,9 +1537,11 @@ need KAM, you don't need it.
 Custom shaders to run after the default shaders. This is a file path
 to a GLSL-syntax shader for all platforms.
 
-WARNING: Invalid shaders can cause Ghostty to become unusable such as by
-causing the window to be completely black. If this happens, you can
-unset this configuration to disable the shader.
+<Warning>
+ Invalid shaders can cause Ghostty to become unusable such as by
+the window to be completely black. If this happens, you can
+is configuration to disable the shader.
+</Warning>
 
 On Linux, this requires OpenGL 4.2. Ghostty typically only requires
 OpenGL 3.3, but custom shaders push that requirement up to 4.2.
@@ -1796,8 +1802,10 @@ fail.
 If this is true, then any cgroup initialization failure will cause
 Ghostty to exit or new surfaces to not be created.
 
-Note: this currently only affects cgroup initialization. Subprocesses
-must always be able to move themselves into an isolated cgroup.
+<Note>
+ This currently only affects cgroup initialization. Subprocesses
+always be able to move themselves into an isolated cgroup.
+</Note>
 
 ## `gtk-single-instance`
 
@@ -1926,3 +1934,4 @@ Valid values are:
 The default value is `check`.
 
 Changing this value at runtime works after a small delay.
+
