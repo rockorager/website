@@ -74,7 +74,6 @@ export default function DocsPage({
   breadcrumbs,
 }: DocsPageProps) {
   const [inViewHeaderIDs, setInViewHeaderIDs] = useState<string[]>([]);
-
   return (
     <NavFooterLayout
       meta={{

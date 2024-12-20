@@ -80,7 +80,9 @@ async function loadDocsPageFromRelativeFilePath(
                 if (node.type === "heading") {
                   let headingNode = node as HeadingNode;
                   if (headingNode.children.length > 0) {
-                    const text = headingNode.children[0].value;
+                    const text = headingNode.children
+                      .map((v) => v.value)
+                      .join("");
                     pageHeaders.push({
                       depth: headingNode.depth,
                       id: `#${slugify(text.toLowerCase())}`,
