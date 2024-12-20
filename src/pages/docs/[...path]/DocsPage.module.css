@@ -120,7 +120,6 @@
       width: var(--sidecar-width);
       margin-top: 84px;
       height: 500px;
-      background: var(--gray-2);
 
       @media(max-width: 1276px) {
         display: none;

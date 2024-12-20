@@ -13,6 +13,7 @@ import { navTreeToBreadcrumbs } from "@/lib/nav-tree-to-breadcrumbs";
 import s from "./DocsPage.module.css";
 import ScrollToTopButton from "@/components/scroll-to-top";
 import { Pencil } from "lucide-react";
+import Sidecar from "@/components/sidecar";
 
 // This is the location that we expect our docs mdx files to be located,
 // relative to the root of the Next.js project.
@@ -116,9 +117,25 @@ export default function DocsPage({
             </div>
           </div>
 
-          <div className={s.sidecar}>
-            <P>Sidecar</P>
-          </div>
+          <Sidecar
+            className={s.sidecar}
+            title="On this page"
+            items={[
+              {
+                id: "zero-configuration-philosophy",
+                title: "Zero Configuration Philosophy",
+              },
+              {
+                id: "configuration-format",
+                title: "Configuration Format",
+                active: true,
+              },
+              {
+                id: "file-location",
+                title: "File Location",
+              },
+            ]}
+          />
         </main>
       </div>
     </NavFooterLayout>
