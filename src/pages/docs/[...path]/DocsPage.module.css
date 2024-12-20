@@ -81,7 +81,8 @@
   }
 
   & .contentWrapper {
-    margin: 24px auto 88px auto;
+    --content-wrapper-padding-top: 24px;
+    margin: var(--content-wrapper-padding-top) auto 88px auto;
     display: flex;
     flex-grow: 1;
     max-width: min(calc(var(--docs-content-max-width) + var(--sidecar-width) + (2 * var(--sidecar-margin))),
@@ -118,8 +119,12 @@
       margin-left: var(--sidecar-margin);
       margin-right: var(--sidecar-margin);
       width: var(--sidecar-width);
-      margin-top: 84px;
-      height: 650px;
+      --sidecar-margin-top: 84px;
+      margin-top: var(--sidecar-margin-top);
+      height: min(
+        600px,
+        100vh - var(--header-height) - var(--sidecar-margin-top) - var(--content-wrapper-padding-top) - var(--sidecar-margin)
+      );
       overflow: scroll;
 
       @media(max-width: 1276px) {
