@@ -12,6 +12,7 @@ import { loadDocsNavTreeData } from "@/lib/fetch-nav";
 import { navTreeToBreadcrumbs } from "@/lib/nav-tree-to-breadcrumbs";
 import s from "./DocsPage.module.css";
 import ScrollToTopButton from "@/components/scroll-to-top";
+import { Pencil } from "lucide-react";
 
 // This is the location that we expect our docs mdx files to be located,
 // relative to the root of the Next.js project.
@@ -108,8 +109,8 @@ export default function DocsPage({
           <CustomMDX content={content} />
           <br />
           <div>
-            <a href={`${GITHUB_REPO_URL}/edit/main/${relativeFilePath}`}>
-              Edit on GitHub
+            <a className={s.editOnGithub} href={`${GITHUB_REPO_URL}/edit/main/${relativeFilePath}`}>
+              Edit on GitHub <Pencil size={16} />
             </a>
           </div>
         </main>
