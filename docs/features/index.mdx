@@ -34,10 +34,6 @@ features that Ghostty supports:
   each with its own tabs and splits. These are all rendered using
   native UI components.
 
-- **Secure Input**: Secure Input is the macOS system API 
-that prevents accessibility APIs from reading your keystrokes, 
-so things like screen recording software and so on can't read your passwords.
-
 - **GPU-accelerated rendering**: Ghostty uses Metal on macOS and
   OpenGL on Linux to render the terminal screen.
 
@@ -58,7 +54,31 @@ so things like screen recording software and so on can't read your passwords.
 - **Kitty graphics protocol**: Ghostty supports the Kitty graphics
   protocol, which allows terminal applications to render images
   directly in the terminal.
-  
+
+### Platform-Native Features
+
+One of the primary [design goals](/docs/about) of Ghostty is to
+be look, feel, and behave like a purpose-built native application
+on each platform.
+Here is a list of some of the platform-native features that Ghostty has.
+
+### macOS
+
+- **Quick Terminal**: Lightweight terminal that animates down below the
+  menu bar for instant access without interrupting work.
+- **Native Tabs, Splits, etc.**: We use native macOS components for
+  UI elements such as tabs and splits as opposed to custom-drawn
+  text such as other terminal emulators.
+- **Proxy Icon**: Drag the proxy icon in the title bar to move or
+  access terminal session files, or navigate to the file path directly.
+- **Quick Look**: Tap text with three fingers or force touch to use macOS
+  Quick Look for definitions, web searches, and more.
+- **Secure Keyboard Entry**: Automatically detect password prompts
+  or manually enable secure keyboard entry to protect passwords from
+  other processes. You can know when secure keyboard entry is active
+  because an animated lock icon appears in the top-right corner of the
+  terminal.
+
 ## Terminal (VT) Features
 
 For terminal application developers, we believe Ghostty is one of
@@ -89,18 +109,7 @@ For a list of terminal developer features Ghostty supports, see the
 [reference](/docs/vt/reference)
 (but note at the time of writing this is still a work-in-progress).
 
-## Platform-Native Features
-
-We believe that Ghostty should be a native application on each platform. Here are some key features for their respective platform.
-
-### macOS
-- **Proxy Icons**: Drag the proxy icon in the title bar to move or access terminal session files, or navigate to the file path directly.  
-- **Look Up**: Tap text with three fingers to use macOS Look Up for definitions, web searches, and more.  
-- **Secure Keyboard Entry**: Enable secure keyboard entry to protect passwords from being captured by other processes.  
-- **Native Tabs**: Organize multiple sessions in one window with macOS’s native tab interface.  
-- **Quick Terminal**: Lightweight terminal below the menu bar for instant access without interrupting work.  
-
-[^1]: If not, we want to know! Please 
+[^1]: If not, we want to know! Please
 [open a discussion](https://github.com/ghostty-org/ghostty/discussions).
 [^2]: We may put some xterm behaviors behind a configuration flag if
 the behavior is questionable or not widely accepted.

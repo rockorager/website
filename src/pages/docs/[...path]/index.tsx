@@ -111,7 +111,7 @@ export default function DocsPage({
             <br />
             <div>
               <a href={`${GITHUB_REPO_URL}/edit/main/${relativeFilePath}`}>
-                Edit on GitHub <Pencil size={11} />
+                Edit on GitHub <Pencil size={14} />
               </a>
             </div>
           </div>
