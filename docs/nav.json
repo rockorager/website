@@ -29,6 +29,11 @@
               "type": "link",
               "path": "/",
               "title": "Overview"
+            },
+            {
+              "type": "link",
+              "path": "/reference",
+              "title": "Reference"
             }
           ]
         }
