@@ -83,6 +83,7 @@
   & .contentWrapper {
     margin: 24px auto 88px auto;
     display: flex;
+    flex-grow: 1;
     max-width: min(calc(var(--docs-content-max-width) + var(--sidecar-width) + (2 * var(--sidecar-margin))),
         calc(100vw - var(--sidebar-width)));
 
