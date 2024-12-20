@@ -1,7 +1,12 @@
 .codeBlock {
-  padding: 16px;
   border-radius: 5px;
   font-size: 16px;
   margin: 16px 0;
+  overflow: hidden;
   border: 1px solid var(--gray-3);
+}
+
+.codeBlock code {
+  padding: 16px;
+  font-family: inherit;
 }

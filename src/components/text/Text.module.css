@@ -77,8 +77,9 @@
     }
   }
   & > code {
-    background: var(--gray-2);
+    font-family: var(--jetbrains-mono);
     border: 1px solid var(--gray-3);
+    background: var(--gray-2);
     border-radius: 4px;
     padding: 1px 6px;
     margin: -1px 0;
