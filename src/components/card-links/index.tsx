@@ -17,7 +17,7 @@ export default function CardLinks({ cards }: CardLinkProps) {
     <ul className={s.cardLinks}>
       {cards.map((cardLink) => {
         return (
-          <li>
+          <li key={cardLink.title + cardLink.href}>
             <Link href={cardLink.href} className={s.link}>
               <H4 className={s.title}>{cardLink.title}</H4>
               <P>{cardLink.description}</P>

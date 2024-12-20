@@ -30,7 +30,7 @@ export default function ButtonLinks({
     >
       {links.map(({ href, text, theme = "brand" }) => {
         return (
-          <li>
+          <li key={text + href}>
             <ButtonLink href={href} text={text} theme={theme} size="large" />
           </li>
         );
