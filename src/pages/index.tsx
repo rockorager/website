@@ -1,4 +1,6 @@
-import AnimatedTerminal, { AnimatedTerminalProps } from "@/components/animated-terminal";
+import AnimatedTerminal from "@/components/animated-terminal";
+import GridContainer from "@/components/grid-container";
+import { ButtonLink } from "@/components/link";
 import RootLayout from "@/layouts/root-layout";
 import {
   loadAllTerminalFiles,
@@ -6,29 +8,17 @@ import {
 } from "@/lib/fetch-terminal-content";
 import { useLayoutEffect, useState } from "react";
 import s from "./Home.module.css";
-import Button from "@/components/button";
-import { ButtonLink } from "@/components/link";
-import SectionWrapper from "@/components/section-wrapper";
-import GridContainer from "@/components/grid-container";
 
-export async function getServerSideProps(context: any): Promise<{ props: HomePageProps }> {
-  const userAgent = context.req.headers['user-agent'];
-
-  // TODO(pluiedev): This is a really rudimentary test, but it works for now
-  // Note that Android is also technically Linux :)
-  const isLinux = /Linux/i.test(userAgent);
-
+export async function getStaticProps() {
   return {
     props: {
       terminalData: await loadAllTerminalFiles("/home"),
-      platformStyle: isLinux ? 'adwaita' : 'macos'
     },
   };
 }
 
 interface HomePageProps {
   terminalData: TerminalsMap;
-  platformStyle: AnimatedTerminalProps['platformStyle']
 }
 
 function useWindowWidth() {
@@ -44,7 +34,7 @@ function useWindowWidth() {
   return width;
 }
 
-export default function Home({ terminalData, platformStyle }: HomePageProps) {
+export default function Home({ terminalData }: HomePageProps) {
   const animationFrames = Object.keys(terminalData)
     .filter((k) => {
       return k.startsWith("home/animation_frames");
@@ -79,7 +69,6 @@ export default function Home({ terminalData, platformStyle }: HomePageProps) {
             rows={41}
             frames={animationFrames}
             frameLengthMs={31}
-            platformStyle={platformStyle}
           />
         </section>
         <GridContainer className={s.buttonsList}>
