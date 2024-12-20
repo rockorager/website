@@ -4,10 +4,10 @@ import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
 import { type Node } from "unist";
 import { visit } from "unist-util-visit";
-
 import remarkGfm from "remark-gfm";
 import slugify from "slugify";
 import rehypeHighlight, {type Options as RehypeHighlightOptions} from 'rehype-highlight'
+import remarkCallout, {type Options as RemarkCalloutOptions} from "@r4ai/remark-callout";
 const nodePath = require("path");
 
 const MDX_EXTENSION = ".mdx";
@@ -61,45 +61,57 @@ async function loadDocsPageFromRelativeFilePath(
 
   var pageHeaders: PageHeader[] = [];
 
-  const content: MDXRemoteSerializeResult = await serialize(
-    mdxFileContent.content,
-    {
-      mdxOptions: {
-        remarkPlugins: [
-          remarkGfm,
-          // Parse out the Anchor links and place them in the array defined above
-          () => {
-            type HeadingNode = {
-              type: "heading";
-              depth: number;
-              children: {
-                type: string;
-                value: string;
-              }[];
-            };
-            return function (node: Node) {
-              visit(node, "heading", (node: Node) => {
-                if (node.type === "heading") {
-                  let headingNode = node as HeadingNode;
-                  if (headingNode.children.length > 0) {
-                    const text = headingNode.children
-                      .map((v) => v.value)
-                      .join("");
-                    pageHeaders.push({
-                      depth: headingNode.depth,
-                      id: `#${slugify(text.toLowerCase())}`,
-                      title: text,
-                    });
-                  }
-                }
-              });
-            };
-          },
+  const content: MDXRemoteSerializeResult = await serialize(mdxFileContent.content, {
+    mdxOptions: {
+      remarkPlugins: [
+        remarkGfm,
+        [
+          remarkCallout,
+          {
+            root: (callout) => ({
+              tagName: 'callout',
+              properties: {
+                type: callout.type.toLowerCase(),
+                isFoldable: String(callout.isFoldable),
+              },
+            }),
+            // We won't use title, just type.
+            title: () => ({
+              tagName: 'callout-title',
+              properties: {},
+            }),
+          } satisfies RemarkCalloutOptions,
         ],
-        rehypePlugins: [[rehypeHighlight, {detect: true} satisfies RehypeHighlightOptions]]
-      },
-    }
-  );
+        // Parse out the Anchor links and place them in the array defined above
+        () => {
+          type HeadingNode = {
+            type: 'heading'
+            depth: number
+            children: {
+              type: string
+              value: string
+            }[]
+          }
+          return function (node: Node) {
+            visit(node, 'heading', (node: Node) => {
+              if (node.type === 'heading') {
+                let headingNode = node as HeadingNode
+                if (headingNode.children.length > 0) {
+                  const text = headingNode.children.map((v) => v.value).join('')
+                  pageHeaders.push({
+                    depth: headingNode.depth,
+                    id: `#${slugify(text.toLowerCase())}`,
+                    title: text,
+                  })
+                }
+              }
+            })
+          }
+        },
+      ],
+      rehypePlugins: [[rehypeHighlight, {detect: true} satisfies RehypeHighlightOptions]],
+    },
+  })
 
   return {
     slug,
