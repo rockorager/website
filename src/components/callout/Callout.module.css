@@ -1,18 +1,18 @@
 .callout {
   &.note {
-    --callout-color: #586EEC;
+    --callout-color: #61aeee;
   }
   &.tip {
-    --callout-color: #50BE47;
+    --callout-color: #98c379;
   }
   &.important{
-    --callout-color: #A760CE;
+    --callout-color: #c678dd;
   }
   &.warning{
-    --callout-color: #f3aa35;
+    --callout-color: #e6c07b;
   }
   &.caution{
-    --callout-color: #f33535;
+    --callout-color: #e06c75;
   }
   border-left: 3px solid var(--callout-color);
 
