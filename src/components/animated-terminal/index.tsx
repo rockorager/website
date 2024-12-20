@@ -17,6 +17,7 @@ export default function AnimatedTerminal({
   frames,
   whitespacePadding,
   frameLengthMs,
+  platformStyle,
 }: AnimatedTerminalProps) {
   const [currentFrame, setCurrentFrame] = useState(0);
   useEffect(() => {
@@ -46,6 +47,7 @@ export default function AnimatedTerminal({
       fontSize={fontSize}
       lines={frames[currentFrame]}
       disableScrolling={true}
+      platformStyle={platformStyle}
     />
   );
 }

@@ -3,6 +3,13 @@ import React, { UIEvent, useEffect, useRef, useState } from "react";
 import { Code, P } from "../text";
 import s from "./Terminal.module.css";
 
+import {
+  X,
+  Menu,
+  Grip,
+  FolderPlus
+} from "lucide-react";
+
 export interface TerminalProps {
   className?: string;
   columns: number;
@@ -12,6 +19,7 @@ export interface TerminalProps {
   lines?: string[];
   whitespacePadding?: number;
   disableScrolling?: boolean;
+  platformStyle?: "macos" | "adwaita";
 }
 
 export default function Terminal({
@@ -19,6 +27,7 @@ export default function Terminal({
   rows,
   fontSize = "medium",
   className,
+  platformStyle,
   title,
   lines,
   whitespacePadding = 0,
@@ -58,6 +67,9 @@ export default function Terminal({
         [s.fontSmall]: fontSize === "small",
         [s.fontMedium]: fontSize === "medium",
         [s.fontLarge]: fontSize === "large",
+      }, {
+        [s.adwaita]: platformStyle === "adwaita",
+        [s.macos]: platformStyle === "macos",
       })}
       style={
         {
@@ -67,11 +79,8 @@ export default function Terminal({
       }
     >
       <div className={s.header}>
-        <ul className={s.windowControls}>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+        { platformStyle === "adwaita" && <AdwaitaButtons /> }
+        { platformStyle === "macos" && <MacosButtons /> }
         <P className={s.title}>{title}</P>
       </div>
       <Code
@@ -94,4 +103,32 @@ export default function Terminal({
       </Code>
     </div>
   );
+}
+
+function AdwaitaButtons() {
+  // NOTE:
+  // It is entirely intentional that the maximize/minimize buttons are missing.
+  // Blame GNOME.
+
+  return <ul className={s.windowControls}>
+    <li className={s.circularButton}>
+      <X className={s.icon}/>
+    </li>
+    <li>
+      <Menu className={s.icon}/>
+    </li>
+    <li>
+      <Grip className={s.icon}/>
+    </li>
+    <li>
+      <FolderPlus className={s.icon}/>
+    </li>
+  </ul>
+}
+function MacosButtons() {
+  return <ul className={s.windowControls}>
+    <li className={s.circularButton} />
+    <li className={s.circularButton} />
+    <li className={s.circularButton} />
+  </ul>
 }
