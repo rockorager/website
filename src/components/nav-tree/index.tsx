@@ -39,7 +39,16 @@ export default function NavTree({ className, rootPath, nodes }: NavTreeProps) {
   );
 }
 
-// ===================
+function navTreeNodeKey(node: NavTreeNode, index: number): string {
+  switch (node.type) {
+    case "folder":
+      return `folder:${index}${node.path}${node.open}`;
+    case "link":
+      return `link:${index}${node.path}${node.active}`;
+    case "break":
+      return `break:${index}`;
+  }
+}
 
 interface NavTreeNodesListProps {
   path: string;
@@ -51,7 +60,7 @@ function NavTreeNodesList({ path, nodes }: NavTreeNodesListProps) {
     <ul className={s.nodesList}>
       {nodes.map((node, i) => {
         return (
-          <li key={`${path} (${i})`}>
+          <li key={navTreeNodeKey(node, i)}>
             <Node path={path} node={node} />
           </li>
         );
