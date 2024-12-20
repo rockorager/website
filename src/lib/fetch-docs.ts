@@ -13,7 +13,7 @@ const MDX_EXTENSION = ".mdx";
 
 export type PageHeader = {
   id: string;
-  text: string;
+  title: string;
   depth: number;
 };
 
@@ -84,7 +84,7 @@ async function loadDocsPageFromRelativeFilePath(
                     pageHeaders.push({
                       depth: headingNode.depth,
                       id: `#${slugify(text.toLowerCase())}`,
-                      text,
+                      title: text,
                     });
                   }
                 }

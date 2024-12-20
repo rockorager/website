@@ -119,7 +119,8 @@
       margin-right: var(--sidecar-margin);
       width: var(--sidecar-width);
       margin-top: 84px;
-      height: 500px;
+      height: 650px;
+      overflow: scroll;
 
       @media(max-width: 1276px) {
         display: none;

@@ -5,6 +5,7 @@ import s from "./Sidecar.module.css";
 interface SidecarItem {
   id: string;
   title: string;
+  depth: number;
   active?: boolean;
 }
 
@@ -27,7 +28,7 @@ export default function Sidecar({ className, title, items }: SidecarProps) {
               See: https://github.com/vercel/next.js/issues/51346
               Also, we're remaining on the same page always here,
               so no client-side routing handing is needed. */}
-              <a href={`#${id}`}>
+              <a href={id}>
                 <P weight={active ? "medium" : "regular"}>{title}</P>
               </a>
             </li>

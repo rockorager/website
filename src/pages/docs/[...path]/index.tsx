@@ -46,8 +46,6 @@ export async function getStaticProps({ params: { path } }: StaticPropsParams) {
   const activePageSlug = path.join("/");
   const navTreeData = await loadDocsNavTreeData(DOCS_DIRECTORY, activePageSlug);
   const docsPageData = await loadDocsPage(DOCS_DIRECTORY, activePageSlug);
-  console.log("PAGE HEADERS from static props:", docsPageData.pageHeaders);
-
   const breadcrumbs = navTreeToBreadcrumbs(
     "Ghostty Docs",
     DOCS_PAGES_ROOT_PATH,
@@ -71,7 +69,7 @@ interface DocsPageProps {
 
 export default function DocsPage({
   navTreeData,
-  docsPageData: { title, description, content, relativeFilePath },
+  docsPageData: { title, description, content, relativeFilePath, pageHeaders },
   breadcrumbs,
 }: DocsPageProps) {
   return (
@@ -122,21 +120,7 @@ export default function DocsPage({
           <Sidecar
             className={s.sidecar}
             title="On this page"
-            items={[
-              {
-                id: "zero-configuration-philosophy",
-                title: "Zero Configuration Philosophy",
-              },
-              {
-                id: "configuration-format",
-                title: "Configuration Format",
-                active: true,
-              },
-              {
-                id: "file-location",
-                title: "File Location",
-              },
-            ]}
+            items={pageHeaders}
           />
         </main>
       </div>
