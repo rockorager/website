@@ -6,16 +6,6 @@ description: |-
 
 To build Ghostty, you need [Zig 0.13](https://ziglang.org/) installed.
 
-On Linux, you may need to install additional dependencies. See
-[Linux Installation Tips](#linux-installation-tips). On macOS, you
-need Xcode installed with both the macOS and iOS SDKs enabled. See
-[Mac `.app`](#mac-.app).
-
-The official build environment is defined by Nix. You do not need
-to use Nix to build Ghostty, but the Nix environment is the environment
-which runs CI tests and builds release artifacts so it is the most
-reliable way to build Ghostty.
-
 <Important>
 **Zig 0.13 is required.** Ghostty only guarantees that it can build
 against 0.13. Zig is still a fast-moving project so it is likely newer
@@ -23,6 +13,17 @@ versions will not be able to build Ghostty yet. You can find binary
 releases of Zig release builds on the
 [Zig downloads page](https://ziglang.org/download/).
 </Important>
+
+The official build environment is defined by [Nix](https://nixos.org/).
+You do not need to use Nix to build Ghostty, but the Nix environment is the
+environment which runs CI tests and builds release artifacts, so it is the most
+reliable way to build Ghostty. See the [Building with Nix](#building-with-nix)
+section to see how to set up the Nix environment.
+
+On Linux, you may need to install additional dependencies. See
+[Linux Installation Tips](#linux-installation-tips). On macOS, you
+need Xcode installed with both the macOS and iOS SDKs enabled. See
+[Mac `.app`](#mac-.app).
 
 With Zig and necessary dependencies installed, a binary can be built using
 `zig build`:
@@ -115,6 +116,33 @@ ensure that `~/.local/bin` is on your _system_ `PATH`. The desktop environment
 itself must have that path in the `PATH`. Google for your specific desktop
 environment and distribution to learn how to do that.
 
+#### Building with Nix
+
+The Nix build environment can be accessed like any other
+[Nix dev shell](https://nix.dev/tutorials/first-steps/declarative-shell.html),
+via the `nix develop` command (or `nix-shell` if you don't have the
+[`nix-command` experimental feature](https://nix.dev/manual/nix/2.24/development/experimental-features#xp-feature-nix-command)
+enabled).
+
+If you use [`nix-direnv`](https://github.com/nix-community/nix-direnv),
+Ghostty provides an `.envrc` file you can source by running `direnv allow`.
+This will allow you to seemlessly enter and exit the Ghostty development
+environment as you enter and exit the Ghostty repository. Direnv is not
+required.
+
+After setting up the Nix environment, you can run the same `zig build`
+as on other distributions or you can also build the package with Nix
+by running:
+
+```shell-session
+nix build .#ghostty
+```
+
+The binary would then be located under `./result/bin/ghostty`.
+
+Building with Nix should yield the same result as building it with Zig,
+but with higher reproducibility guarantees that ensure every part of
+Ghostty can be built reliably.
 ### Mac `.app`
 
 To build the macOS application, you must build on a macOS machine with
