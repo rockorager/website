@@ -118,6 +118,7 @@ export default function DocsPage({
           </div>
 
           <Sidecar
+            activeItemID={pageHeaders[0].id}
             className={s.sidecar}
             title="On this page"
             items={pageHeaders}

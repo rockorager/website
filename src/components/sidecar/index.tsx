@@ -6,21 +6,27 @@ interface SidecarItem {
   id: string;
   title: string;
   depth: number;
-  active?: boolean;
 }
 
 interface SidecarProps {
   className?: string;
   title: string;
   items: SidecarItem[];
+  activeItemID: string;
 }
 
-export default function Sidecar({ className, title, items }: SidecarProps) {
+export default function Sidecar({
+  className,
+  title,
+  items,
+  activeItemID,
+}: SidecarProps) {
   return (
     <div className={classNames(s.sidecar, className)}>
       <H6 className={s.title}>{title}</H6>
       <ul>
-        {items.map(({ id, title, active = false }) => {
+        {items.map(({ id, title }) => {
+          const active = activeItemID === id;
           return (
             <li className={classNames({ [s.active]: active })}>
               {/* Intentionally using an a tag and not next/link:

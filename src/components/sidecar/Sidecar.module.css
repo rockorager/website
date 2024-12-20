@@ -10,6 +10,9 @@
     list-style: none;
     & li {
       --item-color: var(--gray-4);
+      &:hover {
+        --item-color: var(--gray-6);
+      }
       &.active {
         --item-color: var(--gray-8);
       }
