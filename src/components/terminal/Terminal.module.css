@@ -1,12 +1,16 @@
 .terminal {
   --code-margin-top: 12px;
-  --control-size: 12px;
   --padding: 7px;
 
   /* Mac's traffic light button colors */
   --color-sunset-orange: #ff605c;
   --color-pastel-orange: #ffbd44;
   --color-malachite: #00ca4e;
+
+  /* Adwaita colors (see https://gnome.pages.gitlab.gnome.org/libadwaita/doc/1.2/named-colors.html) */
+  --adw-headerbar-color: #303030;
+  --adw-headerbar-backdrop-color: #242424;
+  --adw-headerbar-shade-color: rgba(0, 0, 0, 0.36);
 
   &.fontXTiny {
     --title-font-size: 12px;
@@ -44,44 +48,61 @@
   background: var(--gray-0);
   border: 1px solid var(--gray-3);
   border-radius: 10px;
-  padding: var(--padding);
 
   display: flex;
   flex-direction: column;
 
   & .header {
-    display: flex;
+    display: grid;
     align-items: center;
-    flex-direction: row;
     position: relative;
+    border-radius: 10px 10px 0px 0px;
+    padding: var(--padding);
+
+    grid-template: "controls title .";
+    grid-template-columns: 1fr 1fr 1fr;
+
+    transition: 0.1s background;
 
     & .windowControls {
       list-style: none;
       display: flex;
-      gap: 8px;
+      grid-area: controls;
 
       & li {
         width: var(--control-size);
         height: var(--control-size);
-        border-radius: var(--control-size);
-        background: var(--gray-3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.1s background;
+
+        &.circularButton {
+          background: var(--gray-3);
+          border-radius: var(--control-size);
+        }
+
+        & .icon {
+          transform: scale(75%);
+        }
       }
     }
     & .title {
-      position: absolute;
-      left: 50%; transform: translateX(-50%);
+      text-align: center;
       font-size: var(--title-font-size);
-      top: 1px;
+      grid-area: title;
     }
   }
 
   & .content {
     font-size: var(--content-font-size);
-    margin-top: var(--code-margin-top);
+    padding-top: var(--code-margin-top);
     color: var(--gray-6);
     word-wrap: break-word;
     scroll-behavior: smooth;
     overflow-y: scroll;
+    padding: var(--padding);
+
     &.disableScrolling {
       overflow-y: hidden;
     }
@@ -93,19 +114,56 @@
     }
   }
 
-  &:hover {
+  &.adwaita {
+    --control-size: 18px;
+    box-shadow: 0px 2px 1px var(--adw-headerbar-shade-color);
+
     & .header {
+      background: var(--adw-headerbar-backdrop-color);
+      /* Adwaita buttons are to the right by default (yes, you can get left buttons w/ GNOME Tweaks) */
+      grid-template-areas: ". title controls";
+      border-bottom: 2px var(--adw-headerbar-shade-color);
+
       & .windowControls {
-        & li:first-child {
-          background: var(--color-sunset-orange);
-        }
-        & li:nth-child(2) {
-          background: var(--color-pastel-orange);
-        }
-        & li:last-child {
-          background: var(--color-malachite);
-        }
+        gap: 12px;
+      }
+
+      & .windowControls {
+        /* Arrange buttons from right to left */
+        flex-direction: row-reverse;
+      }
+      & .title {
+        color: white;
+        font-weight: 800;
+      }
+      & .icon {
+        color: white;
+      }
+    }
+
+    &:hover .header {
+      background: var(--adw-headerbar-color);
+    }
+  }
+
+  &.macos {
+    --control-size: 12px;
+
+    & .windowControls {
+      gap: 8px;
+    }
+
+    &:hover .windowControls {
+      & li:first-child {
+        background: var(--color-sunset-orange);
+      }
+      & li:nth-child(2) {
+        background: var(--color-pastel-orange);
+      }
+      & li:last-child {
+        background: var(--color-malachite);
       }
     }
   }
+
 }
