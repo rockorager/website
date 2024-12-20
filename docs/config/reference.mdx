@@ -119,9 +119,9 @@ not synthetic.
 
 <Warning>
  An easy mistake is to disable `bold` or `italic` but not
-alic`. Disabling only `bold` or `italic` will NOT disable either
-bold-italic` style. If you want to disable `bold-italic`, you must
-ly disable it. You cannot partially disable `bold-italic`.
+`bold-italic`. Disabling only `bold` or `italic` will NOT disable either
+in the `bold-italic` style. If you want to disable `bold-italic`, you must
+explicitly disable it. You cannot partially disable `bold-italic`.
 </Warning>
 
 By default, synthetic styles are enabled.
@@ -816,9 +816,11 @@ Valid modifiers are `shift`, `ctrl` (alias: `control`), `alt` (alias: `opt`,
 or the alias. When debugging keybinds, the non-aliased modifier will always
 be used in output.
 
-Note that the fn or "globe" key on keyboards are not supported as a
+<Note>
+ The fn or "globe" key on keyboards are not supported as a
 modifier. This is a limitation of the operating systems and GUI toolkits
 that Ghostty uses.
+</Note>
 
 You may also specify multiple triggers separated by `>` to require a
 sequence of triggers to activate the action. For example,
@@ -829,8 +831,8 @@ is no hardcoded limit on the number of parts in a sequence.
 
 <Warning>
  If you define a sequence as a CLI argument to `ghostty`,
-ably have to quote the keybind since `>` is a special character
-shells. Example: ghostty --keybind='ctrl+a>n=new_window'
+you probably have to quote the keybind since `>` is a special character
+in most shells. Example: ghostty --keybind='ctrl+a>n=new_window'
 </Warning>
 
 A trigger sequence has some special handling:
@@ -918,7 +920,7 @@ the behavior of the keybind. These are:
     Since they are not associated with a specific terminal surface,
     they're never encoded.
 
-Keybind trigger are not unique per prefix combination. For example,
+Keybind triggers are not unique per prefix combination. For example,
 `ctrl+a` and `global:ctrl+a` are not two separate keybinds. The keybind
 set later will overwrite the keybind set earlier. In this case, the
 `global:` keybind will be used.
@@ -927,12 +929,14 @@ Multiple prefixes can be specified. For example,
 `global:unconsumed:ctrl+a=reload_config` will make the keybind global
 and not consume the input to reload the config.
 
-A note on `global:`: this feature is only supported on macOS. On macOS,
+<Note>
+ `global:` is only supported on macOS. On macOS,
 this feature requires accessibility permissions to be granted to Ghostty.
 When a `global:` keybind is specified and Ghostty is launched or reloaded,
 Ghostty will attempt to request these permissions. If the permissions are
 not granted, the keybind will not work. On macOS, you can find these
 permissions in System Preferences -> Privacy & Security -> Accessibility.
+</Note>
 
 ## `window-padding-x`
 
@@ -1539,8 +1543,8 @@ to a GLSL-syntax shader for all platforms.
 
 <Warning>
  Invalid shaders can cause Ghostty to become unusable such as by
-the window to be completely black. If this happens, you can
-is configuration to disable the shader.
+causing the window to be completely black. If this happens, you can
+unset this configuration to disable the shader.
 </Warning>
 
 On Linux, this requires OpenGL 4.2. Ghostty typically only requires
@@ -1804,7 +1808,7 @@ Ghostty to exit or new surfaces to not be created.
 
 <Note>
  This currently only affects cgroup initialization. Subprocesses
-always be able to move themselves into an isolated cgroup.
+must always be able to move themselves into an isolated cgroup.
 </Note>
 
 ## `gtk-single-instance`

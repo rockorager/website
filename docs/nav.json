@@ -19,6 +19,18 @@
           "type": "link",
           "path": "/reference",
           "title": "Reference"
+        },
+        {
+          "type": "folder",
+          "path": "/keybind",
+          "title": "Keybindings",
+          "children": [
+            {
+              "type": "link",
+              "path": "/",
+              "title": "Overview"
+            }
+          ]
         }
       ]
     },
