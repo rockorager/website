@@ -89,4 +89,13 @@
       margin: 24px auto 54px auto;
     }
   }
+
+  .editOnGithub {
+    display: flex;
+    align-items: center;
+
+    svg {
+      margin-left: 4px;
+    }
+  }
 }
