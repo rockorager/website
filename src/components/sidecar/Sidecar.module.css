@@ -1,5 +1,7 @@
 .sidecar {
   --left-padding: 12px;
+  --base-depth: 2; /* H1's & H2's will have standard padding */
+  --depth-padding: 8px; /* Additional padding for each header number above H2 */
 
   & .title {
     padding-left: var(--left-padding);
@@ -18,7 +20,12 @@
       }
       border-left: 2px solid var(--item-color);
       padding: 2px 0;
-      padding-left: var(--left-padding);
+      padding-left: calc(
+        var(--left-padding) + (
+          (max(var(--depth), var(--base-depth)) - (var(--base-depth) - 1))
+          * var(--depth-padding)
+        )
+      );
       & p {
         color: var(--item-color);
       }
