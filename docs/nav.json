@@ -7,6 +7,18 @@
     },
     {
       "type": "folder",
+      "path": "/install",
+      "title": "Install",
+      "children": [
+        {
+          "type": "link",
+          "path": "/build",
+          "title": "Build from Source"
+        }
+      ]
+    },
+    {
+      "type": "folder",
       "path": "/config",
       "title": "Configuration",
       "children": [

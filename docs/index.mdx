@@ -1,18 +1,21 @@
 ---
 title: Ghostty Docs
-description: Ghostty is a cross-platform, GPU-accelerated terminal emulator that aims to push the boundaries of what is possible with a terminal emulator by exposing modern, opt-in features that enable CLI tool developers to build more feature rich, interactive applications.
+description: |-
+  Ghostty is a fast, feature-rich, and cross-platform terminal emulator
+  that uses platform-native UI and GPU acceleration.
 ---
 
 ## Get Started
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit in sed mauris consequat.
+Install Ghostty and run!
+[Zero configuration required](/docs/config#zero-configuration-philosophy) to get up and running.
 
-### Install Ghostty
+### Installation Instructions
 
-Cras convallis bibendum ligula sit amet mattis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris venenatis, lacus ac vestibulum pulvinar.
+Ready-to-run binaries for macOS. Build from source for Linux.
 
 <ButtonLinks
-  columns={3}
+  columns={2}
   columnsWhenSmall={2}
   links={[
     {
@@ -20,13 +23,8 @@ Cras convallis bibendum ligula sit amet mattis. Interdum et malesuada fames ac a
       href: "/download"
     },
     {
-      text: "Documentation",
-      href: "/docs",
-      theme: "neutral",
-    },
-    {
-      text: "About",
-      href: "/",
+      text: "Build from Source",
+      href: "/docs/install/build",
       theme: "neutral",
     }
   ]}
@@ -34,44 +32,29 @@ Cras convallis bibendum ligula sit amet mattis. Interdum et malesuada fames ac a
 
 <hr/>
 
-## Documentation
-
-Nullam suscipit lectus in ipsum interdum, a feugiat diam hendrerit.
-
-### Featured Documentation
+## Feature Documentation
 
 <CardLinks cards={
   [
     {
-      title: "Configuration",
-      description: "To configure Ghostty, you must use a configuration file. Ghostty also ships with 300+ built-in themes.",
-      href: "/docs/config",
+      title: "Keybindings",
+      description: "Ghostty supports flexible, custom keybindings through the keybind configuration option.",
+      href: "/docs/config/keybind",
+    },
+    {
+      title: "Color Theme",
+      description: "Ghostty ships with hundreds of built-in themes, supports different themes for light and dark mode, and more.",
+      href: "/docs/features/theme",
     },
     {
       title: "Configuration",
-      description: "To configure Ghostty, you must use a configuration file. Ghostty also ships with 300+ built-in themes.",
+      description: "Ghostty supports hundreds of configuration options to make it look and behave exactly how you want.",
       href: "/docs/config",
     },
     {
-      title: "Configuration",
-      description: "To configure Ghostty, you must use a configuration file. Ghostty also ships with 300+ built-in themes.",
-      href: "/docs/config",
-    },
-
-    {
-      title: "Configuration",
-      description: "To configure Ghostty, you must use a configuration file. Ghostty also ships with 300+ built-in themes.",
-      href: "/docs/config",
+      title: "Terminal API (VT)",
+      description: "For terminal application developers, a reference on terminal concepts and supported control sequences.",
+      href: "/docs/vt",
     },
   ]}
 />
-
-<hr/>
-
-## Efficitur Faucibus
-
-rutrum nulla sit amet iaculis. Donec suscipit vel justo sit amet dignissim nulla facilisi. Quisque ut nibh felis donec interdum accumsan dignissim. Suspendisse condimentum gravida elit, sit amet viverra ante venenatis vel.
-
-### Vestibulum Suscipit
-
-Phasellus non arcu malesuada est accumsan pretium quis et erat. Nulla suscipit feugiat dolor a pretium. Aliquam lobortis porttitor porttitor. Praesent viverra dolor sit amet efficitur faucibus.
