@@ -27,10 +27,12 @@ be surprised!
 
 Ghostty is configured using a text-based configuration file.
 
-(Note: In the future, we plan to also support native GUIs for
-configuration in line with our native UI philosophy. This will
-be in addition to the text-based configuration. Presently, the
-text-based configuration is the only way to configure Ghostty.)
+<Note>
+  In the future, we plan to also support native GUIs for
+  configuration in line with our native UI philosophy. This will
+  be in addition to the text-based configuration. Presently, the
+  text-based configuration is the only way to configure Ghostty.
+</Note>
 
 ### File Location
 
@@ -110,3 +112,13 @@ config-file = some/relative/sub/config
 config-file = ?optional/config
 config-file = /absolute/path/config
 ```
+
+### Reloading the Configuration
+
+The configuration can be reloaded at runtime by pressing `ctrl+shift+,` (Linux)
+or `cmd+shift+,` (macOS). These are the default keybindings, but it is
+possible to define your own via the `reload_config` action.
+<Note>
+  Some configuration options cannot be reloaded at runtime;
+  others may only apply to newly created terminals.
+</Note>
