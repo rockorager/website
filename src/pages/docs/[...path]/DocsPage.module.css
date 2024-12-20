@@ -85,6 +85,7 @@
       calc(var(--docs-content-max-width) + var(--sidecar-width) + (2 * var(--sidecar-margin))),
       calc(100vw - var(--sidebar-width))
     );
+    flex-grow: 1;
     @media (max-width: 784px) {
       /* This is when the sidebar goes away */
       max-width: 100%;
