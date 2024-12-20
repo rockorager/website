@@ -41,6 +41,12 @@ body {
     rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(55, 55, 55, 0.15) 0px 1px 2px 0px;
+
+  --callout-note: #61aeee;
+  --callout-tip: #98c379;
+  --callout-important: #c678dd;
+  --callout-warning: #e6c07b;
+  --callout-caution: #e06c75;
 }
 
 /* This a slightly modified atom-one-dark theme */
