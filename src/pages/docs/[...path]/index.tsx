@@ -93,25 +93,31 @@ export default function DocsPage({
             />
           </div>
         </div>
+
         <main className={s.contentWrapper}>
           <ScrollToTopButton />
-          <div className={s.breadcrumbsBar}>
-            <Breadcrumbs breadcrumbs={breadcrumbs} />
+
+          <div className={s.docsContentWrapper}>
+            <div className={s.breadcrumbsBar}>
+              <Breadcrumbs breadcrumbs={breadcrumbs} />
+            </div>
+            <div className={s.heading}>
+              <H1>{title}</H1>
+              <P className={s.description} weight="regular">
+                {description}
+              </P>
+            </div>
+            <CustomMDX content={content} />
+            <br />
+            <div>
+              <a href={`${GITHUB_REPO_URL}/edit/main/${relativeFilePath}`}>
+                Edit on GitHub <Pencil size={16} />
+              </a>
+            </div>
           </div>
 
-          <div className={s.heading}>
-            <H1>{title}</H1>
-            <P className={s.description} weight="regular">
-              {description}
-            </P>
-          </div>
-
-          <CustomMDX content={content} />
-          <br />
-          <div>
-            <a className={s.editOnGithub} href={`${GITHUB_REPO_URL}/edit/main/${relativeFilePath}`}>
-              Edit on GitHub <Pencil size={16} />
-            </a>
+          <div className={s.sidecar}>
+            <P>Sidecar</P>
           </div>
         </main>
       </div>
