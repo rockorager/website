@@ -40,7 +40,7 @@
         {
           "type": "link",
           "path": "/reference",
-          "title": "Reference"
+          "title": "Option Reference"
         },
         {
           "type": "folder",
@@ -54,8 +54,13 @@
             },
             {
               "type": "link",
+              "path": "/sequence",
+              "title": "Trigger Sequences"
+            },
+            {
+              "type": "link",
               "path": "/reference",
-              "title": "Reference"
+              "title": "Action Reference"
             }
           ]
         }
