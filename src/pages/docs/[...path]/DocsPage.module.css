@@ -7,7 +7,7 @@
   --sidebar-min-width: 320px;
 
   & .sidebar {
-    min-width: var(--sidebar-min-width);
+    width: var(--sidebar-min-width);
 
     @media (max-width: 784px) {
       display: none;
