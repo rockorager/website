@@ -3,11 +3,6 @@
   --base-depth: 2; /* H1's & H2's will have standard padding */
   --depth-padding: 8px; /* Additional padding for each header number above H2 */
 
-  & .title {
-    padding-left: var(--left-padding);
-    margin-bottom: 20px;
-  }
-
   & ul {
     list-style: none;
     & li {

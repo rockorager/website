@@ -132,7 +132,6 @@ export default function DocsPage({
           </div>
 
           <Sidecar
-            title="On this page"
             hidden={hideSidecar}
             inViewHeaderIDs={inViewHeaderIDs}
             className={s.sidecar}

@@ -10,7 +10,6 @@ interface SidecarItem {
 
 interface SidecarProps {
   className?: string;
-  title: string;
   items: SidecarItem[];
   inViewHeaderIDs: string[];
   hidden?: boolean;
@@ -25,7 +24,6 @@ const MAX_SIDECAR_HEADER_DEPTH = 4;
 
 export default function Sidecar({
   className,
-  title,
   items,
   inViewHeaderIDs,
   hidden = false,
@@ -43,34 +41,31 @@ export default function Sidecar({
   return (
     <div className={classNames(s.sidecar, className)}>
       {items.length > MIN_SIDECAR_ITEMS && !hidden && (
-        <>
-          <H6 className={s.title}>{title}</H6>
-          <ul>
-            {items.map(({ id, title, depth }) => {
-              const active = id === activeHeaderID;
-              return (
-                <li
-                  key={`${id}${active}`}
-                  className={classNames({ [s.active]: active })}
-                  style={
-                    {
-                      "--depth": depth,
-                    } as React.CSSProperties
-                  }
-                >
-                  {/* Intentionally using an a tag and not next/link:
+        <ul>
+          {items.map(({ id, title, depth }) => {
+            const active = id === activeHeaderID;
+            return (
+              <li
+                key={`${id}${active}`}
+                className={classNames({ [s.active]: active })}
+                style={
+                  {
+                    "--depth": depth,
+                  } as React.CSSProperties
+                }
+              >
+                {/* Intentionally using an a tag and not next/link:
               as we want our :target selectors to trigger here.
               See: https://github.com/vercel/next.js/issues/51346
               Also, we're remaining on the same page always here,
               so no client-side routing handing is needed. */}
-                  <a href={id}>
-                    <P weight={active ? "medium" : "regular"}>{title}</P>
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </>
+                <a href={id}>
+                  <P weight={active ? "medium" : "regular"}>{title}</P>
+                </a>
+              </li>
+            );
+          })}
+        </ul>
       )}
     </div>
   );
