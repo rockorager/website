@@ -44,14 +44,14 @@
   display: flex;
   justify-content: center;
   &.brand {
-    --buttonColor: var(--brand-color);
+    --button-color: var(--brand-color);
   }
   &.neutral {
-    --buttonColor: var(--gray-3);
+    --button-color: var(--gray-3);
   }
-  border: 1px solid var(--buttonColor);
+  border: 1px solid var(--button-color);
   &:hover {
-    background-color: var(--buttonColor);
+    background-color: var(--button-color);
     text-decoration: none;
   }
 
