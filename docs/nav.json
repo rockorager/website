@@ -2,11 +2,6 @@
   "items": [
     {
       "type": "link",
-      "path": "/getting-started",
-      "title": "Getting Started"
-    },
-    {
-      "type": "link",
       "path": "/about",
       "title": "About Ghostty"
     },
