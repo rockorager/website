@@ -115,10 +115,10 @@ config-file = /absolute/path/config
 
 ### Reloading the Configuration
 
-The configuration can be reloaded at runtime by pressing `ctrl+shift+,`
-(Linux) or `cmd+shift+,` (macOS).
-These keybindings are configurable.
+The configuration can be reloaded at runtime by pressing `ctrl+shift+,` (Linux)
+or `cmd+shift+,` (macOS). These are the default keybindings, but it is
+possible to define your own via the `reload_config` action.
 <Note>
-  Not all configuration options can be reloaded at runtime;
-  others may only apply to newly created surfaces or windows.
+  Some configuration options cannot be reloaded at runtime;
+  others may only apply to newly created terminals.
 </Note>
