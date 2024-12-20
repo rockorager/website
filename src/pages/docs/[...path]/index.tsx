@@ -1,6 +1,8 @@
 import Breadcrumbs, { Breadcrumb } from "@/components/breadcrumbs";
 import CustomMDX from "@/components/custom-mdx";
 import NavTree, { NavTreeNode } from "@/components/nav-tree";
+import ScrollToTopButton from "@/components/scroll-to-top";
+import Sidecar from "@/components/sidecar";
 import { H1, P } from "@/components/text";
 import NavFooterLayout from "@/layouts/nav-footer-layout";
 import {
@@ -10,10 +12,9 @@ import {
 } from "@/lib/fetch-docs";
 import { loadDocsNavTreeData } from "@/lib/fetch-nav";
 import { navTreeToBreadcrumbs } from "@/lib/nav-tree-to-breadcrumbs";
-import s from "./DocsPage.module.css";
-import ScrollToTopButton from "@/components/scroll-to-top";
 import { Pencil } from "lucide-react";
-import Sidecar from "@/components/sidecar";
+import s from "./DocsPage.module.css";
+import { useState } from "react";
 
 // This is the location that we expect our docs mdx files to be located,
 // relative to the root of the Next.js project.
@@ -72,6 +73,8 @@ export default function DocsPage({
   docsPageData: { title, description, content, relativeFilePath, pageHeaders },
   breadcrumbs,
 }: DocsPageProps) {
+  const [inViewHeaderIDs, setInViewHeaderIDs] = useState<string[]>([]);
+
   return (
     <NavFooterLayout
       meta={{
@@ -108,7 +111,13 @@ export default function DocsPage({
                 {description}
               </P>
             </div>
-            <CustomMDX content={content} />
+            <CustomMDX
+              content={content}
+              onHeadersInViewChanged={(headerIDs) => {
+                console.log("FROM PAGE", headerIDs);
+                setInViewHeaderIDs(headerIDs);
+              }}
+            />
             <br />
             <div>
               <a href={`${GITHUB_REPO_URL}/edit/main/${relativeFilePath}`}>
@@ -118,9 +127,9 @@ export default function DocsPage({
           </div>
 
           <Sidecar
-            activeItemID={pageHeaders[0].id}
-            className={s.sidecar}
             title="On this page"
+            inViewHeaderIDs={inViewHeaderIDs}
+            className={s.sidecar}
             items={pageHeaders}
           />
         </main>

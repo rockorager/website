@@ -12,23 +12,27 @@ interface SidecarProps {
   className?: string;
   title: string;
   items: SidecarItem[];
-  activeItemID: string;
+  inViewHeaderIDs: string[];
 }
 
 export default function Sidecar({
   className,
   title,
   items,
-  activeItemID,
+  inViewHeaderIDs,
 }: SidecarProps) {
   return (
     <div className={classNames(s.sidecar, className)}>
       <H6 className={s.title}>{title}</H6>
       <ul>
         {items.map(({ id, title }) => {
-          const active = activeItemID === id;
+          // TODO: make just be the first one that appears
+          const active = inViewHeaderIDs.includes(id.substring(1));
           return (
-            <li className={classNames({ [s.active]: active })}>
+            <li
+              key={`${id}${active}`}
+              className={classNames({ [s.active]: active })}
+            >
               {/* Intentionally using an a tag and not next/link:
               as we want our :target selectors to trigger here.
               See: https://github.com/vercel/next.js/issues/51346
