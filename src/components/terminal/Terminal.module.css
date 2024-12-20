@@ -93,7 +93,7 @@
     }
   }
 
-  &:focus {
+  &:hover {
     & .header {
       & .windowControls {
         & li:first-child {
