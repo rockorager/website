@@ -113,7 +113,6 @@ export default function DocsPage({
             <CustomMDX
               content={content}
               onHeadersInViewChanged={(headerIDs) => {
-                console.log("FROM PAGE", headerIDs);
                 setInViewHeaderIDs(headerIDs);
               }}
             />
