@@ -46,6 +46,8 @@ export async function getStaticProps({ params: { path } }: StaticPropsParams) {
   const activePageSlug = path.join("/");
   const navTreeData = await loadDocsNavTreeData(DOCS_DIRECTORY, activePageSlug);
   const docsPageData = await loadDocsPage(DOCS_DIRECTORY, activePageSlug);
+  console.log("PAGE HEADERS from static props:", docsPageData.pageHeaders);
+
   const breadcrumbs = navTreeToBreadcrumbs(
     "Ghostty Docs",
     DOCS_PAGES_ROOT_PATH,

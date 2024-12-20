@@ -2,10 +2,20 @@ import matter from "gray-matter";
 import recurse, { Item } from "klaw-sync";
 import { MDXRemoteSerializeResult } from "next-mdx-remote";
 import { serialize } from "next-mdx-remote/serialize";
+import { type Node } from "unist";
+import { visit } from "unist-util-visit";
+
 import remarkGfm from "remark-gfm";
+import slugify from "slugify";
 const nodePath = require("path");
 
 const MDX_EXTENSION = ".mdx";
+
+export type PageHeader = {
+  id: string;
+  text: string;
+  depth: number;
+};
 
 export interface DocsPageData {
   slug: string;
@@ -13,6 +23,7 @@ export interface DocsPageData {
   description: string;
   content: MDXRemoteSerializeResult;
   relativeFilePath: string;
+  pageHeaders: PageHeader[];
 }
 
 export async function loadDocsPage(
@@ -45,16 +56,53 @@ async function loadDocsPageFromRelativeFilePath(
 ): Promise<DocsPageData> {
   const mdxFileContent = matter.read(relativeFilePath);
   const slug = slugFromRelativeFilePath(relativeFilePath);
+
+  var pageHeaders: PageHeader[] = [];
+
+  const content: MDXRemoteSerializeResult = await serialize(
+    mdxFileContent.content,
+    {
+      mdxOptions: {
+        remarkPlugins: [
+          remarkGfm,
+          // Parse out the Anchor links and place them in the array defined above
+          () => {
+            type HeadingNode = {
+              type: "heading";
+              depth: number;
+              children: {
+                type: string;
+                value: string;
+              }[];
+            };
+            return function (node: Node) {
+              visit(node, "heading", (node: Node) => {
+                if (node.type === "heading") {
+                  let headingNode = node as HeadingNode;
+                  if (headingNode.children.length > 0) {
+                    const text = headingNode.children[0].value;
+                    pageHeaders.push({
+                      depth: headingNode.depth,
+                      id: `#${slugify(text.toLowerCase())}`,
+                      text,
+                    });
+                  }
+                }
+              });
+            };
+          },
+        ],
+      },
+    }
+  );
+
   return {
     slug,
     relativeFilePath,
     title: mdxFileContent.data.title,
     description: mdxFileContent.data.description,
-    content: await serialize(mdxFileContent.content, {
-      mdxOptions: {
-        remarkPlugins: [remarkGfm],
-      },
-    }),
+    content,
+    pageHeaders,
   };
 }
 
