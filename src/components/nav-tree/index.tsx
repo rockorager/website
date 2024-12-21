@@ -25,16 +25,22 @@ export type BreakNode = {
   type: "break";
 };
 
-interface NavTreeProps {
-  className?: string;
+interface NavTreeNodeGroup {
   rootPath: string;
   nodes: NavTreeNode[];
 }
 
-export default function NavTree({ className, rootPath, nodes }: NavTreeProps) {
+interface NavTreeProps {
+  className?: string;
+  nodeGroups: NavTreeNodeGroup[];
+}
+
+export default function NavTree({ className, nodeGroups }: NavTreeProps) {
   return (
     <div className={classNames(s.navTree, className)}>
-      <NavTreeNodesList path={rootPath} nodes={nodes} />
+      {nodeGroups.map(({ rootPath, nodes }) => {
+        return <NavTreeNodesList path={rootPath} nodes={nodes} />;
+      })}
     </div>
   );
 }

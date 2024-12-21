@@ -97,9 +97,13 @@ export default function DocsPage({
         <div className={s.sidebar}>
           <div className={s.sidebarContentWrapper}>
             <NavTree
-              rootPath={DOCS_PAGES_ROOT_PATH}
+              nodeGroups={[
+                {
+                  rootPath: DOCS_PAGES_ROOT_PATH,
+                  nodes: navTreeData,
+                },
+              ]}
               className={s.sidebarNavTree}
-              nodes={navTreeData}
             />
           </div>
         </div>
