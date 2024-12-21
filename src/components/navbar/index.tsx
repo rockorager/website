@@ -1,3 +1,4 @@
+import { DOCS_PAGES_ROOT_PATH } from "@/pages/docs/[...path]";
 import classNames from "classnames";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
@@ -9,7 +10,6 @@ import Link, { ButtonLink, SimpleLink } from "../link";
 import NavTree, { BreakNode, LinkNode, NavTreeNode } from "../nav-tree";
 import GhosttyWordmark from "./ghostty-wordmark.svg";
 import s from "./Navbar.module.css";
-import { DOCS_PAGES_ROOT_PATH } from "@/pages/docs/[...path]";
 
 export interface NavbarProps {
   className?: string;
@@ -88,6 +88,9 @@ export default function Navbar({
       >
         <NavTree
           className={s.navTree}
+          onNavLinkClicked={() => {
+            setMobileMenuOpen(false);
+          }}
           nodeGroups={[
             {
               rootPath: "",
@@ -99,7 +102,7 @@ export default function Navbar({
                         type: "link",
                         title: cta.text,
                         path: cta.href,
-                        active: false, // TODO, calculate
+                        active: pathname === cta.href,
                       } as LinkNode,
                     ]
                   : []),
@@ -113,7 +116,7 @@ export default function Navbar({
                           type: "link",
                           title: link.text,
                           path: link.href,
-                          active: false, // TODO, calculate
+                          active: pathname === link.href,
                         } as LinkNode;
                       })
                   : []),
