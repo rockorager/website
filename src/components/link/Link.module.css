@@ -11,7 +11,7 @@
   }
   &:hover {
     text-decoration: underline;
-    & svg {
+    & svg.externalLinkIcon {
       /* Note: This is targeting the arrow paths. It's possible
       that the path order changes and this breaks, but it seems
       unlikely enough to justify adding this nice polish. */
@@ -37,6 +37,11 @@
     & strong {
       font-weight: 700;
     }
+  }
+
+  & .icon {
+    margin-right: 6px;
+    display: flex;
   }
 }
 
