@@ -24,8 +24,8 @@ export default function DownloadPage() {
           </div>
           <div className={s.downloadCards}>
             <DownloadCard
-              title="MacOS"
-              description="A universal binary that works on both Apple Silicon and Intel machines."
+              title="macOS"
+              description="A universal binary that works on both Apple Silicon and Intel machines. Requires macOS 13+ (Ventura or later)."
             >
               <ButtonLink
                 size="large"
@@ -42,7 +42,7 @@ export default function DownloadPage() {
               <div className={s.linuxLinks}>
                 <ButtonLink
                   size="large"
-                  href="/docs/install/binary"
+                  href="/docs/install/binary#linux"
                   text="Package Manager"
                   icon={<Package strokeWidth={2} size={18} />}
                   showExternalIcon={false}
