@@ -6,20 +6,26 @@ import { usePathname } from "next/navigation";
 import { useLayoutEffect, useState } from "react";
 import GridContainer, { NavAndFooterGridConfig } from "../grid-container";
 import Link, { ButtonLink, SimpleLink } from "../link";
+import NavTree, { BreakNode, LinkNode, NavTreeNode } from "../nav-tree";
 import GhosttyWordmark from "./ghostty-wordmark.svg";
 import s from "./Navbar.module.css";
-import { P } from "../text";
-import NavTree, { BreakNode, LinkNode } from "../nav-tree";
+import { DOCS_PAGES_ROOT_PATH } from "@/pages/docs/[...path]";
 
 export interface NavbarProps {
   className?: string;
   links?: SimpleLink[];
   cta?: SimpleLink;
+  docsNavTree: NavTreeNode[];
 }
 
 const MOBILE_MENU_BREAKPOINT = 768;
 
-export default function Navbar({ className, links, cta }: NavbarProps) {
+export default function Navbar({
+  className,
+  links,
+  cta,
+  docsNavTree,
+}: NavbarProps) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   useLayoutEffect(() => {
@@ -93,7 +99,7 @@ export default function Navbar({ className, links, cta }: NavbarProps) {
                         type: "link",
                         title: cta.text,
                         path: cta.href,
-                        active: false, // TODO
+                        active: false, // TODO, calculate
                       } as LinkNode,
                     ]
                   : []),
@@ -107,14 +113,18 @@ export default function Navbar({ className, links, cta }: NavbarProps) {
                           type: "link",
                           title: link.text,
                           path: link.href,
-                          active: false, // TODO
+                          active: false, // TODO, calculate
                         } as LinkNode;
                       })
                   : []),
 
                 { type: "break" } as BreakNode,
-                // TODO: add in docs links here
               ],
+            },
+            // Render the docs links
+            {
+              rootPath: DOCS_PAGES_ROOT_PATH,
+              nodes: docsNavTree,
             },
           ]}
         />

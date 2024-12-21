@@ -1,60 +1,37 @@
 import { ButtonLink } from "@/components/link";
+import { NavTreeNode } from "@/components/nav-tree";
 import SectionWrapper from "@/components/section-wrapper";
 import { H1, H2, P } from "@/components/text";
 import NavFooterLayout from "@/layouts/nav-footer-layout";
+import { fetchLatestGhosttyVersion } from "@/lib/fetch-latest-ghostty-version";
+import { loadDocsNavTreeData } from "@/lib/fetch-nav";
 import { CodeXml, Download, Package } from "lucide-react";
 import Image from "next/image";
-import { parseStringPromise } from 'xml2js';
 import SVGIMG from "../../../public/ghostty-logo.svg";
+import { DOCS_DIRECTORY } from "../docs/[...path]";
 import s from "./DownloadPage.module.css";
 
 export async function getStaticProps() {
-  // We should move this out to a library function but what we're doing
-  // here is using the same appcast we use for Sparkle updates to get the
-  // latest version of the app.
-  const appcastUrl = 'https://release.files.ghostty.org/appcast.xml';
-  const response = await fetch(appcastUrl);
-  if (!response.ok) {
-    throw new Error(`Failed to fetch XML: ${response.statusText}`);
-  }
-
-  const xmlContent = await response.text();
-  const parsedXml = await parseStringPromise(
-    xmlContent,
-    { explicitArray: false }
-  );
-
-  // Extract items
-  const items = parsedXml.rss.channel.item;
-
-  // Convert items to an array if it's not already
-  const itemsArray = Array.isArray(items) ? items : [items];
-
-  // Find the item with the highest version
-  const latestItem = itemsArray.reduce((maxItem, currentItem) => {
-    const currentVersion = parseInt(currentItem['sparkle:version'], 10);
-    const maxVersion = parseInt(maxItem['sparkle:version'], 10);
-    return currentVersion > maxVersion ? currentItem : maxItem;
-  });
-
-  const shortVersionString = latestItem['sparkle:shortVersionString'];
-
   return {
     props: {
-      latestVersion: shortVersionString,
+      latestVersion: await fetchLatestGhosttyVersion(),
+      docsNavTree: await loadDocsNavTreeData(DOCS_DIRECTORY, ""),
     },
   };
 }
 
 interface DownloadPageProps {
   latestVersion: string;
+  docsNavTree: NavTreeNode[];
 }
 
 export default function DownloadPage({
   latestVersion,
+  docsNavTree,
 }: DownloadPageProps) {
   return (
     <NavFooterLayout
+      docsNavTree={docsNavTree}
       meta={{
         title: "Ghostty",
         description:
