@@ -369,43 +369,6 @@
           "title": "Terminfo"
         }
       ]
-    },
-    {
-      "type": "break"
-    },
-    {
-      "type": "link",
-      "path": "/readme",
-      "title": "README"
-    },
-    {
-      "type": "folder",
-      "path": "/stuff",
-      "title": "Stuff",
-      "children": [
-        {
-          "type": "link",
-          "path": "/",
-          "title": "Overview"
-        },
-        {
-          "type": "folder",
-          "path": "/details",
-          "title": "Details",
-          "children": [
-            {
-              "type": "link",
-              "path": "/bash",
-              "title": "Bash"
-            },
-            {
-              "type": "link",
-              "path": "/example",
-              "title": "Example"
-            }
-          ]
-        }
-      ]
     }
   ]
 }
