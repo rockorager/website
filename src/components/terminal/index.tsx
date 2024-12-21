@@ -5,11 +5,12 @@ import s from "./Terminal.module.css";
 
 import { X, Menu, Grip, FolderPlus } from "lucide-react";
 
+export type TerminalFontSize = "xtiny" | "tiny" | "small" | "medium" | "large";
 export interface TerminalProps {
   className?: string;
   columns: number;
   rows: number;
-  fontSize?: "xtiny" | "tiny" | "small" | "medium" | "large";
+  fontSize?: TerminalFontSize;
   title?: string;
   lines?: string[];
   whitespacePadding?: number;

@@ -1,6 +1,7 @@
 import AnimatedTerminal from "@/components/animated-terminal";
 import GridContainer from "@/components/grid-container";
 import { ButtonLink } from "@/components/link";
+import { TerminalFontSize } from "@/components/terminal";
 import RootLayout from "@/layouts/root-layout";
 import {
   loadAllTerminalFiles,
@@ -21,17 +22,19 @@ interface HomePageProps {
   terminalData: TerminalsMap;
 }
 
-function useWindowWidth() {
+function useWindowSize() {
   const [width, setWidth] = useState(0);
+  const [height, setHeight] = useState(0);
   useLayoutEffect(() => {
     function updateSize() {
       setWidth(window.innerWidth);
+      setHeight(window.innerHeight);
     }
     window.addEventListener("resize", updateSize);
     updateSize();
     return () => window.removeEventListener("resize", updateSize);
   }, []);
-  return width;
+  return [width, height];
 }
 
 export default function Home({ terminalData }: HomePageProps) {
@@ -41,7 +44,23 @@ export default function Home({ terminalData }: HomePageProps) {
     })
     .map((k) => terminalData[k]);
 
-  const windowWidth = useWindowWidth();
+  // Calculate what font size we should use based off of
+  // Width & Height considerations. We will pick the smaller
+  // of the two values.
+  const [windowWidth, windowHeight] = useWindowSize();
+  const widthSize =
+    windowWidth > 1100 ? "small" : windowWidth > 674 ? "tiny" : "xtiny";
+  const heightSize =
+    windowHeight > 900 ? "small" : windowHeight > 750 ? "tiny" : "xtiny";
+  var fontSize: TerminalFontSize = "small";
+  const sizePriority = ["xtiny", "tiny", "small"];
+  for (const size of sizePriority) {
+    if (widthSize === size || heightSize === size) {
+      fontSize = size;
+      break;
+    }
+  }
+
   return (
     <RootLayout
       meta={{
@@ -54,13 +73,7 @@ export default function Home({ terminalData }: HomePageProps) {
         <section className={s.terminalWrapper}>
           <AnimatedTerminal
             title={"👻 Ghostty"}
-            fontSize={
-              windowWidth > 1100
-                ? "small"
-                : windowWidth > 674
-                ? "tiny"
-                : "xtiny"
-            }
+            fontSize={fontSize}
             whitespacePadding={
               windowWidth > 950 ? 20 : windowWidth > 850 ? 10 : 0
             }
