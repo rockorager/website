@@ -354,6 +354,23 @@
       ]
     },
     {
+      "type": "folder",
+      "path": "/help",
+      "title": "Help",
+      "children": [
+        {
+          "type": "link",
+          "path": "/",
+          "title": "Overview"
+        },
+        {
+          "type": "link",
+          "path": "/terminfo",
+          "title": "Terminfo"
+        }
+      ]
+    },
+    {
       "type": "break"
     },
     {
