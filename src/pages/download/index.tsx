@@ -74,7 +74,7 @@ export default function DownloadPage({
             >
               <ButtonLink
                 size="large"
-                href={`https://release.files.ghostty.org/${latestVersion}/ghostty-macos-universal.zip`}
+                href={`https://release.files.ghostty.org/${latestVersion}/Ghostty.dmg`}
                 text="Universal Binary"
                 icon={<Download strokeWidth={2} size={17} />}
                 showExternalIcon={false}
