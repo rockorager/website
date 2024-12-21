@@ -9,6 +9,7 @@ import Link, { ButtonLink, SimpleLink } from "../link";
 import GhosttyWordmark from "./ghostty-wordmark.svg";
 import s from "./Navbar.module.css";
 import { P } from "../text";
+import NavTree, { BreakNode, LinkNode } from "../nav-tree";
 
 export interface NavbarProps {
   className?: string;
@@ -79,7 +80,44 @@ export default function Navbar({ className, links, cta }: NavbarProps) {
           [s.mobileMenuOpen]: mobileMenuOpen,
         })}
       >
-        <P>TODO Mobile Menu</P>
+        <NavTree
+          className={s.navTree}
+          nodeGroups={[
+            {
+              rootPath: "",
+              nodes: [
+                // Adds our CTA first
+                ...(cta
+                  ? [
+                      {
+                        type: "link",
+                        title: cta.text,
+                        path: cta.href,
+                        active: false, // TODO
+                      } as LinkNode,
+                    ]
+                  : []),
+                // Next our Nav Links, but exclude docs, that's going to get
+                // special treatment in the next node group below.
+                ...(links
+                  ? links
+                      .filter((link) => link.href != "/docs")
+                      .map((link) => {
+                        return {
+                          type: "link",
+                          title: link.text,
+                          path: link.href,
+                          active: false, // TODO
+                        } as LinkNode;
+                      })
+                  : []),
+
+                { type: "break" } as BreakNode,
+                // TODO: add in docs links here
+              ],
+            },
+          ]}
+        />
       </div>
     </nav>
   );
