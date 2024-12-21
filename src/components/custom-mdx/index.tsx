@@ -8,7 +8,7 @@ import JumplinkHeader from "../jumplink-header";
 import { BodyParagraph, LI } from "../text";
 import VTSequence from "../vt-sequence";
 import s from "./CustomMDX.module.css";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 
 type MemoizedCustomMDX = Omit<CustomMDXProps, "onHeaderInViewChanged"> & {
   onHeadersInViewChanged: (headerIDs: string[]) => void;
@@ -35,9 +35,9 @@ export default function MemoizedCustomMDX({
     } else if (lastHeaderInView != null) {
       onHeadersInViewChanged([lastHeaderInView]);
     }
-  }, [headersInView, lastHeaderInView, onHeadersInViewChanged]);
+  }, [headersInView, lastHeaderInView]);
 
-  const onHeaderInViewChanged = (inView: boolean, id: string) => {
+  const onHeaderInViewChanged = useCallback((inView: boolean, id: string) => {
     if (inView) {
       if (!headersInView.includes(id)) {
         setHeadersInView((prev) => [...prev, id]);
@@ -46,25 +46,23 @@ export default function MemoizedCustomMDX({
     } else {
       setHeadersInView((prev) => prev.filter((item) => item !== id));
     }
-  };
+  }, []);
 
   // We have to memoize this, else this will cause a circular re-render
   // situation. We want simplify the interface for the callback to
   // the consumer of this to just simply be able to get notified when
   // there is a change to the in-view headers.
-  return (
-    <>
-      {useMemo(
-        () => (
-          <CustomMDX
-            content={content}
-            onHeaderInViewChanged={onHeaderInViewChanged}
-          />
-        ),
-        [content]
-      )}
-    </>
+  const customMDX = useMemo(
+    () => (
+      <CustomMDX
+        content={content}
+        onHeaderInViewChanged={onHeaderInViewChanged}
+      />
+    ),
+    [content]
   );
+
+  return customMDX;
 }
 
 interface CustomMDXProps {
