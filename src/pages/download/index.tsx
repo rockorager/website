@@ -1,12 +1,11 @@
+import { ButtonLink } from "@/components/link";
 import SectionWrapper from "@/components/section-wrapper";
 import { H1, H2, P } from "@/components/text";
 import NavFooterLayout from "@/layouts/nav-footer-layout";
-import s from "./DownloadPage.module.css";
+import { CodeXml, Download, Package } from "lucide-react";
 import Image from "next/image";
 import SVGIMG from "../../../public/ghostty-logo.svg";
-import { ButtonLink } from "@/components/link";
-import { Download, CodeXml } from "lucide-react";
-import Button from "@/components/button";
+import s from "./DownloadPage.module.css";
 
 export default function DownloadPage() {
   return (
@@ -40,13 +39,22 @@ export default function DownloadPage() {
               title="Linux"
               description="Choose a pre-built package for quick setup on your Linux distribution, or build source for complete control."
             >
-              <ButtonLink
-                size="large"
-                href="/docs/install/build"
-                text="Build From Source"
-                icon={<CodeXml strokeWidth={2} size={18} />}
-                showExternalIcon={false}
-              />
+              <div className={s.linuxLinks}>
+                <ButtonLink
+                  size="large"
+                  href="/docs/install/binary"
+                  text="Package Manager"
+                  icon={<Package strokeWidth={2} size={18} />}
+                  showExternalIcon={false}
+                />
+                <ButtonLink
+                  size="large"
+                  href="/docs/install/build"
+                  text="Build From Source"
+                  icon={<CodeXml strokeWidth={2} size={18} />}
+                  showExternalIcon={false}
+                />
+              </div>
             </DownloadCard>
           </div>
         </SectionWrapper>
