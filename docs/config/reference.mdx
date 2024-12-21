@@ -1,5 +1,5 @@
 ---
-title: Configuration Option Reference
+title: Reference
 description: Reference of all Ghostty configuration options.
 ---
 
@@ -734,6 +734,11 @@ to be set.
 The title Ghostty will use for the window. This will force the title of the
 window to be this title at all times and Ghostty will ignore any set title
 escape sequences programs (such as Neovim) may send.
+
+If you want a blank title, set this to one or more spaces by quoting
+the value. For example, `title = " "`. This effectively hides the title.
+This is necessary because setting a blank value resets the title to the
+default value of the running program.
 
 This configuration can be reloaded at runtime. If it is set, the title
 will update for all windows. If it is unset, the next title change escape
@@ -1938,4 +1943,27 @@ Valid values are:
 The default value is `check`.
 
 Changing this value at runtime works after a small delay.
+
+## `auto-update-channel`
+
+The release channel to use for auto-updates.
+
+The default value of this matches the release channel of the currently
+running Ghostty version. If you download a pre-release version of Ghostty
+then this will be set to `tip` and you will receive pre-release updates.
+If you download a stable version of Ghostty then this will be set to
+`stable` and you will receive stable updates.
+
+Valid values are:
+
+ * `stable` - Stable, tagged releases such as "1.0.0".
+ * `tip` - Pre-release versions generated from each commit to the
+   main branch. This is the version that was in use during private
+   beta testing by thousands of people. It is generally stable but
+   will likely have more bugs than the stable channel.
+
+Changing this configuration requires a full restart of
+Ghostty to take effect.
+
+This only works on macOS since only macOS has an auto-update feature.
 
