@@ -80,6 +80,11 @@
           "type": "link",
           "path": "/theme",
           "title": "Color Theme"
+        },
+        {
+          "type": "link",
+          "path": "/shell-integration",
+          "title": "Shell Integration"
         }
       ]
     },
