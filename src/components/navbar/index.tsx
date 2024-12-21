@@ -1,12 +1,14 @@
 import classNames from "classnames";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import NextLink from "next/link";
 import { usePathname } from "next/navigation";
+import { useLayoutEffect, useState } from "react";
 import GridContainer, { NavAndFooterGridConfig } from "../grid-container";
 import Link, { ButtonLink, SimpleLink } from "../link";
 import GhosttyWordmark from "./ghostty-wordmark.svg";
 import s from "./Navbar.module.css";
-import NextLink from "next/link";
+import { P } from "../text";
 
 export interface NavbarProps {
   className?: string;
@@ -14,8 +16,21 @@ export interface NavbarProps {
   cta?: SimpleLink;
 }
 
+const MOBILE_MENU_BREAKPOINT = 768;
+
 export default function Navbar({ className, links, cta }: NavbarProps) {
   const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  useLayoutEffect(() => {
+    function handleSizeUpdated() {
+      if (window.innerWidth > MOBILE_MENU_BREAKPOINT && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    }
+    window.addEventListener("resize", handleSizeUpdated);
+    return () => window.removeEventListener("resize", handleSizeUpdated);
+  }, [mobileMenuOpen]);
+
   return (
     <nav className={classNames(s.navbar, className)}>
       <GridContainer
@@ -52,8 +67,20 @@ export default function Navbar({ className, links, cta }: NavbarProps) {
             />
           )}
         </div>
-        <Menu className={s.menuToggle} />
+        <div
+          className={s.menuToggle}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? <X /> : <Menu />}
+        </div>
       </GridContainer>
+      <div
+        className={classNames(s.mobileContent, {
+          [s.mobileMenuOpen]: mobileMenuOpen,
+        })}
+      >
+        <P>TODO Mobile Menu</P>
+      </div>
     </nav>
   );
 }
