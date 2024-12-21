@@ -45,9 +45,10 @@ export default function NavTree({
 }: NavTreeProps) {
   return (
     <div className={classNames(s.navTree, className)}>
-      {nodeGroups.map(({ rootPath, nodes }) => {
+      {nodeGroups.map(({ rootPath, nodes }, i) => {
         return (
           <NavTreeNodesList
+            key={i}
             path={rootPath}
             nodes={nodes}
             onNavLinkClicked={onNavLinkClicked}
