@@ -1,12 +1,12 @@
 ---
-title: Prebuilt Ghostty Binaries
+title: Prebuilt Ghostty Binaries and Packages
 description: |-
-  Install Ghostty without building it from source by downloading
-  and running a prebuilt binary.
+  Install Ghostty without building it manually by downloading
+  and running a prebuilt binary or package.
 ---
 
 The Ghostty project only officially provides prebuilt binaries
-for macOS. Other platforms may provide binary packages for Ghostty,
+for macOS. Other platforms may provide packages for Ghostty,
 but those packages are maintained by the community. This page will
 list both official and community-provided binary packages.
 
@@ -42,3 +42,41 @@ If your platform isn't available, you must
 [packaging guide](https://github.com/ghostty-org/ghostty/blob/main/PACKAGING.md). If you need any help, feel free to make an issue. Once your
 package is ready, submit a pull request to add it to this page!
 </Tip>
+
+### Nix Flake
+
+There is Nix package that can be used in the
+[Ghostty flake](https://github.com/ghostty-org/ghostty/blob/main/flake.nix)
+(`packages.ghostty` or `packages.default`). This is a good way
+to track specific commits of Ghostty.
+
+While the Ghostty project does not maintain any official packages for
+Linux, Ghostty maintains an in-repo Nix flake because Nix is used as
+our primary development and CI environment. The Ghostty project does
+not maintain any official NixOS packages (in `nixpkgs`).
+
+Below is an example:
+
+```nix
+{
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+    ghostty = {
+      url = "git+ssh://git@github.com/ghostty-org/ghostty";
+    };
+  };
+
+  outputs = { nixpkgs, ghostty, ... }: {
+    nixosConfigurations.mysystem = nixpkgs.lib.nixosSystem {
+      modules = [
+        {
+          environment.systemPackages = [
+            ghostty.packages.x86_64-linux.default
+          ];
+        }
+      ];
+    };
+  };
+}
+```
