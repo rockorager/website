@@ -4,10 +4,55 @@ import { H1, H2, P } from "@/components/text";
 import NavFooterLayout from "@/layouts/nav-footer-layout";
 import { CodeXml, Download, Package } from "lucide-react";
 import Image from "next/image";
+import { parseStringPromise } from 'xml2js';
 import SVGIMG from "../../../public/ghostty-logo.svg";
 import s from "./DownloadPage.module.css";
 
-export default function DownloadPage() {
+export async function getStaticProps() {
+  // We should move this out to a library function but what we're doing
+  // here is using the same appcast we use for Sparkle updates to get the
+  // latest version of the app.
+  const appcastUrl = 'https://release.files.ghostty.org/appcast.xml';
+  const response = await fetch(appcastUrl);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch XML: ${response.statusText}`);
+  }
+
+  const xmlContent = await response.text();
+  const parsedXml = await parseStringPromise(
+    xmlContent,
+    { explicitArray: false }
+  );
+
+  // Extract items
+  const items = parsedXml.rss.channel.item;
+
+  // Convert items to an array if it's not already
+  const itemsArray = Array.isArray(items) ? items : [items];
+
+  // Find the item with the highest version
+  const latestItem = itemsArray.reduce((maxItem, currentItem) => {
+    const currentVersion = parseInt(currentItem['sparkle:version'], 10);
+    const maxVersion = parseInt(maxItem['sparkle:version'], 10);
+    return currentVersion > maxVersion ? currentItem : maxItem;
+  });
+
+  const shortVersionString = latestItem['sparkle:shortVersionString'];
+
+  return {
+    props: {
+      latestVersion: shortVersionString,
+    },
+  };
+}
+
+interface DownloadPageProps {
+  latestVersion: string;
+}
+
+export default function DownloadPage({
+  latestVersion,
+}: DownloadPageProps) {
   return (
     <NavFooterLayout
       meta={{
@@ -29,7 +74,7 @@ export default function DownloadPage() {
             >
               <ButtonLink
                 size="large"
-                href="https://github.com/ghostty-org/ghostty/releases/download/tip/ghostty-macos-universal.zip"
+                href={`https://release.files.ghostty.org/${latestVersion}/ghostty-macos-universal.zip`}
                 text="Universal Binary"
                 icon={<Download strokeWidth={2} size={17} />}
                 showExternalIcon={false}
