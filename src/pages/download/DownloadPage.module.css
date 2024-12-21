@@ -1,3 +1,60 @@
 .downloadPage {
 
+  & .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    & > img {
+      height: 80px;
+      width: 58px;
+      margin-bottom: 20px;
+    }
+
+    & .pageTitle {
+      text-align: center;
+      margin-bottom: 80px;
+      font-size: 45px;
+      @media(max-width: 1100px) {
+        font-size: 38px;
+        margin-bottom: 48px;
+      }
+    }
+  }
+
+  & .downloadCards {
+    --gap: 20px;
+    --cols: 2;
+    @media(max-width: 1100px) {
+      --cols: 1;
+    }
+
+    display: flex;
+    flex-direction: columns;
+    gap: var(--gap);
+    flex-wrap: wrap;
+
+    & > * {
+      --flex-basis: calc((100% / var(--cols)) - (var(--gap) * (var(--cols) - 1)) / var(--cols));
+      flex-basis: var(--flex-basis);
+      max-width: var(--flex-basis);
+    }
+  }
+}
+
+.downloadCard {
+  padding: 58px;
+  border: 1px solid var(--gray-2);
+  border-radius: 10px;
+
+  --item-spacing: 20px;
+  @media(max-width: 768px) {
+    --item-spacing: 12px;
+  }
+  & .title {
+    margin-bottom: var(--item-spacing);
+  }
+  & .description {
+    margin-bottom: var(--item-spacing);
+  }
 }
