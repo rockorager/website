@@ -37,7 +37,9 @@ export default function Link({
     >
       {icon && <div className={s.icon}>{icon}</div>}
       {text}{" "}
-      {showExternalIcon && isExternal && <SquareArrowOutUpRight size={16} />}
+      {showExternalIcon && isExternal && (
+        <SquareArrowOutUpRight className={s.externalLinkIcon} size={16} />
+      )}
     </NextLink>
   );
 }
