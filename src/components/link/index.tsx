@@ -12,6 +12,8 @@ export interface SimpleLink {
 export interface LinkProps extends SimpleLink {
   className?: string;
   weight?: "light" | "regular" | "medium";
+  showExternalIcon?: boolean;
+  icon?: React.ReactNode;
 }
 
 export default function Link({
@@ -19,6 +21,8 @@ export default function Link({
   text,
   href,
   weight = "light",
+  icon,
+  showExternalIcon = true,
 }: LinkProps) {
   const isExternal = !href.startsWith("/");
   return (
@@ -31,7 +35,9 @@ export default function Link({
       href={href}
       target={isExternal ? "_blank" : ""}
     >
-      {text} {isExternal && <SquareArrowOutUpRight size={16} />}
+      {icon && <div className={s.icon}>{icon}</div>}
+      {text}{" "}
+      {showExternalIcon && isExternal && <SquareArrowOutUpRight size={16} />}
     </NextLink>
   );
 }

@@ -47,14 +47,13 @@
   border: 1px solid var(--gray-2);
   border-radius: 10px;
 
-  --item-spacing: 20px;
-  @media(max-width: 768px) {
-    --item-spacing: 12px;
-  }
   & .title {
-    margin-bottom: var(--item-spacing);
+    margin-bottom: 8px;
   }
   & .description {
-    margin-bottom: var(--item-spacing);
+    margin-bottom: 16px;
+  }
+  & .buttons {
+    display: flex;
   }
 }

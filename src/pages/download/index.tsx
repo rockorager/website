@@ -4,8 +4,11 @@ import NavFooterLayout from "@/layouts/nav-footer-layout";
 import s from "./DownloadPage.module.css";
 import Image from "next/image";
 import SVGIMG from "../../../public/ghostty-logo.svg";
+import { ButtonLink } from "@/components/link";
+import { Download } from "lucide-react";
+import Button from "@/components/button";
 
-export default function Download() {
+export default function DownloadPage() {
   return (
     <NavFooterLayout
       meta={{
@@ -24,7 +27,15 @@ export default function Download() {
             <DownloadCard
               title="MacOS"
               description="A universal binary that works on both Apple Silicon and Intel machines."
-            />
+            >
+              <ButtonLink
+                size="large"
+                href="https://github.com/ghostty-org/ghostty/releases/download/tip/ghostty-macos-universal.zip"
+                text="Universal Binary"
+                icon={<Download strokeWidth={2} size={16} />}
+                showExternalIcon={false}
+              />
+            </DownloadCard>
             <DownloadCard
               title="Linux"
               description="Choose a pre-built package for quick setup on your Linux distribution, or build source for complete control."
@@ -47,7 +58,7 @@ function DownloadCard({ title, description, children }: DownloadCardProps) {
     <div className={s.downloadCard}>
       <H2 className={s.title}>{title}</H2>
       <P className={s.description}>{description}</P>
-      {children}
+      <div className={s.buttons}>{children}</div>
     </div>
   );
 }

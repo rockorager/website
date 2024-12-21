@@ -38,6 +38,10 @@
       font-weight: 700;
     }
   }
+
+  & .icon {
+    margin-right: 6px;
+  }
 }
 
 .buttonLink {
