@@ -1,9 +1,19 @@
 .vtsequence {
   display: flex;
-  color: white; /* can't be right, temporary */
+  width: fit-content;
+  font-family: var(--jetbrains-mono);
+  color: var(--gray-9);
+  border: 1px solid var(--gray-3);
+  /* adjust bottom margin since there's text content and fonts have padded capsizes */
+  margin: 32px 0 calc(32px - 0.5em) 0;
 
   & .vtelem {
-    border: 1px solid #FFF;
     text-align: center;
+    padding: 10px 12px;
+    border-right: 1px solid var(--gray-3);
+
+    &:last-child {
+      border-right: none;
+    }
   }
 }
