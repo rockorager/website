@@ -19,7 +19,7 @@ export default function ButtonLinks({
   columnsWhenSmall = columns,
 }: ButtonLinkProps) {
   return (
-    <ul
+    <div
       className={s.buttonLinks}
       style={
         {
@@ -28,13 +28,15 @@ export default function ButtonLinks({
         } as React.CSSProperties
       }
     >
-      {links.map(({ href, text, theme = "brand" }) => {
-        return (
-          <li key={text + href}>
-            <ButtonLink href={href} text={text} theme={theme} size="large" />
-          </li>
-        );
-      })}
-    </ul>
+      <ul>
+        {links.map(({ href, text, theme = "brand" }) => {
+          return (
+            <li key={text + href}>
+              <ButtonLink href={href} text={text} theme={theme} size="large" />
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }

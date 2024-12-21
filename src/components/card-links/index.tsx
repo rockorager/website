@@ -14,17 +14,19 @@ interface CardLinkProps {
 
 export default function CardLinks({ cards }: CardLinkProps) {
   return (
-    <ul className={s.cardLinks}>
-      {cards.map((cardLink) => {
-        return (
-          <li key={cardLink.title + cardLink.href}>
-            <Link href={cardLink.href} className={s.link}>
-              <H4 className={s.title}>{cardLink.title}</H4>
-              <P>{cardLink.description}</P>
-            </Link>
-          </li>
-        );
-      })}
-    </ul>
+    <div className={s.cardLinks}>
+      <ul>
+        {cards.map((cardLink) => {
+          return (
+            <li key={cardLink.title + cardLink.href}>
+              <Link href={cardLink.href} className={s.link}>
+                <H4 className={s.title}>{cardLink.title}</H4>
+                <P>{cardLink.description}</P>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
