@@ -15,6 +15,11 @@
     border-right: var(--sequence-border);
     border-top: var(--sequence-border);
     padding: 5px 12px;
+    display: flex;
+    justify-content: center;
+    & .alert {
+      margin-right: 4px;
+    }
   }
 
   & .sequence {

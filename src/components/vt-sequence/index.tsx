@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import s from "./VTSequence.module.css";
+import { OctagonAlert } from "lucide-react";
 
 interface VTSequenceProps {
   sequence: string | [string];
@@ -20,7 +21,12 @@ export default function VTSequence({
   const sequenceElements = useMemo(() => parseSequence(sequence), [sequence]);
   return (
     <div className={s.vtsequence}>
-      {unimplemented && <div className={s.unimplemented}>Unimplemented</div>}
+      {unimplemented && (
+        <div className={s.unimplemented}>
+          <OctagonAlert className={s.alert} size={16} />
+          Unimplemented
+        </div>
+      )}
       <ol className={s.sequence}>
         {sequenceElements.map(({ value, hex }, i) => (
           <li key={i} className={s.vtelem}>
