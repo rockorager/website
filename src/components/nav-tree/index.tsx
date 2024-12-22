@@ -36,12 +36,14 @@ interface NavTreeProps {
   // An optional callback, primarily used
   // by our mobile nav to tell it to close.
   onNavLinkClicked?: () => void;
+  activeItemRef?: React.RefObject<HTMLLIElement>;
 }
 
 export default function NavTree({
   className,
   nodeGroups,
   onNavLinkClicked,
+  activeItemRef,
 }: NavTreeProps) {
   return (
     <div className={classNames(s.navTree, className)}>
@@ -52,6 +54,7 @@ export default function NavTree({
             path={rootPath}
             nodes={nodes}
             onNavLinkClicked={onNavLinkClicked}
+            activeItemRef={activeItemRef}
           />
         );
       })}
@@ -74,24 +77,30 @@ interface NavTreeNodesListProps {
   path: string;
   nodes: NavTreeNode[];
   onNavLinkClicked?: () => void;
+  activeItemRef?: React.RefObject<HTMLLIElement>;
 }
 
 function NavTreeNodesList({
   path,
   nodes,
   onNavLinkClicked,
+  activeItemRef,
 }: NavTreeNodesListProps) {
   return (
     <ul className={s.nodesList}>
       {nodes.map((node, i) => {
         return (
-          <li key={navTreeNodeKey(node, i)}>
+          <li
+            key={navTreeNodeKey(node, i)}
+            ref={node.type === "link" && node.active ? activeItemRef : null}
+          >
             <Node
               path={path}
               node={node}
               onLinkNodeClicked={() => {
                 onNavLinkClicked && onNavLinkClicked();
               }}
+              activeItemRef={activeItemRef}
             />
           </li>
         );
@@ -104,9 +113,10 @@ interface NodeProps {
   path: string;
   node: NavTreeNode;
   onLinkNodeClicked?: () => void;
+  activeItemRef?: React.RefObject<HTMLLIElement>;
 }
 
-function Node({ path, node, onLinkNodeClicked }: NodeProps) {
+function Node({ path, node, onLinkNodeClicked, activeItemRef }: NodeProps) {
   switch (node.type) {
     case "folder":
       return (
@@ -114,6 +124,7 @@ function Node({ path, node, onLinkNodeClicked }: NodeProps) {
           path={path}
           node={node}
           onLinkNodeClicked={onLinkNodeClicked}
+          activeItemRef={activeItemRef}
         />
       );
     case "link":
@@ -145,10 +156,12 @@ function FolderNode({
   path,
   node,
   onLinkNodeClicked,
+  activeItemRef,
 }: {
   path: string;
   node: FolderNode;
   onLinkNodeClicked?: () => void;
+  activeItemRef?: React.RefObject<HTMLLIElement>;
 }) {
   var [open, setOpen] = useState(node.open ? true : false);
   return (
@@ -163,6 +176,7 @@ function FolderNode({
             path={path + node.path}
             nodes={node.children}
             onNavLinkClicked={onLinkNodeClicked}
+            activeItemRef={activeItemRef}
           />
         </div>
       )}

@@ -3,7 +3,7 @@ import classNames from "classnames";
 import Image from "next/image";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState, useRef } from "react";
 import GridContainer, { NavAndFooterGridConfig } from "../grid-container";
 import Link, { ButtonLink, SimpleLink } from "../link";
 import NavTree, { BreakNode, LinkNode, NavTreeNode } from "../nav-tree";
@@ -27,6 +27,9 @@ export default function Navbar({
 }: NavbarProps) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const mobileContentRef = useRef<HTMLDivElement>(null);
+  const activeItemRef = useRef<HTMLLIElement>(null);
+
   useLayoutEffect(() => {
     function handleSizeUpdated() {
       if (window.innerWidth > MOBILE_MENU_BREAKPOINT && mobileMenuOpen) {
@@ -40,6 +43,27 @@ export default function Navbar({
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.classList.add("noScroll");
+      // Scroll to active item when mobile menu is opened, so it's not hidden
+      if (activeItemRef.current && mobileContentRef.current) {
+        const mobileContent = mobileContentRef.current;
+        const activeItem = activeItemRef.current;
+        const mobileContentRect = mobileContent.getBoundingClientRect();
+        const activeItemRect = activeItem.getBoundingClientRect();
+
+        if (
+          activeItemRect.top < mobileContentRect.top ||
+          activeItemRect.bottom > mobileContentRect.bottom
+        ) {
+          mobileContent.scrollTo({
+            top:
+              activeItem.offsetTop -
+              mobileContent.offsetTop -
+              mobileContentRect.height / 2 +
+              activeItemRect.height / 2,
+            behavior: "instant", // easing here felt... wrong
+          });
+        }
+      }
     } else {
       document.body.classList.remove("noScroll");
     }
@@ -87,6 +111,7 @@ export default function Navbar({
         />
       </GridContainer>
       <div
+        ref={mobileContentRef}
         className={classNames(s.mobileContent, {
           [s.mobileMenuOpen]: mobileMenuOpen,
         })}
@@ -135,6 +160,7 @@ export default function Navbar({
               nodes: docsNavTree,
             },
           ]}
+          activeItemRef={activeItemRef}
         />
       </div>
     </nav>
