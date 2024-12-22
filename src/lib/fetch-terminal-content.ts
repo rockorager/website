@@ -8,7 +8,7 @@ const TERMINAL_CONTENT_FILE_EXTENSION = ".txt";
 export type TerminalsMap = { [k: string]: string[] };
 
 export async function loadAllTerminalFiles(
-  subdirectory?: string
+  subdirectory?: string,
 ): Promise<TerminalsMap> {
   const allPaths = recurse(`${TERMINALS_DIRECTORY}${subdirectory}`, {
     nodir: true,

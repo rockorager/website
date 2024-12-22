@@ -27,7 +27,7 @@ type NavFile = {
 // and set them in an appropriate initial state for the activePageSlug.
 export async function loadDocsNavTreeData(
   docsDirectory: string,
-  activePageSlug: string
+  activePageSlug: string,
 ): Promise<NavTreeNode[]> {
   const docsFilePath = `${docsDirectory}/nav.json`;
   try {
@@ -40,7 +40,7 @@ export async function loadDocsNavTreeData(
         `Failed to parse ${docsFilePath}:
 
 ${err.message}}`,
-        { cause: err }
+        { cause: err },
       );
     }
     throw err;
@@ -52,7 +52,7 @@ ${err.message}}`,
 // with the given activePageSlug.
 function contextualizeNavFile(
   navFile: NavFile,
-  activePageSlug: string
+  activePageSlug: string,
 ): Array<NavTreeNode> {
   return [
     {
@@ -67,7 +67,7 @@ function contextualizeNavFile(
 
 function contextualizeNavTreeNode(
   activePageSlug: string,
-  accumulatedSlug: string
+  accumulatedSlug: string,
 ): (a: NavFileNavTreeNode) => NavTreeNode {
   return (t: NavFileNavTreeNode): NavTreeNode => {
     switch (t.type) {
@@ -81,7 +81,7 @@ function contextualizeNavTreeNode(
           path: t.path,
           open: activePageSlug.startsWith(nextAccSlug.slice(0, -1)),
           children: t.children.map(
-            contextualizeNavTreeNode(activePageSlug, nextAccSlug)
+            contextualizeNavTreeNode(activePageSlug, nextAccSlug),
           ),
         } as FolderNode;
       case "link":
@@ -101,7 +101,7 @@ function contextualizeNavTreeNode(
       default:
         throw new Error(
           `There is an unexpected item in the 'nav.json' file:
-${JSON.stringify(t, null, 2)}`
+${JSON.stringify(t, null, 2)}`,
         );
     }
   };

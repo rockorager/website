@@ -5,7 +5,7 @@ export function navTreeToBreadcrumbs(
   firstBreadcrumbTitle: string,
   docsRootPath: string,
   navTree: NavTreeNode[],
-  activePageSlug: string
+  activePageSlug: string,
 ): Breadcrumb[] {
   var breadcrumbs: Breadcrumb[] = [];
   var accumulatedPath = "";
@@ -33,7 +33,7 @@ export function navTreeToBreadcrumbs(
           }
         }
         return false;
-      }
+      },
     ) as FolderNode | LinkNode | undefined;
     if (typeof nextNode === "undefined") {
       throw new Error("Could not load next segment");
@@ -46,7 +46,7 @@ export function navTreeToBreadcrumbs(
       // if folder has a children with path of `/`, that's an overview page,
       // so we'll link to that.
       const hasOverviewPage = currentNavTree.some(
-        (e) => e.type === "link" && e.path === "/"
+        (e) => e.type === "link" && e.path === "/",
       );
 
       breadcrumbs.push({
