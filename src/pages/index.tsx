@@ -66,7 +66,7 @@ export default function Home({ terminalData }: HomePageProps) {
       meta={{
         title: "Ghostty",
         description:
-          "Fast, native, feature-rich terminal emulator pushing modern features.",
+          "Ghostty is a fast, feature-rich, and cross-platform terminal emulator that uses platform-native UI and GPU acceleration.",
       }}
     >
       <main className={s.homePage}>
