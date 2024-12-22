@@ -35,18 +35,21 @@ export default function MemoizedCustomMDX({
     } else if (lastHeaderInView != null) {
       onHeadersInViewChanged([lastHeaderInView]);
     }
-  }, [headersInView, lastHeaderInView]);
+  }, [headersInView, lastHeaderInView, onHeadersInViewChanged]);
 
-  const onHeaderInViewChanged = useCallback((inView: boolean, id: string) => {
-    if (inView) {
-      if (!headersInView.includes(id)) {
-        setHeadersInView((prev) => [...prev, id]);
-        setLastHeaderInView(id);
+  const onHeaderInViewChanged = useCallback(
+    (inView: boolean, id: string) => {
+      if (inView) {
+        if (!headersInView.includes(id)) {
+          setHeadersInView((prev) => [...prev, id]);
+          setLastHeaderInView(id);
+        }
+      } else {
+        setHeadersInView((prev) => prev.filter((item) => item !== id));
       }
-    } else {
-      setHeadersInView((prev) => prev.filter((item) => item !== id));
-    }
-  }, []);
+    },
+    [headersInView],
+  );
 
   // We have to memoize this, else this will cause a circular re-render
   // situation. We want simplify the interface for the callback to
@@ -59,7 +62,7 @@ export default function MemoizedCustomMDX({
         onHeaderInViewChanged={onHeaderInViewChanged}
       />
     ),
-    [content]
+    [content, onHeaderInViewChanged],
   );
 
   return customMDX;

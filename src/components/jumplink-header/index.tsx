@@ -29,7 +29,7 @@ export default function JumplinkHeader({
   });
   useEffect(() => {
     onInViewChanged && onInViewChanged(inView, id);
-  }, [inView]);
+  }, [id, inView, onInViewChanged]);
 
   return (
     <div className={s.jumplinkHeader} id={id}>
