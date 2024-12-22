@@ -52,6 +52,7 @@
 
   & .mobileContent {
     display: none;
+    overflow: scroll;
     &.mobileMenuOpen {
       display: block;
     }

@@ -1,8 +1,11 @@
+import s from "./NavFooterLayout.module.css";
 import { SimpleLink } from "@/components/link";
 import Navbar from "@/components/navbar";
 import RootLayout, { RootLayoutProps } from "../root-layout";
 import Footer from "@/components/footer";
 import { NavTreeNode } from "@/components/nav-tree";
+import { useState } from "react";
+import classNames from "classnames";
 
 const navLinks: Array<SimpleLink> = [
   {
@@ -24,10 +27,15 @@ type NavFooterLayoutProps = RootLayoutProps & {
 };
 
 export default function NavFooterLayout(props: NavFooterLayoutProps) {
-  const { children, docsNavTree, ...otherProps } = props;
+  const { children, docsNavTree, className, ...otherProps } = props;
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   return (
-    <RootLayout {...otherProps}>
+    <RootLayout
+      className={classNames(s.navFooterLayout, className)}
+      {...otherProps}
+    >
       <Navbar
+        onMobileMenuOpen={(opened) => setMobileMenuOpen(opened)}
         links={navLinks}
         docsNavTree={docsNavTree}
         cta={{
@@ -35,7 +43,14 @@ export default function NavFooterLayout(props: NavFooterLayoutProps) {
           text: "Download",
         }}
       />
-      {children}
+      <div
+        className={classNames({
+          [s.displayNone]: mobileMenuOpen,
+        })}
+      >
+        {children}
+      </div>
+
       <Footer
         links={[
           ...navLinks,

@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import GridContainer, { NavAndFooterGridConfig } from "../grid-container";
 import Link, { ButtonLink, SimpleLink } from "../link";
 import NavTree, { BreakNode, LinkNode, NavTreeNode } from "../nav-tree";
@@ -16,6 +16,7 @@ export interface NavbarProps {
   links?: SimpleLink[];
   cta?: SimpleLink;
   docsNavTree: NavTreeNode[];
+  onMobileMenuOpen?: (opened: boolean) => void;
 }
 
 const MOBILE_MENU_BREAKPOINT = 768;
@@ -25,6 +26,7 @@ export default function Navbar({
   links,
   cta,
   docsNavTree,
+  onMobileMenuOpen,
 }: NavbarProps) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -37,6 +39,12 @@ export default function Navbar({
     window.addEventListener("resize", handleSizeUpdated);
     return () => window.removeEventListener("resize", handleSizeUpdated);
   }, [mobileMenuOpen]);
+
+  // Notify if the mobile menu opened state changes, we need this
+  // to be able to disable scrolling on the rest of the page.
+  useEffect(() => {
+    onMobileMenuOpen && onMobileMenuOpen(mobileMenuOpen);
+  }, [mobileMenuOpen, onMobileMenuOpen]);
 
   return (
     <nav className={classNames(s.navbar, className)}>
