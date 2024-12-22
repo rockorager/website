@@ -1,21 +1,51 @@
+import { DOCS_PAGES_ROOT_PATH } from "@/pages/docs/[...path]";
 import classNames from "classnames";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import NextLink from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useLayoutEffect, useState } from "react";
 import GridContainer, { NavAndFooterGridConfig } from "../grid-container";
 import Link, { ButtonLink, SimpleLink } from "../link";
+import NavTree, { BreakNode, LinkNode, NavTreeNode } from "../nav-tree";
 import GhosttyWordmark from "./ghostty-wordmark.svg";
 import s from "./Navbar.module.css";
-import NextLink from "next/link";
 
 export interface NavbarProps {
   className?: string;
   links?: SimpleLink[];
   cta?: SimpleLink;
+  docsNavTree: NavTreeNode[];
 }
 
-export default function Navbar({ className, links, cta }: NavbarProps) {
+const MOBILE_MENU_BREAKPOINT = 768;
+
+export default function Navbar({
+  className,
+  links,
+  cta,
+  docsNavTree,
+}: NavbarProps) {
   const pathname = usePathname();
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  useLayoutEffect(() => {
+    function handleSizeUpdated() {
+      if (window.innerWidth > MOBILE_MENU_BREAKPOINT && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    }
+    window.addEventListener("resize", handleSizeUpdated);
+    return () => window.removeEventListener("resize", handleSizeUpdated);
+  }, [mobileMenuOpen]);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.classList.add("noScroll");
+    } else {
+      document.body.classList.remove("noScroll");
+    }
+  }, [mobileMenuOpen]);
+
   return (
     <nav className={classNames(s.navbar, className)}>
       <GridContainer
@@ -52,8 +82,64 @@ export default function Navbar({ className, links, cta }: NavbarProps) {
             />
           )}
         </div>
-        <Menu className={s.menuToggle} />
+        <div
+          className={s.menuToggle}
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? <X /> : <Menu />}
+        </div>
       </GridContainer>
+      <div
+        className={classNames(s.mobileContent, {
+          [s.mobileMenuOpen]: mobileMenuOpen,
+        })}
+      >
+        <NavTree
+          className={s.navTree}
+          onNavLinkClicked={() => {
+            setMobileMenuOpen(false);
+          }}
+          nodeGroups={[
+            {
+              rootPath: "",
+              nodes: [
+                // Adds our CTA first
+                ...(cta
+                  ? [
+                      {
+                        type: "link",
+                        title: cta.text,
+                        path: cta.href,
+                        active: pathname === cta.href,
+                      } as LinkNode,
+                    ]
+                  : []),
+                // Next our Nav Links, but exclude docs, that's going to get
+                // special treatment in the next node group below.
+                ...(links
+                  ? links
+                      .filter((link) => link.href != "/docs")
+                      .map((link) => {
+                        return {
+                          type: "link",
+                          title: link.text,
+                          path: link.href,
+                          active: pathname === link.href,
+                        } as LinkNode;
+                      })
+                  : []),
+
+                { type: "break" } as BreakNode,
+              ],
+            },
+            // Render the docs links
+            {
+              rootPath: DOCS_PAGES_ROOT_PATH,
+              nodes: docsNavTree,
+            },
+          ]}
+        />
+      </div>
     </nav>
   );
 }

@@ -24,10 +24,13 @@
         display: flex;
         gap: 30px;
         & a {
-          color: var(--gray-4);
+          color: var(--gray-5);
           text-decoration: none;
           &.active {
             text-decoration: underline;
+          }
+          &:hover {
+            color: var(--gray-9);
           }
         }
       }
@@ -45,5 +48,17 @@
       color: var(--white);
       cursor: pointer;
     }
+  }
+
+  & .mobileContent {
+    display: none;
+    overflow: scroll;
+    &.mobileMenuOpen {
+      display: block;
+    }
+    background: var(--gray-0);
+    height: calc(100vh - var(--header-height));
+    border-top: 1px solid var(--gray-2);
+    padding: 24px;
   }
 }

@@ -18,10 +18,10 @@ import { useState } from "react";
 
 // This is the location that we expect our docs mdx files to be located,
 // relative to the root of the Next.js project.
-const DOCS_DIRECTORY = "./docs";
+export const DOCS_DIRECTORY = "./docs";
 const GITHUB_REPO_URL = "https://github.com/ghostty-org/website";
 // This is the URL path for all of our docs pages
-const DOCS_PAGES_ROOT_PATH = "/docs";
+export const DOCS_PAGES_ROOT_PATH = "/docs";
 
 export async function getStaticPaths() {
   const docsPageSlugs = await loadAllDocsPageSlugs(DOCS_DIRECTORY);
@@ -83,6 +83,7 @@ export default function DocsPage({
   const [inViewHeaderIDs, setInViewHeaderIDs] = useState<string[]>([]);
   return (
     <NavFooterLayout
+      docsNavTree={navTreeData}
       meta={{
         title: breadcrumbs
           .slice(1)
@@ -97,9 +98,13 @@ export default function DocsPage({
         <div className={s.sidebar}>
           <div className={s.sidebarContentWrapper}>
             <NavTree
-              rootPath={DOCS_PAGES_ROOT_PATH}
+              nodeGroups={[
+                {
+                  rootPath: DOCS_PAGES_ROOT_PATH,
+                  nodes: navTreeData,
+                },
+              ]}
               className={s.sidebarNavTree}
-              nodes={navTreeData}
             />
           </div>
         </div>

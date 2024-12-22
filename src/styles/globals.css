@@ -14,6 +14,10 @@ body {
   background: var(--gray-0);
 }
 
+body.noScroll {
+  overflow: hidden;
+}
+
 html,
 body {
   /* The total height of the header, including all padding, etc.

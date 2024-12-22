@@ -14,6 +14,7 @@ export interface LinkProps extends SimpleLink {
   weight?: "light" | "regular" | "medium";
   showExternalIcon?: boolean;
   icon?: React.ReactNode;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }
 
 export default function Link({
@@ -23,10 +24,12 @@ export default function Link({
   weight = "light",
   icon,
   showExternalIcon = true,
+  onClick,
 }: LinkProps) {
   const isExternal = !href.startsWith("/");
   return (
     <NextLink
+      onClick={onClick}
       className={classNames(s.link, pretendardVariable.className, className, {
         [s.weightLight]: weight === "light",
         [s.weightRegular]: weight === "regular",
