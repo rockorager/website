@@ -1,6 +1,5 @@
 import { DOCS_PAGES_ROOT_PATH } from "@/pages/docs/[...path]";
 import classNames from "classnames";
-import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
@@ -82,12 +81,10 @@ export default function Navbar({
             />
           )}
         </div>
-        <div
-          className={s.menuToggle}
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X /> : <Menu />}
-        </div>
+        <MenuToggle
+          isOpen={mobileMenuOpen}
+          onToggle={() => setMobileMenuOpen(!mobileMenuOpen)}
+        />
       </GridContainer>
       <div
         className={classNames(s.mobileContent, {
@@ -141,5 +138,22 @@ export default function Navbar({
         />
       </div>
     </nav>
+  );
+}
+
+interface MenuToggleProps {
+  isOpen?: boolean;
+  onToggle?: () => void;
+}
+
+function MenuToggle({ isOpen, onToggle }: MenuToggleProps) {
+  return (
+    <button type="button" onClick={onToggle} className={s.menuToggle}>
+      <div className={classNames(s.hamburger)} data-open={isOpen}>
+        <div className={s.hamburgerLayer}></div>
+        <div className={s.hamburgerLayer}></div>
+        <div className={s.hamburgerLayer}></div>
+      </div>
+    </button>
   );
 }
