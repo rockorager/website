@@ -33,9 +33,9 @@ export default function DownloadPage({
     <NavFooterLayout
       docsNavTree={docsNavTree}
       meta={{
-        title: "Ghostty",
+        title: "Download Ghostty",
         description:
-          "Fast, native, feature-rich terminal emulator pushing modern features.",
+          "Ghostty is a fast, feature-rich, and cross-platform terminal emulator that uses platform-native UI and GPU acceleration.",
       }}
     >
       <main className={s.downloadPage}>

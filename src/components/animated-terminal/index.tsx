@@ -24,7 +24,7 @@ export default function AnimatedTerminal({
       window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
 
     if (reducedMotion) {
-      setCurrentFrame(20);
+      setCurrentFrame(16);
       return;
     }
 
