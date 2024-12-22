@@ -16,7 +16,6 @@ export interface NavbarProps {
   links?: SimpleLink[];
   cta?: SimpleLink;
   docsNavTree: NavTreeNode[];
-  onMobileMenuOpen?: (opened: boolean) => void;
 }
 
 const MOBILE_MENU_BREAKPOINT = 768;
@@ -26,7 +25,6 @@ export default function Navbar({
   links,
   cta,
   docsNavTree,
-  onMobileMenuOpen,
 }: NavbarProps) {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -43,8 +41,12 @@ export default function Navbar({
   // Notify if the mobile menu opened state changes, we need this
   // to be able to disable scrolling on the rest of the page.
   useEffect(() => {
-    onMobileMenuOpen && onMobileMenuOpen(mobileMenuOpen);
-  }, [mobileMenuOpen, onMobileMenuOpen]);
+    if (mobileMenuOpen) {
+      document.body.classList.add("noScroll");
+    } else {
+      document.body.classList.remove("noScroll");
+    }
+  }, [mobileMenuOpen]);
 
   return (
     <nav className={classNames(s.navbar, className)}>
