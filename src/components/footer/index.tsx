@@ -28,7 +28,7 @@ export default function Footer({ className, links, copyright }: FooterProps) {
             })}
           </ul>
         )}
-        <P>{copyright}</P>
+        <P className={s.copyright}>{copyright}</P>
       </GridContainer>
     </footer>
   );

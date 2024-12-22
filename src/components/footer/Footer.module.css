@@ -23,9 +23,15 @@
         gap: 32px;
       }
       & a {
-        color: var(--gray-4);
+        color: var(--gray-5);
         text-decoration: none;
+        &:hover {
+          color: var(--gray-9);
+        }
       }
+    }
+    & .copyright {
+      color: var(--gray-5);
     }
   }
 }

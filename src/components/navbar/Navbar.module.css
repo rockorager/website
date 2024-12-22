@@ -24,10 +24,13 @@
         display: flex;
         gap: 30px;
         & a {
-          color: var(--gray-4);
+          color: var(--gray-5);
           text-decoration: none;
           &.active {
             text-decoration: underline;
+          }
+          &:hover {
+            color: var(--gray-9);
           }
         }
       }
