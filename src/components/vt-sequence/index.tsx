@@ -13,23 +13,25 @@ interface VTSequenceProps {
 //   - CSI will be replaced with ESC [.
 //   - Pn will be considered a parameter
 //
-export default function VTSequence(props: VTSequenceProps) {
-  const { sequence, unimplemented = false } = props;
+export default function VTSequence({
+  sequence,
+  unimplemented = false,
+}: VTSequenceProps) {
   const sequenceElements = useMemo(() => parseSequence(sequence), [sequence]);
-
-  // TODO: styling if unimplemented is set
-
   return (
-    <ol className={s.vtsequence}>
-      {sequenceElements.map(({ value, hex }, i) => (
-        <li key={i} className={s.vtelem}>
-          <dl>
-            <dt>{hex ? `0x${hex}` : "____"}</dt>
-            <dd>{value}</dd>
-          </dl>
-        </li>
-      ))}
-    </ol>
+    <div className={s.vtsequence}>
+      {unimplemented && <div className={s.unimplemented}>Unimplemented</div>}
+      <ol className={s.sequence}>
+        {sequenceElements.map(({ value, hex }, i) => (
+          <li key={i} className={s.vtelem}>
+            <dl>
+              <dt>{hex ? `0x${hex}` : "____"}</dt>
+              <dd>{value}</dd>
+            </dl>
+          </li>
+        ))}
+      </ol>
+    </div>
   );
 }
 
