@@ -32,6 +32,13 @@ export default function RootLayout({
         <title>{title}</title>
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <meta property="og:title" content="Ghostty" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ghostty.org" />
+        <meta property="og:site_name" content="Ghostty" />
+        <meta property="og:description" content={description} />
+
         <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
         <link rel="shortcut icon" href="/favicon.ico" />
