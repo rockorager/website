@@ -38,8 +38,6 @@ export default function Navbar({
     return () => window.removeEventListener("resize", handleSizeUpdated);
   }, [mobileMenuOpen]);
 
-  // Notify if the mobile menu opened state changes, we need this
-  // to be able to disable scrolling on the rest of the page.
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.classList.add("noScroll");
