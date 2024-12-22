@@ -372,6 +372,11 @@
           "type": "link",
           "path": "/terminfo",
           "title": "Terminfo"
+        },
+        {
+          "type": "link",
+          "path": "/gtk-single-instance",
+          "title": "GTK Single Instance"
         }
       ]
     }
