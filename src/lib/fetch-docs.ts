@@ -34,14 +34,14 @@ export interface DocsPageData {
 
 export async function loadDocsPage(
   docsDirectory: string,
-  slug: string
+  slug: string,
 ): Promise<DocsPageData> {
   // A file with a given slug can be located in one of two places.
   // First we attempt to load the file from the non-index path first.
   // e.g. `/docs/foo.mdx` will be tried before `/docs/foo/index.mdx`.
   try {
     return await loadDocsPageFromRelativeFilePath(
-      nodePath.join(docsDirectory, slug + MDX_EXTENSION)
+      nodePath.join(docsDirectory, slug + MDX_EXTENSION),
     );
   } catch (err) {
     // If we run into an error because the file didn't exist catch this error
@@ -53,12 +53,12 @@ export async function loadDocsPage(
   }
   // Now we'll attempt to load the index file path.
   return await loadDocsPageFromRelativeFilePath(
-    nodePath.join(docsDirectory, slug, "index" + MDX_EXTENSION)
+    nodePath.join(docsDirectory, slug, "index" + MDX_EXTENSION),
   );
 }
 
 async function loadDocsPageFromRelativeFilePath(
-  relativeFilePath: string
+  relativeFilePath: string,
 ): Promise<DocsPageData> {
   const mdxFileContent = matter.read(relativeFilePath);
   const slug = slugFromRelativeFilePath(relativeFilePath);
@@ -122,7 +122,7 @@ async function loadDocsPageFromRelativeFilePath(
           [rehypeHighlight, { detect: true } satisfies RehypeHighlightOptions],
         ],
       },
-    }
+    },
   );
 
   return {
@@ -139,7 +139,7 @@ async function loadDocsPageFromRelativeFilePath(
 }
 
 export async function loadAllDocsPageSlugs(
-  docsDirectory: string
+  docsDirectory: string,
 ): Promise<Array<string>> {
   const allPaths = recurse(docsDirectory, {
     nodir: true,
@@ -164,7 +164,7 @@ It is likely that both of these files exist:
   - ${docsDirectory}/${slug}/index.mdx
 Both of these files resolve to the same URL, and will cause an issue.
 
-To fix this error, delete one of these files.`
+To fix this error, delete one of these files.`,
       );
     } else {
       docsPageSlugs.add(slug);
