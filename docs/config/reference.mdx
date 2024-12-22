@@ -1753,6 +1753,83 @@ or it is manually (and typically temporarily) enabled. However, if you
 always have secure input enabled, the indication can be distracting and
 you may want to disable it.
 
+## `macos-icon`
+
+Customize the macOS app icon.
+
+This only affects the icon that appears in the dock, application
+switcher, etc. This does not affect the icon in Finder because
+that is controlled by a hardcoded value in the signed application
+bundle and can't be changed at runtime. For more details on what
+exactly is affected, see the `NSApplication.icon` Apple documentation;
+that is the API that is being used to set the icon.
+
+Valid values:
+
+ * `official` - Use the official Ghostty icon.
+ * `custom-style` - Use the official Ghostty icon but with custom
+   styles applied to various layers. The custom styles must be
+   specified using the additional `macos-icon`-prefixed configurations.
+   The `macos-icon-ghost-color` and `macos-icon-screen-color`
+   configurations are required for this style.
+
+<Warning>
+ The `custom-style` option is _experimental_. We may change
+the format of the custom styles in the future. We're still finalizing
+the exact layers and customization options that will be available.
+</Warning>
+
+Other caveats:
+
+  * The icon in the update dialog will always be the official icon.
+    This is because the update dialog is managed through a
+    separate framework and cannot be customized without significant
+    effort.
+
+
+## `macos-icon-frame`
+
+The material to use for the frame of the macOS app icon.
+
+Valid values:
+
+ * `aluminum` - A brushed aluminum frame. This is the default.
+ * `beige` - A classic 90's computer beige frame.
+ * `plastic` - A glossy, dark plastic frame.
+ * `chrome` - A shiny chrome frame.
+
+This only has an effect when `macos-icon` is set to `custom-style`.
+
+## `macos-icon-ghost-color`
+
+The color of the ghost in the macOS app icon.
+
+The format of the color is the same as the `background` configuration;
+see that for more information.
+
+<Note>
+ This configuration is required when `macos-icon` is set to
+`custom-style`.
+</Note>
+
+This only has an effect when `macos-icon` is set to `custom-style`.
+
+## `macos-icon-screen-color`
+
+The color of the screen in the macOS app icon.
+
+The screen is a gradient so you can specify multiple colors that
+make up the gradient. Colors should be separated by commas. The
+format of the color is the same as the `background` configuration;
+see that for more information.
+
+<Note>
+ This configuration is required when `macos-icon` is set to
+`custom-style`.
+</Note>
+
+This only has an effect when `macos-icon` is set to `custom-style`.
+
 ## `linux-cgroup`
 
 Put every surface (tab, split, window) into a dedicated Linux cgroup.
