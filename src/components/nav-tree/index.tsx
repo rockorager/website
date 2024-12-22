@@ -33,6 +33,8 @@ interface NavTreeNodeGroup {
 interface NavTreeProps {
   className?: string;
   nodeGroups: NavTreeNodeGroup[];
+  // An optional callback, primarily used
+  // by our mobile nav to tell it to close.
   onNavLinkClicked?: () => void;
   activeItemRef?: React.RefObject<HTMLLIElement>;
 }
