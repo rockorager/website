@@ -70,34 +70,36 @@ export default function Home({ terminalData }: HomePageProps) {
       }}
     >
       <main className={s.homePage}>
-        <section className={s.terminalWrapper}>
-          {/* Don't render the terminal until the window width has been
+        {/* Don't render the content until the window width has been
           calculated, else there will be a flash from the smallest size
-          to the true calculated size */}
-          {windowWidth > 0 && (
-            <AnimatedTerminal
-              title={"👻 Ghostty"}
-              fontSize={fontSize}
-              whitespacePadding={
-                windowWidth > 950 ? 20 : windowWidth > 850 ? 10 : 0
-              }
-              className={s.animatedTerminal}
-              columns={100}
-              rows={41}
-              frames={animationFrames}
-              frameLengthMs={31}
-            />
-          )}
-        </section>
-        <GridContainer className={s.buttonsList}>
-          <ButtonLink href="/download" text="Download" size="large" />
-          <ButtonLink
-            href="/docs"
-            text="Documentation"
-            size="large"
-            theme="neutral"
-          />
-        </GridContainer>
+          of the terminal to the true calculated size */}
+        {windowWidth > 0 && (
+          <>
+            <section className={s.terminalWrapper}>
+              <AnimatedTerminal
+                title={"👻 Ghostty"}
+                fontSize={fontSize}
+                whitespacePadding={
+                  windowWidth > 950 ? 20 : windowWidth > 850 ? 10 : 0
+                }
+                className={s.animatedTerminal}
+                columns={100}
+                rows={41}
+                frames={animationFrames}
+                frameLengthMs={31}
+              />
+            </section>
+            <GridContainer className={s.buttonsList}>
+              <ButtonLink href="/download" text="Download" size="large" />
+              <ButtonLink
+                href="/docs"
+                text="Documentation"
+                size="large"
+                theme="neutral"
+              />
+            </GridContainer>
+          </>
+        )}
       </main>
     </RootLayout>
   );
