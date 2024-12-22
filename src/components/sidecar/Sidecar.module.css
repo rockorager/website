@@ -52,6 +52,7 @@
       );
       & p {
         color: var(--item-color);
+        overflow-wrap: break-word;
       }
       & a {
         text-decoration-line: none;
