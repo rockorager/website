@@ -34,6 +34,7 @@ export default function Sidecar({
 
   items = items.filter((v) => v.depth <= MAX_SIDECAR_HEADER_DEPTH);
 
+  // Calculate the first header that's in view
   var activeHeaderID: null | string = null;
   for (const item of items) {
     if (inViewHeaderIDs.includes(item.id.substring(1))) {
