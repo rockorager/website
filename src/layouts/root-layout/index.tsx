@@ -33,7 +33,7 @@ export default function RootLayout({
         <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-        <meta property="og:title" content="Ghostty" />
+        <meta property="og:title" content={title} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://ghostty.org" />
         <meta property="og:site_name" content="Ghostty" />
