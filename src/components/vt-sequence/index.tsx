@@ -20,14 +20,16 @@ export default function VTSequence(props: VTSequenceProps) {
   // TODO: styling if unimplemented is set
 
   return (
-    <div className={s.vtsequence}>
+    <ol className={s.vtsequence}>
       {sequenceElements.map(({ value, hex }, i) => (
-        <div key={i} className={s.vtelem}>
-          <div>{hex ? `0x${hex}` : "____"}</div>
-          <div>{value}</div>
-        </div>
+        <li key={i} className={s.vtelem}>
+          <dl>
+            <dt>{hex ? `0x${hex}` : "____"}</dt>
+            <dd>{value}</dd>
+          </dl>
+        </li>
       ))}
-    </div>
+    </ol>
   );
 }
 
