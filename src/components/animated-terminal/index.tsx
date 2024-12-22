@@ -34,7 +34,7 @@ export default function AnimatedTerminal({
       });
     }, frameLengthMs);
     return () => clearInterval(interval);
-  }, [frameLengthMs, frames.length]);
+  }, []);
 
   return (
     <Terminal
