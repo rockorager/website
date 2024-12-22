@@ -2,7 +2,6 @@ import Footer from "@/components/footer";
 import { SimpleLink } from "@/components/link";
 import { NavTreeNode } from "@/components/nav-tree";
 import Navbar from "@/components/navbar";
-import classNames from "classnames";
 import RootLayout, { RootLayoutProps } from "../root-layout";
 
 const navLinks: Array<SimpleLink> = [
