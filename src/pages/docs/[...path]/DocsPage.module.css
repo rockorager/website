@@ -125,7 +125,7 @@
         600px,
         100vh - var(--header-height) - var(--sidecar-margin-top) - var(--content-wrapper-padding-top) - var(--sidecar-margin)
       );
-      overflow-y: scroll;
+      overflow-y: auto;
       @media(max-width: 1276px) {
         display: none;
       }
