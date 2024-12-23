@@ -17,6 +17,13 @@
   justify-content: center;
   align-items: center;
 
+  transition: bottom .25s ease;
+  @media (prefers-reduced-motion) {
+    transition: none;
+  }
+  &.isAtBottom {
+    bottom: 100px;
+  }
   &:hover {
     background: var(--gray-3);
   }
