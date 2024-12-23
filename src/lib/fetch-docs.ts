@@ -89,34 +89,7 @@ async function loadDocsPageFromRelativeFilePath(
               }),
             } satisfies RemarkCalloutOptions,
           ],
-          // Parse out the Anchor links and place them in the array defined above
-          () => {
-            type HeadingNode = {
-              type: "heading";
-              depth: number;
-              children: {
-                type: string;
-                value: string;
-              }[];
-            };
-            return function (node: Node) {
-              visit(node, "heading", (node: Node) => {
-                if (node.type === "heading") {
-                  let headingNode = node as HeadingNode;
-                  if (headingNode.children.length > 0) {
-                    const text = headingNode.children
-                      .map((v) => v.value)
-                      .join("");
-                    pageHeaders.push({
-                      depth: headingNode.depth,
-                      id: `#${slugify(text.toLowerCase())}`,
-                      title: text,
-                    });
-                  }
-                }
-              });
-            };
-          },
+          parseAnchorLinks({ pageHeaders }),
         ],
         rehypePlugins: [
           [rehypeHighlight, { detect: true } satisfies RehypeHighlightOptions],
@@ -124,7 +97,6 @@ async function loadDocsPageFromRelativeFilePath(
       },
     },
   );
-
   return {
     slug,
     relativeFilePath,
@@ -135,6 +107,40 @@ async function loadDocsPageFromRelativeFilePath(
       : false,
     content,
     pageHeaders,
+  };
+}
+
+// parseAnchorLinks is a remark plugin which will fill the pageHeaders array
+// with headers as they are encountered
+function parseAnchorLinks({
+  pageHeaders,
+}: {
+  pageHeaders: PageHeader[];
+}): () => (node: Node) => void {
+  type HeadingNode = {
+    type: "heading";
+    depth: number;
+    children: {
+      type: string;
+      value: string;
+    }[];
+  };
+  return () => {
+    return function (node: Node) {
+      visit(node, "heading", (node: Node) => {
+        if (node.type === "heading") {
+          let headingNode = node as HeadingNode;
+          if (headingNode.children.length > 0) {
+            const text = headingNode.children.map((v) => v.value).join("");
+            pageHeaders.push({
+              depth: headingNode.depth,
+              id: `#${slugify(text.toLowerCase())}`,
+              title: text,
+            });
+          }
+        }
+      });
+    };
   };
 }
 
