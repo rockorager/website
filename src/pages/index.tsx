@@ -7,7 +7,7 @@ import {
   loadAllTerminalFiles,
   TerminalsMap,
 } from "@/lib/fetch-terminal-content";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import s from "./Home.module.css";
 
 export async function getStaticProps() {
@@ -25,7 +25,7 @@ interface HomePageProps {
 function useWindowSize() {
   const [width, setWidth] = useState(0);
   const [height, setHeight] = useState(0);
-  useLayoutEffect(() => {
+  useEffect(() => {
     function updateSize() {
       setWidth(window.innerWidth);
       setHeight(window.innerHeight);
