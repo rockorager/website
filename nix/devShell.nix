@@ -1,6 +1,7 @@
 {
   mkShell,
   alejandra,
+  nodePackages,
   bash,
   nodejs_22,
 }:
@@ -17,5 +18,6 @@ mkShell rec {
 
     # Required for CI for format checking.
     alejandra
+    nodePackages.prettier
   ];
 }
