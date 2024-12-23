@@ -3,7 +3,7 @@ import classNames from "classnames";
 import Image from "next/image";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useLayoutEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import GridContainer, { NavAndFooterGridConfig } from "../grid-container";
 import Link, { ButtonLink, SimpleLink } from "../link";
 import NavTree, { BreakNode, LinkNode, NavTreeNode } from "../nav-tree";
@@ -32,7 +32,7 @@ export default function Navbar({
   const mobileContentRef = useRef<HTMLDivElement>(null);
   const activeItemRef = useRef<HTMLLIElement>(null);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     function handleSizeUpdated() {
       if (window.innerWidth > MOBILE_MENU_BREAKPOINT && mobileMenuOpen) {
         setMobileMenuOpen(false);
