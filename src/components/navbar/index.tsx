@@ -9,6 +9,7 @@ import Link, { ButtonLink, SimpleLink } from "../link";
 import NavTree, { BreakNode, LinkNode, NavTreeNode } from "../nav-tree";
 import GhosttyWordmark from "./ghostty-wordmark.svg";
 import s from "./Navbar.module.css";
+import { useRouter } from "next/router";
 
 export interface NavbarProps {
   className?: string;
@@ -26,6 +27,7 @@ export default function Navbar({
   docsNavTree,
 }: NavbarProps) {
   const pathname = usePathname();
+  const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const mobileContentRef = useRef<HTMLDivElement>(null);
   const activeItemRef = useRef<HTMLLIElement>(null);
@@ -68,6 +70,20 @@ export default function Navbar({
       document.body.classList.remove("noScroll");
     }
   }, [mobileMenuOpen]);
+
+  /* Instead of closing the menu with the NavTree's onNavLinkClicked prop,
+    * we'll close it when the route changes. This avoids the annoying flicker
+    * between the old and new pages when the menu closes. */
+  useEffect(() => {
+    const handleRouteChangeComplete = () => {
+      setMobileMenuOpen(false);
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChangeComplete);
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChangeComplete);
+    };
+  }, [router]);
 
   return (
     <nav className={classNames(s.navbar, className)}>
@@ -118,9 +134,6 @@ export default function Navbar({
       >
         <NavTree
           className={s.navTree}
-          onNavLinkClicked={() => {
-            setMobileMenuOpen(false);
-          }}
           nodeGroups={[
             {
               rootPath: "",
