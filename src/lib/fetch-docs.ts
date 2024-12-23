@@ -1,17 +1,19 @@
-import matter from "gray-matter";
-import recurse, { Item } from "klaw-sync";
-import { MDXRemoteSerializeResult } from "next-mdx-remote";
-import { serialize } from "next-mdx-remote/serialize";
-import { type Node } from "unist";
-import { visit } from "unist-util-visit";
-import remarkGfm from "remark-gfm";
-import slugify from "slugify";
-import rehypeHighlight, {
-  type Options as RehypeHighlightOptions,
-} from "rehype-highlight";
 import remarkCallout, {
   type Options as RemarkCalloutOptions,
 } from "@r4ai/remark-callout";
+import matter from "gray-matter";
+import recurse, { Item } from "klaw-sync";
+import type { Root } from "mdast";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
+import { serialize } from "next-mdx-remote/serialize";
+import rehypeHighlight, {
+  type Options as RehypeHighlightOptions,
+} from "rehype-highlight";
+import remarkGfm from "remark-gfm";
+import slugify from "slugify";
+import type { Plugin } from "unified";
+import { type Node } from "unist";
+import { visit } from "unist-util-visit";
 const nodePath = require("path");
 
 const MDX_EXTENSION = ".mdx";
@@ -71,52 +73,8 @@ async function loadDocsPageFromRelativeFilePath(
       mdxOptions: {
         remarkPlugins: [
           remarkGfm,
-          // Parse out [!NOTE] style callouts
-          [
-            remarkCallout,
-            {
-              root: (callout) => ({
-                tagName: "Callout",
-                properties: {
-                  type: callout.type.toLowerCase(),
-                  isFoldable: String(callout.isFoldable),
-                },
-              }),
-              // We won't use title, just type.
-              title: () => ({
-                tagName: "callout-title",
-                properties: {},
-              }),
-            } satisfies RemarkCalloutOptions,
-          ],
-          // Parse out the Anchor links and place them in the array defined above
-          () => {
-            type HeadingNode = {
-              type: "heading";
-              depth: number;
-              children: {
-                type: string;
-                value: string;
-              }[];
-            };
-            return function (node: Node) {
-              visit(node, "heading", (node: Node) => {
-                if (node.type === "heading") {
-                  let headingNode = node as HeadingNode;
-                  if (headingNode.children.length > 0) {
-                    const text = headingNode.children
-                      .map((v) => v.value)
-                      .join("");
-                    pageHeaders.push({
-                      depth: headingNode.depth,
-                      id: `#${slugify(text.toLowerCase())}`,
-                      title: text,
-                    });
-                  }
-                }
-              });
-            };
-          },
+          gfmAlertsAsCallouts(),
+          parseAnchorLinks({ pageHeaders }),
         ],
         rehypePlugins: [
           [rehypeHighlight, { detect: true } satisfies RehypeHighlightOptions],
@@ -124,7 +82,6 @@ async function loadDocsPageFromRelativeFilePath(
       },
     },
   );
-
   return {
     slug,
     relativeFilePath,
@@ -135,6 +92,65 @@ async function loadDocsPageFromRelativeFilePath(
       : false,
     content,
     pageHeaders,
+  };
+}
+
+// Parse out GFM Style Alerts (e.g. [!NOTE]) & render them as Callouts
+// https://github.com/orgs/community/discussions/16925
+function gfmAlertsAsCallouts(): [
+  Plugin<[RemarkCalloutOptions], Root>,
+  RemarkCalloutOptions,
+] {
+  return [
+    remarkCallout,
+    {
+      root: (callout) => ({
+        tagName: "Callout",
+        properties: {
+          type: callout.type.toLowerCase(),
+          isFoldable: String(callout.isFoldable),
+        },
+      }),
+      // We won't use title, just type.
+      title: () => ({
+        tagName: "callout-title",
+        properties: {},
+      }),
+    } satisfies RemarkCalloutOptions,
+  ];
+}
+
+// parseAnchorLinks is a remark plugin which will fill the pageHeaders array
+// with headers as they are encountered
+function parseAnchorLinks({
+  pageHeaders,
+}: {
+  pageHeaders: PageHeader[];
+}): () => (node: Node) => void {
+  type HeadingNode = {
+    type: "heading";
+    depth: number;
+    children: {
+      type: string;
+      value: string;
+    }[];
+  };
+  return () => {
+    return function (node: Node) {
+      visit(node, "heading", (node: Node) => {
+        if (node.type === "heading") {
+          let headingNode = node as HeadingNode;
+          if (headingNode.children.length > 0) {
+            const text = headingNode.children.map((v) => v.value).join("");
+            pageHeaders.push({
+              depth: headingNode.depth,
+              id: `#${slugify(text.toLowerCase())}`,
+              title: text,
+            });
+          }
+        }
+      });
+    };
   };
 }
 
