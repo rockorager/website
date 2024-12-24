@@ -24,6 +24,11 @@
           "type": "link",
           "path": "/package",
           "title": "Packaging Ghostty"
+        },
+        {
+          "type": "link",
+          "path": "/pre",
+          "title": "Prerelease Builds"
         }
       ]
     },
