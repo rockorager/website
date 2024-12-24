@@ -98,6 +98,35 @@ that they were very surprised how noticeable the speed
 improvements were to their everyday use. I hope you'll feel the
 same way.
 
+## libghostty
+
+Ghostty also differentiates itself with its architecture. The
+core of Ghostty is a cross-platform, C-ABI compatible library called
+`libghostty`. `libghostty` provides the core terminal emulation, font handling,
+and rendering capabilities.
+
+The Ghostty GUI applications are consumers of `libghostty`. The macOS app is
+written in Swift, uses AppKit and SwiftUI, and links against the `libghostty`
+C API. The Linux app is written in Zig, uses the GTK4 C API, and also links
+against `libghostty`[^3].
+
+This architecture allows for a clean separation between the terminal
+emulation and the GUI. It is the key architecture that allows Ghostty
+to achieve its goal of being [native](#native).
+
+This architecture makes Ghostty unique since Ghostty the project also aims
+to enable other terminal emulator projects to be built on top of a shared
+core. This allows for a more diverse ecosystem of terminal emulators that
+can focus on higher-level features and UIs without needing to reimplement
+the core terminal emulation.
+
+<Note>
+As of the initial public release, `libghostty` is not yet a stable API
+and has not been released as a standalone, stable library. However, it is
+already in use by the macOS and Linux GUI applications. The goal is to
+stabilize the API and release it as a standalone library in the future.
+</Note>
+
 [^1]: Linux doesn't have a "native" GUI toolkit like macOS, but
 GTK4 is the closest thing to a standard GUI toolkit that exists.
 Most importantly, we don't draw custom widgets and Ghostty will
@@ -105,3 +134,7 @@ fit right into your desktop environment.
 
 [^2]: For example, Neovim uses synchronized rendering to prevent
 tearing between frames.
+
+[^3]: Since the GTK4 app is written in Zig, it doesn't link in the traditional
+sense. Instead, it uses the public `libghostty` APIs and compiles as a single
+Zig compilation unit.
