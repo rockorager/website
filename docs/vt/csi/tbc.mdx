@@ -19,7 +19,7 @@ If the parameter `n` is `3`, all tab stops are cleared.
 ```bash
 printf "\033[1;1H" # move to top-left
 printf "\033[0J" # clear screen
-printf "\033[?W" # reset tabs
+printf "\033[?5W" # reset tabs
 printf "\t"
 printf "\033[g"
 printf "\033[1G"
@@ -35,7 +35,7 @@ printf "\t"
 ```bash
 printf "\033[1;1H" # move to top-left
 printf "\033[0J" # clear screen
-printf "\033[?W" # reset tabs
+printf "\033[?5W" # reset tabs
 printf "\033[3g"
 printf "\033[1G"
 printf "\t"
