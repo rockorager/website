@@ -30,14 +30,13 @@ export default function NotFound({ docsNavTree }: NotFoundProps) {
     >
       <main className={s.notFoundPage}>
         <header className={s.header}>
-          <H1>Oops!</H1>
-          <H2>We couldn't find the page you're looking for.</H2>
+          <H2>This page could not be found.</H2>
         </header>
         <section>
           <Image
             className={s.image}
             src="/ghostty-404.png"
-            alt="Ghostty 404 image - Credit @qwerasd205"
+            alt="Ghostty 404 image - CC BY 4.0 (c) @qwerasd205"
             width={425}
             height={500}
           />
