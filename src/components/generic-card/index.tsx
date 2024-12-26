@@ -1,11 +1,11 @@
-import { UnitProp } from "@/types/style";
+import { SpacingProp } from "@/types/style";
 import { H2, P } from "../text";
 import s from "./GenericCard.module.css";
 
 interface GenericCardProps {
   title: string;
   description: string;
-  padding?: UnitProp;
+  padding?: SpacingProp;
   children?: React.ReactNode;
 }
 
