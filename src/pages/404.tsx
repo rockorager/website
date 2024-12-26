@@ -34,6 +34,7 @@ export default function NotFound({ docsNavTree }: NotFoundProps) {
           <H2>We couldn't find the page you're looking for.</H2>
         </header>
         <Image
+          className={s.image}
           src="/ghostty-404.png"
           alt="Ghostty 404 image - Credit @qwerasd205"
           width={425}
