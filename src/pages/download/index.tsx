@@ -49,6 +49,8 @@ export default function DownloadPage({
               title="macOS"
               description="A universal binary that works on both Apple Silicon and Intel machines. Requires macOS 13+ (Ventura or later)."
             >
+
+              <div className={s.macosLinks}>
               <ButtonLink
                 size="large"
                 href={`https://release.files.ghostty.org/${latestVersion}/Ghostty.dmg`}
@@ -56,6 +58,14 @@ export default function DownloadPage({
                 icon={<Download strokeWidth={2} size={17} />}
                 showExternalIcon={false}
               />
+              <ButtonLink
+                  size="large"
+                  href="/docs/install/binary#macos"
+                  text="Package Manager"
+                  icon={<Package strokeWidth={2} size={18} />}
+                  showExternalIcon={false}
+                />
+                </div>
             </DownloadCard>
             <DownloadCard
               title="Linux"

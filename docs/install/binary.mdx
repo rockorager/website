@@ -27,11 +27,15 @@ To install, download the `.dmg` file, open it, and drag the
 Ghostty application to your Applications folder. This is the same
 process as installing many typical macOS applications.
 
-**Where is Homebrew?** The Ghostty project does not maintain a Homebrew
-formula or tap. We rely on the community to provide alternate packaging
-methods similar to Linux. At the time of writing, Ghostty is too new
-for community-provided packages to be available. If and when they
-become available, this page will be updated.
+### Homebrew
+
+There is a Homebrew cask that can be used. This cask is maintained by the community.
+To install it, run:
+
+```bash
+brew install --cask ghostty
+```
+
 
 ## Linux
 
@@ -73,7 +77,11 @@ Below is an example:
     };
   };
 
-  outputs = { nixpkgs, ghostty, ... }: {
+  outputs = {
+    nixpkgs,
+    ghostty,
+    ...
+  }: {
     nixosConfigurations.mysystem = nixpkgs.lib.nixosSystem {
       modules = [
         {
