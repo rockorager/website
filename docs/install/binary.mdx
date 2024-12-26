@@ -11,10 +11,9 @@ but those packages are maintained by the community. This page will
 list both official and community-provided binary packages.
 
 <Note>
-At the time of writing, Ghostty has only recently been publicly
-released. As a result, the number of community-provided binary
-packages is zero. This page will be updated as community-provided
-packages become available.
+  At the time of writing, Ghostty has only recently been publicly released. As a
+  result, the number of community-provided binary packages is zero. This page
+  will be updated as community-provided packages become available.
 </Note>
 
 ## macOS
@@ -46,9 +45,11 @@ If your platform isn't available, you must
 [build Ghostty from source](/docs/install/build).
 
 <Tip>
-**Interested in creating a package for your platform?** Check out the
-[packaging guide](https://github.com/ghostty-org/ghostty/blob/main/PACKAGING.md). If you need any help, feel free to make an issue. Once your
-package is ready, submit a pull request to add it to this page!
+  **Interested in creating a package for your platform?** Check out the
+  [packaging
+  guide](https://github.com/ghostty-org/ghostty/blob/main/PACKAGING.md). If you
+  need any help, feel free to make an issue. Once your package is ready, submit
+  a pull request to add it to this page!
 </Tip>
 
 ### Nix Flake
@@ -91,4 +92,24 @@ Below is an example:
     };
   };
 }
+```
+
+### Arch Linux
+
+The recommended way to install Ghostty is to install the existing package in the
+`extra` repository. This package is maintained by the community.
+
+```sh
+yay -S ghostty
+```
+
+#### AUR
+
+There is also an AUR package
+[ghostty-git](https://aur.archlinux.org/packages/ghostty-git)
+being maintained that builds against the `main` branch.
+
+```sh
+# Install Ghostty tip
+yay -S ghostty-git
 ```
