@@ -91,27 +91,19 @@ Below is an example:
 ### Arch Linux
 
 The recommended way to install Ghostty is to install the existing package in the
-`extra` repository. There is also two AUR packages being maintained, one that builds
-against stable tags, and one that builds against the `main` branch. It is
-recommended to use the former as it is less likely to have bugs.
-
-- The [ghostty](https://archlinux.org/packages/extra/x86_64/ghostty/) package in
-  the `extra` repository is the **recommended** way to install.
-- The [ghostty](https://aur.archlinux.org/packages/ghostty) AUR package is built agaist
-  stable releases and is going to provide a stable build.
-- The [ghostty-git](https://aur.archlinux.org/packages/ghostty-git) AUR package is built
-  against the `main` git branch and **may be unstable** at times.
-
-Below is an example of how to install one of the packages using the
-[yay](https://aur.archlinux.org/packages/yay) AUR helper:
+`extra` repository. This package is maintained by the community.
 
 ```sh
-# Install Ghostty stable
 yay -S ghostty
-
-# Install Ghostty nightly
-yay -S ghostty-git
 ```
 
-If neither option works, then you can [build from source](/docs/install/build)
-instead of using either of the packages.
+#### AUR
+
+There is also an AUR package
+[ghostty-git](https://aur.archlinux.org/packages/ghostty-git)
+being maintained that builds against the `main` branch.
+
+```sh
+# Install Ghostty tip
+yay -S ghostty-git
+```
