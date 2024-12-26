@@ -28,7 +28,8 @@
   opacity: 0;
 }
 
-.codeBlock:hover .copyButton {
+.codeBlock:hover .copyButton,
+.copyButton:focus {
   opacity: 1;
 }
 
