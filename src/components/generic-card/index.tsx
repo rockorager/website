@@ -19,7 +19,7 @@ export default function GenericCard({
     <div className={s.genericCard} style={{ padding }}>
       <H2 className={s.title}>{title}</H2>
       <P className={s.description}>{description}</P>
-      <div className={s.buttons}>{children}</div>
+      {children ? null : <div className={s.children}>{children}</div>}
     </div>
   );
 }
