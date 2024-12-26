@@ -1,0 +1,17 @@
+.genericCard {
+  padding: 58px;
+  border: 1px solid var(--gray-2);
+  border-radius: 10px;
+
+  & .title {
+    margin-bottom: 8px;
+  }
+
+  & .description {
+    margin-bottom: 16px;
+  }
+
+  & .buttons {
+    display: flex;
+  }
+}
