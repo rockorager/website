@@ -3,7 +3,7 @@ import NavFooterLayout from "@/layouts/nav-footer-layout";
 import { loadDocsNavTreeData } from "@/lib/fetch-nav";
 import { DOCS_DIRECTORY } from "./docs/[...path]";
 import { NavTreeNode } from "@/components/nav-tree";
-import { H1, H2 } from "@/components/text";
+import { H1, H2, P } from "@/components/text";
 import Image from "next/image";
 
 export async function getStaticProps() {
@@ -33,13 +33,16 @@ export default function NotFound({ docsNavTree }: NotFoundProps) {
           <H1>Oops!</H1>
           <H2>We couldn't find the page you're looking for.</H2>
         </header>
-        <Image
-          className={s.image}
-          src="/ghostty-404.png"
-          alt="Ghostty 404 image - Credit @qwerasd205"
-          width={425}
-          height={500}
-        />
+        <section>
+          <Image
+            className={s.image}
+            src="/ghostty-404.png"
+            alt="Ghostty 404 image - Credit @qwerasd205"
+            width={425}
+            height={500}
+          />
+          <P className={s.imageCopyright}>CC BY 4.0 (&#169;) Qwerasd</P>
+        </section>
       </main>
     </NavFooterLayout>
   );
