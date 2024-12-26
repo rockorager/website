@@ -11,10 +11,9 @@ but those packages are maintained by the community. This page will
 list both official and community-provided binary packages.
 
 <Note>
-At the time of writing, Ghostty has only recently been publicly
-released. As a result, the number of community-provided binary
-packages is zero. This page will be updated as community-provided
-packages become available.
+  At the time of writing, Ghostty has only recently been publicly released. As a
+  result, the number of community-provided binary packages is zero. This page
+  will be updated as community-provided packages become available.
 </Note>
 
 ## macOS
@@ -44,9 +43,11 @@ If your platform isn't available, you must
 [build Ghostty from source](/docs/install/build).
 
 <Tip>
-**Interested in creating a package for your platform?** Check out the
-[packaging guide](https://github.com/ghostty-org/ghostty/blob/main/PACKAGING.md). If you need any help, feel free to make an issue. Once your
-package is ready, submit a pull request to add it to this page!
+  **Interested in creating a package for your platform?** Check out the
+  [packaging
+  guide](https://github.com/ghostty-org/ghostty/blob/main/PACKAGING.md). If you
+  need any help, feel free to make an issue. Once your package is ready, submit
+  a pull request to add it to this page!
 </Tip>
 
 ### Nix Flake
@@ -86,3 +87,30 @@ Below is an example:
   };
 }
 ```
+
+### Arch Linux
+
+The recommended way to install Ghostty is to install one of the existing AUR
+packages. Currently there are two packages being maintained, one that builds
+against stable tags, and one that builds against the `main` branch. It is
+recommended to use the former as it is less likely to have bugs and provide
+stability.
+
+- The [ghostty](https://aur.archlinux.org/packages/ghostty) package is built agaist
+  stable releases and is the **recommended** package to install.
+- The [ghostty-git](https://aur.archlinux.org/packages/ghostty-git) package is built
+  against the `main` git branch and **may be unstable** at times.
+
+Below is an example of how to install one of the packages using the
+[yay](https://aur.archlinux.org/packages/yay) AUR helper:
+
+```sh
+# Install Ghostty stable
+yay -S ghostty
+
+# Install Ghostty nightly
+yay -S ghostty-git
+```
+
+If neither option works, then you can [build from source](/docs/install/build)
+instead of using either of the packages.
