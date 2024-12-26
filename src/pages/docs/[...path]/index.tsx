@@ -14,7 +14,6 @@ import { loadDocsNavTreeData } from "@/lib/fetch-nav";
 import { navTreeToBreadcrumbs } from "@/lib/nav-tree-to-breadcrumbs";
 import { Pencil } from "lucide-react";
 import s from "./DocsPage.module.css";
-import { useState } from "react";
 
 // This is the location that we expect our docs mdx files to be located,
 // relative to the root of the Next.js project.
@@ -80,7 +79,6 @@ export default function DocsPage({
   },
   breadcrumbs,
 }: DocsPageProps) {
-  const [inViewHeaderIDs, setInViewHeaderIDs] = useState<string[]>([]);
   return (
     <NavFooterLayout
       docsNavTree={navTreeData}
@@ -122,12 +120,7 @@ export default function DocsPage({
                 {description}
               </P>
             </div>
-            <CustomMDX
-              content={content}
-              onHeadersInViewChanged={(headerIDs) => {
-                setInViewHeaderIDs(headerIDs);
-              }}
-            />
+            <CustomMDX content={content} />
             <br />
             <div>
               <a href={`${GITHUB_REPO_URL}/edit/main/${relativeFilePath}`}>
@@ -138,7 +131,6 @@ export default function DocsPage({
 
           <Sidecar
             hidden={hideSidecar}
-            inViewHeaderIDs={inViewHeaderIDs}
             className={s.sidecar}
             items={pageHeaders}
           />

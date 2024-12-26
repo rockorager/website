@@ -144,7 +144,7 @@ function parseAnchorLinks({
             const text = headingNode.children.map((v) => v.value).join("");
             pageHeaders.push({
               depth: headingNode.depth,
-              id: `#${slugify(text.toLowerCase())}`,
+              id: slugify(text.toLowerCase()),
               title: text,
             });
           }

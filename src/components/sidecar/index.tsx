@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import classNames from "classnames";
 import { H6, P } from "../text";
 import s from "./Sidecar.module.css";
+import { useStore } from "@/lib/use-store";
 
 interface SidecarItem {
   id: string;
@@ -12,7 +13,6 @@ interface SidecarItem {
 interface SidecarProps {
   className?: string;
   items: SidecarItem[];
-  inViewHeaderIDs: string[];
   hidden?: boolean;
 }
 
@@ -26,22 +26,17 @@ const MAX_SIDECAR_HEADER_DEPTH = 4;
 export default function Sidecar({
   className,
   items,
-  inViewHeaderIDs,
   hidden = false,
 }: SidecarProps) {
   const activeItemRef = useRef<HTMLLIElement>(null);
   const sidecarRef = useRef<HTMLDivElement>(null);
-
-  items = items.filter((v) => v.depth <= MAX_SIDECAR_HEADER_DEPTH);
-
-  // Calculate the first header that's in view
-  var activeHeaderID: null | string = null;
-  for (const item of items) {
-    if (inViewHeaderIDs.includes(item.id.substring(1))) {
-      activeHeaderID = item.id;
-      break;
-    }
-  }
+  const headerIdsInView = useStore((state) => state.headerIdsInView);
+  const shownItems = useMemo(() => {
+    return items.filter((v) => v.depth <= MAX_SIDECAR_HEADER_DEPTH);
+  }, [items]);
+  const activeHeaderID = useMemo(() => {
+    return shownItems.find((v) => headerIdsInView.includes(v.id))?.id;
+  }, [shownItems, headerIdsInView]);
 
   useEffect(() => {
     if (activeItemRef.current && sidecarRef.current) {
@@ -80,7 +75,7 @@ export default function Sidecar({
               See: https://github.com/vercel/next.js/issues/51346
               Also, we're remaining on the same page always here,
               so no client-side routing handing is needed. */}
-                <a href={id}>
+                <a href={`#${id}`}>
                   <P weight={active ? "medium" : "regular"}>{title}</P>
                 </a>
               </li>
