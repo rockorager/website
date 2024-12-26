@@ -36,7 +36,7 @@ export default function NotFound({ docsNavTree }: NotFoundProps) {
         <Image
           src="/ghostty-404.png"
           alt="Ghostty 404 image - Credit @qwerasd205"
-          width={500}
+          width={425}
           height={500}
         />
       </main>
