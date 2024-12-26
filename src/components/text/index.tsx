@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import localFont from "next/font/local";
 
-import { JetBrains_Mono } from 'next/font/google';
+import { JetBrains_Mono } from "next/font/google";
 
 import { forwardRef, UIEventHandler } from "react";
 import s from "./Text.module.css";
@@ -17,7 +17,7 @@ export const jetbrainsMono = JetBrains_Mono({
   display: "auto",
   weight: "400",
   variable: "--jetbrains-mono",
-  subsets: ["latin"]
+  subsets: ["latin"],
 });
 
 interface TextProps {
@@ -40,7 +40,7 @@ const Text = forwardRef<HTMLElement, TextProps>(function Text(
     weight = "light",
     onScroll,
   }: TextProps,
-  ref: React.Ref<HTMLElement>
+  ref: React.Ref<HTMLElement>,
 ) {
   return (
     <Tag
@@ -65,13 +65,13 @@ type SpecificTagTextProps = Omit<TextProps, "as">;
 
 export const Code = forwardRef<HTMLElement, SpecificTagTextProps>(function Code(
   props: SpecificTagTextProps,
-  ref: React.Ref<HTMLElement>
+  ref: React.Ref<HTMLElement>,
 ) {
   return <Text ref={ref} font="code" weight="regular" as="code" {...props} />;
 });
 
 export function LI(props: SpecificTagTextProps) {
-  return <Text as="li" font="body" weight="light" {...props} />;
+  return <Text as="li" font="body" weight="regular" {...props} />;
 }
 
 export function BodyParagraph(props: SpecificTagTextProps) {
