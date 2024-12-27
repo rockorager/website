@@ -7,8 +7,8 @@ description: |-
 
 The Ghostty project only officially provides prebuilt binaries
 for macOS. Other platforms may provide packages for Ghostty,
-but those packages are maintained by the community. This page will
-list both official and community-provided binary packages.
+but those packages are not officially maintained by the Ghostty project.
+This page will list both official and community-provided binary packages.
 
 ## macOS
 
@@ -22,7 +22,7 @@ process as installing many typical macOS applications.
 
 ### Homebrew
 
-A Homebrew cask is available and maintained by the community.
+A Homebrew cask is available and maintained by the Ghostty community.
 
 ```bash
 brew install ghostty
@@ -45,6 +45,27 @@ If your platform isn't available, you must
   need any help, feel free to make an issue. Once your package is ready, submit
   a pull request to add it to this page!
 </Tip>
+
+### Arch Linux
+
+The latest tagged release of Ghostty is available as
+[`ghostty`](https://archlinux.org/packages/extra/x86_64/ghostty/)
+in Arch Linux's `[extra]` repository.
+
+```sh
+pacman -S ghostty
+```
+
+Additionally a recipe for building and installing the tip of the `main`
+branch from source is available in the Arch User Repository (AUR) as
+[ghostty-git](https://aur.archlinux.org/packages/ghostty-git).
+Installation may be done with an AUR helper or from source per the
+[usual AUR instructions](https://wiki.archlinux.org/title/Arch_User_Repository#Installing_and_upgrading_packages).
+
+<Note>
+This package is maintained by Arch Linux maintainers and not the Ghostty
+project.
+</Note>
 
 ### Nix Flake
 
@@ -87,21 +108,6 @@ Below is an example:
   };
 }
 ```
-
-### Arch Linux
-
-The recommended way to install Ghostty is to install the existing package in the
-`extra` repository. This package is maintained by the community.
-
-```sh
-pacman -S ghostty
-```
-
-#### AUR
-
-There is also an AUR package
-[ghostty-git](https://aur.archlinux.org/packages/ghostty-git)
-being maintained that builds against the `main` branch.
 
 ```sh
 # Install Ghostty tip
