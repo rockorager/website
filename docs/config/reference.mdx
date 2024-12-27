@@ -355,10 +355,10 @@ configuration directory. This is `$XDG_CONFIG_DIR/ghostty/themes` or
 
 The second directory is the `themes` subdirectory of the Ghostty resources
 directory. Ghostty ships with a multitude of themes that will be installed
-into this directory. On macOS, this list is in the `Ghostty.app/Contents/
-Resources/ghostty/themes` directory. On Linux, this list is in the `share/
-ghostty/themes` directory (wherever you installed the Ghostty "share"
-directory.
+into this directory. On macOS, this list is in the
+`Ghostty.app/Contents/Resources/ghostty/themes` directory. On Linux, this
+list is in the `share/ghostty/themes` directory (wherever you installed the
+Ghostty "share" directory.
 
 To see a list of available themes, run `ghostty +list-themes`.
 
@@ -654,7 +654,7 @@ other behaviors as well:
     (i.e. by wrapping your command in a shell, setting env vars, etc.).
     This is a safety measure to prevent unexpected behavior. If you want
     shell integration with a `-e`-executed command, you must either
-    name your binary appropriately or source the shell integration script
+    name your binary appopriately or source the shell integration script
     manually.
 
 
@@ -1217,7 +1217,6 @@ The possible options are:
 The default is `center`.
 
 ## `resize-overlay-duration`
-## `focus-follows-mouse`
 
 If resize overlays are enabled, this controls how long the overlay is
 visible on the screen before it is hidden. The default is ¾ of a second or
@@ -1249,6 +1248,15 @@ A future update may disallow this.
 
 The maximum value is `584y 49w 23h 34m 33s 709ms 551µs 615ns`. Any
 value larger than this will be clamped to the maximum value.
+
+## `focus-follows-mouse`
+
+If true, when there are multiple split panes, the mouse selects the pane
+that is focused. This only applies to the currently focused window; i.e.
+mousing over a split in an unfocused window will now focus that split
+and bring the window to front.
+
+Default is false.
 
 ## `clipboard-read`
 ## `clipboard-write`
