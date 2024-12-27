@@ -382,6 +382,11 @@
           "type": "link",
           "path": "/gtk-single-instance",
           "title": "GTK Single Instance"
+        },
+        {
+          "type": "link",
+          "path": "/macos-tiling-wms",
+          "title": "macOS Tiling Window Managers"
         }
       ]
     }
