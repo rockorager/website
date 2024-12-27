@@ -4,9 +4,40 @@
   margin: 16px 0;
   overflow: hidden;
   border: 1px solid var(--gray-3);
+  position: relative;
 }
 
 .codeBlock code {
   padding: 16px;
   font-family: inherit;
 }
+
+.copyButton {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  background-color: var(--gray-2);
+  padding: 4px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease-in-out,
+    opacity 0.25s ease-in-out;
+  color: var(--gray-6);
+  opacity: 0;
+}
+
+.codeBlock:hover .copyButton,
+.copyButton:focus {
+  opacity: 1;
+}
+
+.copyButton:hover {
+  background-color: var(--gray-3);
+}
+
+.copyButtonSuccess {
+  color: var(--atom-one-green);
+}
+

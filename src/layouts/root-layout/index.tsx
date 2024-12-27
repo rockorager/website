@@ -25,7 +25,7 @@ export default function RootLayout({
         s.rootLayout,
         pretendardVariable.variable,
         jetbrainsMono.variable,
-        className
+        className,
       )}
     >
       <Head>
@@ -43,6 +43,12 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
         <link rel="shortcut icon" href="/favicon.ico" />
         <meta property="og:image" content="/social-share-card.jpg" />
+        <meta
+          name="twitter:image"
+          content="https://ghostty.org/social-share-card.jpg"
+        />
+
+        <meta name="darkreader-lock" />
       </Head>
       {children}
     </div>

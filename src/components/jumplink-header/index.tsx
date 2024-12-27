@@ -5,19 +5,18 @@ import Text from "../text";
 import s from "./JumplinkHeader.module.css";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
+import { useStore } from "@/lib/use-store";
 
 interface JumplinkHeaderProps {
   as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
   className?: string;
   children?: React.ReactNode;
-  onInViewChanged?: (inView: boolean, id: string) => void;
 }
 
 export default function JumplinkHeader({
   className,
   children,
   as,
-  onInViewChanged,
 }: JumplinkHeaderProps) {
   const id = headerDeeplinkIdentifier(children);
   const { ref, inView } = useInView({
@@ -27,8 +26,9 @@ export default function JumplinkHeader({
     rootMargin: "-72px",
     threshold: 1,
   });
+  const updateHeaderIdInView = useStore((state) => state.updateHeaderIdInView);
   useEffect(() => {
-    onInViewChanged && onInViewChanged(inView, id);
+    updateHeaderIdInView(inView, id);
   }, [inView]);
 
   return (

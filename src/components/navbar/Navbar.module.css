@@ -48,7 +48,7 @@
       display: block;
     }
     background: var(--gray-0);
-    height: calc(100vh - var(--header-height));
+    height: calc(100dvh - var(--header-height));
     border-top: 1px solid var(--gray-2);
     padding: 24px;
   }
