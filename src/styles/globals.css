@@ -68,7 +68,7 @@ body {
 }
 
 /* This a slightly modified atom-one-dark theme */
-.hljs {
+pre code {
   display: block;
   overflow-x: auto;
   padding: 0.5em;
