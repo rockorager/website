@@ -51,9 +51,9 @@ are **extremely slow** (over 100x slower) than release builds, so only
 use them for development.
 </Tip>
 
-### Linux Installation Tips
+## Linux Installation Tips
 
-#### Dependencies
+### Dependencies
 
 On Linux, you'll need to install header packages for Ghostty's dependencies
 before building it. Only a few dependencies are needed for source builds
@@ -107,7 +107,16 @@ to track this GTK bug. You can workaround this issue by running ghostty with
 `GDK_DEBUG=gl-disable-gles ghostty`.
 </Warning>
 
-#### Installation Directory
+#### Broken Dependencies
+
+##### Pango
+
+If you are experiencing a segfault in `cairo_scaled_font_get_font_options`
+when running Ghostty, your Pango version may have a bug. See
+[this discussion on GitHub](https://github.com/ghostty-org/ghostty/discussions/3258#)
+for more information on how to resolve this.
+
+### Installation Directory
 
 Use `zig build` with the `-p` (prefix) flag to install Ghostty into
 a target directory. This will setup the proper FHS directory structure
@@ -131,7 +140,7 @@ ensure that `~/.local/bin` is on your _system_ `PATH`. The desktop environment
 itself must have that path in the `PATH`. Google for your specific desktop
 environment and distribution to learn how to do that.
 
-#### Building with Nix
+### Building with Nix
 
 The Nix build environment can be accessed like any other
 [Nix dev shell](https://nix.dev/tutorials/first-steps/declarative-shell.html),
@@ -158,7 +167,8 @@ The binary would then be located under `./result/bin/ghostty`.
 Building with Nix should yield the same result as building it with Zig,
 but with higher reproducibility guarantees that ensure every part of
 Ghostty can be built reliably.
-### Mac `.app`
+
+## Mac `.app`
 
 To build the macOS application, you must build on a macOS machine with
 Xcode installed and the active developer directory pointing to it. If
