@@ -24,10 +24,12 @@ that doesn't rely on macOS native tabs. This would allow us
 to better integrate with macOS tiling window managers.
 </Note>
 
-## Aerospace Workaround
+## Workarounds
 
-The Ghostty community has identified this potential workaround
-for this issue with Aerospace:
+The Ghostty community has identified potential workarounds
+depending on the tiling window manager you are using.
+
+### Aerospace
 
 ```toml
 [[on-window-detected]]
@@ -35,4 +37,11 @@ if.app-id="com.mitchellh.ghostty"
 run= [
   "layout floating",
 ]
+```
+
+### Yabai
+
+```
+yabai -m signal --add app='^Ghostty$' event=window_created action='yabai -m space --layout bsp'
+yabai -m signal --add app='^Ghostty$' event=window_destroyed action='yabai -m space --layout bsp'
 ```
