@@ -56,8 +56,12 @@ use them for development.
 #### Dependencies
 
 On Linux, you'll need to install header packages for Ghostty's dependencies
-before building it. Typically, these are only gtk4 and libadwaita, since
+before building it. Typically, these are only `gtk4` and `libadwaita`, since
 Ghostty will build everything else static by default.
+
+<Note>
+`pkg-config` may be required if your system does not detect `gtk4` and `libadwaita`.
+</Note>
 
 On Ubuntu and Debian, use:
 
