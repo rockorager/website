@@ -28,12 +28,13 @@ A [Homebrew cask](https://formulae.brew.sh/cask/ghostty) is available and mainta
 brew install --cask ghostty
 ```
 
-## Linux
+## Linux (Official)
 
-Pre-built Linux binaries or packages are provided by the community.
-At the time of writing, no community-provided packages are available
-because Ghostty has only recently been publicly released. This page
-will be updated as community-provided packages become available.
+Pre-built Linux binaries are packaged by distributions and not the
+Ghostty project. The packages listed in this section are all official
+packages provided by the respective distributions.
+[Community-built packages](#linux-community) are also available. See
+the warning associated with those packages for more information.
 
 If your platform isn't available, you must
 [build Ghostty from source](/docs/install/build).
@@ -67,24 +68,6 @@ Installation may be done with an AUR helper or from source per the
 yay -S ghostty-git
 ```
 
-<Note>
-This package is maintained by Arch Linux maintainers and not the Ghostty
-project.
-</Note>
-
-### Fedora
-Ghostty is available in [Fedora COPR](https://copr.fedorainfracloud.org/coprs/pgdev/ghostty/).
-
-```sh
-dnf copr enable pgdev/ghostty 
-dnf install ghostty
-```
-
-<Note>
-This package is maintained by Fedora users and not the Ghostty project.
-</Note>
-
-
 ### Gentoo
 
 Ghostty is available in the official Gentoo repository.
@@ -92,10 +75,6 @@ Ghostty is available in the official Gentoo repository.
 ```sh
 emerge -av ghostty
 ```
-
-<Note>
-This package is maintained by Gentoo maintainers and not the Ghostty project.
-</Note>
 
 ### Nix Flake
 
@@ -139,6 +118,11 @@ Below is an example:
 }
 ```
 
+<Note>
+This isn't an official package in Nixpkgs but it is officially maintained
+by the Ghostty project so we put it in the "official" section.
+</Note>
+
 ### Void Linux
 
 Ghostty is available in the official package repository.
@@ -147,6 +131,22 @@ Ghostty is available in the official package repository.
 xbps-install ghostty
 ```
 
-<Note>
-This package is maintained by Void Linux maintainers and not the Ghostty project.
-</Note>
+## Linux (Community)
+
+The packages in this section provide binary installs for Ghostty but
+are not official packages within the associated distributions. These
+packages are maintained by community members and as such a higher level
+of caution should be taken when installing them.
+
+### Fedora
+
+Ghostty is available in [Fedora COPR](https://copr.fedorainfracloud.org/coprs/pgdev/ghostty/).
+
+```sh
+dnf copr enable pgdev/ghostty
+dnf install ghostty
+```
+
+<Warning>
+This is a user-maintained package and not an official Fedora package.
+</Warning>
