@@ -37,7 +37,7 @@ need Xcode installed with both the macOS and iOS SDKs enabled. See
 With Zig and necessary dependencies installed, a binary can be built using
 `zig build`:
 
-```shell-session
+```sh
 zig build -Doptimize=ReleaseFast
 ```
 
@@ -67,25 +67,25 @@ Required dependencies:
 
 On Ubuntu and Debian, use:
 
-```
+```sh
 sudo apt install libgtk-4-dev libadwaita-1-dev git
 ```
 
 On Arch Linux, use
 
-```
+```sh
 sudo pacman -S gtk4 libadwaita
 ```
 
 On Fedora variants, use
 
-```
+```sh
 sudo dnf install gtk4-devel zig libadwaita-devel
 ```
 
 On Fedora Atomic variants, use
 
-```
+```sh
 rpm-ostree install gtk4-devel zig libadwaita-devel
 ```
 
@@ -149,7 +149,7 @@ After setting up the Nix environment, you can run the same `zig build`
 as on other distributions or you can also build the package with Nix
 by running:
 
-```shell-session
+```sh
 nix build .#ghostty
 ```
 
@@ -165,7 +165,7 @@ Xcode installed and the active developer directory pointing to it. If
 you're not sure that's the case, check the output of `xcode-select
 --print-path`:
 
-```shell-session
+```sh
 xcode-select --print-path
 /Library/Developer/CommandLineTools        # <-- BAD
 
@@ -181,7 +181,7 @@ Next, make sure you have both the macOS and iOS SDKs installed (from
 inside Xcode → Settings → Platforms). Finally, build Ghostty and the
 app:
 
-```shell-session
+```sh
 zig build -Doptimize=ReleaseFast
 cd macos && xcodebuild
 ```

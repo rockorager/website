@@ -9,6 +9,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import rehypeHighlight, {
   type Options as RehypeHighlightOptions,
 } from "rehype-highlight";
+import { all } from "lowlight";
 import remarkGfm from "remark-gfm";
 import slugify from "slugify";
 import type { Plugin } from "unified";
@@ -77,7 +78,13 @@ async function loadDocsPageFromRelativeFilePath(
           parseAnchorLinks({ pageHeaders }),
         ],
         rehypePlugins: [
-          [rehypeHighlight, { detect: true } satisfies RehypeHighlightOptions],
+          [
+            rehypeHighlight,
+            {
+              detect: false,
+              languages: all,
+            } satisfies RehypeHighlightOptions,
+          ],
         ],
       },
     },
