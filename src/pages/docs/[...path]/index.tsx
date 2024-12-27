@@ -125,7 +125,7 @@ export default function DocsPage({
             </div>
             <CustomMDX content={content} />
             <br />
-            <div>
+            <div className={s.editOnGithub}>
               <a href={`${GITHUB_REPO_URL}/edit/main/${relativeFilePath}`}>
                 Edit on GitHub <Pencil size={14} />
               </a>
