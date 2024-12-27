@@ -50,7 +50,7 @@ export async function getStaticProps({ params: { path } }: StaticPropsParams) {
     "Ghostty Docs",
     DOCS_PAGES_ROOT_PATH,
     navTreeData,
-    activePageSlug
+    activePageSlug,
   );
   return {
     props: {
@@ -83,12 +83,15 @@ export default function DocsPage({
     <NavFooterLayout
       docsNavTree={navTreeData}
       meta={{
-        title: breadcrumbs
-          .slice(1)
-          .reverse()
-          .slice(0, 2)
-          .map((breadcrumb) => breadcrumb.text)
-          .join(" - "),
+        title:
+          breadcrumbs.length > 1
+            ? breadcrumbs
+                .slice(1)
+                .reverse()
+                .slice(0, 2)
+                .map((breadcrumb) => breadcrumb.text)
+                .join(" - ")
+            : breadcrumbs[0].text,
         description,
       }}
     >
