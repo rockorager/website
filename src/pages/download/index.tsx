@@ -74,7 +74,7 @@ export default function DownloadPage({
               <div className={s.linuxLinks}>
                 <ButtonLink
                   size="large"
-                  href="/docs/install/binary#linux"
+                  href="/docs/install/binary#linux-(official)"
                   text="Package Manager"
                   icon={<Package strokeWidth={2} size={18} />}
                   showExternalIcon={false}
