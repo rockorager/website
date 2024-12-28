@@ -72,6 +72,7 @@ export default function DocsPage({
   docsPageData: {
     title,
     description,
+    editOnGithubLink,
     content,
     relativeFilePath,
     pageHeaders,
@@ -79,6 +80,12 @@ export default function DocsPage({
   },
   breadcrumbs,
 }: DocsPageProps) {
+  // Calculate the "Edit in Github" link. If it's not provided
+  // in the frontmatter, point to the website repo mdx file.
+  editOnGithubLink = editOnGithubLink
+    ? editOnGithubLink
+    : `${GITHUB_REPO_URL}/edit/main/${relativeFilePath}`;
+
   return (
     <NavFooterLayout
       docsNavTree={navTreeData}
@@ -126,7 +133,7 @@ export default function DocsPage({
             <CustomMDX content={content} />
             <br />
             <div className={s.editOnGithub}>
-              <a href={`${GITHUB_REPO_URL}/edit/main/${relativeFilePath}`}>
+              <a href={editOnGithubLink}>
                 Edit on GitHub <Pencil size={14} />
               </a>
             </div>

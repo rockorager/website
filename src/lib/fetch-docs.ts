@@ -29,6 +29,11 @@ export interface DocsPageData {
   slug: string;
   title: string;
   description: string;
+  // There are scenarios in which the GitHub link should
+  // not be the website source MDX file, due to the MDX being
+  // generated from some upstream source. This is an optional
+  // frontmatter that can override the link.
+  editOnGithubLink: string | null;
   hideSidecar: boolean;
   content: MDXRemoteSerializeResult;
   relativeFilePath: string;
@@ -94,6 +99,9 @@ async function loadDocsPageFromRelativeFilePath(
     relativeFilePath,
     title: mdxFileContent.data.title,
     description: mdxFileContent.data.description,
+    editOnGithubLink: mdxFileContent.data.editOnGithubLink
+      ? mdxFileContent.data.editOnGithubLink
+      : null,
     hideSidecar: mdxFileContent.data.hasOwnProperty("hideSidecar")
       ? mdxFileContent.data.hideSidecar
       : false,
