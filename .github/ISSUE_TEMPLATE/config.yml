@@ -1,0 +1,6 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Create an issue for the Terminal
+    url: https://github.com/ghostty-org/ghostty/discussions/new/choose
+  - name: Ghostty Website
+    url: https://ghostty.org
