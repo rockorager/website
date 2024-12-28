@@ -1,16 +1,16 @@
 name: Bug Report
-title: '[ BUG ] '
+title: "[ BUG ] "
 description: Bug Report for ghostty.org
 
-labels: ['bug']
+labels: ["bug"]
 
 body:
   - type: markdown
     attributes:
       value: >-
-        > [!IMPORTANT]  
+        > [!IMPORTANT]
 
-        > **This is not the place to report bugs for Ghostty, the terminal emulator**. This form should be used to report a bug in [ghostty.org](https://ghostty.org). To create a but for the terminal, [follow this link](https://github.com/ghostty-org/ghostty/discussions/new/choose)
+        > **This is not the place to report bugs for Ghostty, the terminal emulator**. This form should be used to report a bug in [ghostty.org](https://ghostty.org). To create a bug report for the terminal, [follow the contribution guidelines](https://github.com/ghostty-org/ghostty/blob/main/CONTRIBUTING.md).
   - type: dropdown
     id: dropdown-0
     attributes:
