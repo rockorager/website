@@ -1,40 +1,40 @@
 .tag {
-  --color-to-use: var(--brand-color);
+  --tag-color: var(--brand-color);
 
   &.blue {
-    --color-to-use: var(--atom-one-blue)
+    --tag-color: var(--atom-one-blue)
   }
 
   &.green {
-    --color-to-use: var(--atom-one-green)
+    --tag-color: var(--atom-one-green)
   }
 
   &.yellow {
-    --color-to-use: var(--atom-one-yellow)
+    --tag-color: var(--atom-one-yellow)
   }
 
   &.purple {
-    --color-to-use: var(--atom-one-purple)
+    --tag-color: var(--atom-one-purple)
   }
 
   &.red {
-    --color-to-use: var(--atom-one-red)
+    --tag-color: var(--atom-one-red)
   }
 
   &.orange {
-    --color-to-use: var(--atom-one-orange)
+    --tag-color: var(--atom-one-orange)
   }
 
   &.teal {
-    --color-to-use: var(--atom-one-teal)
+    --tag-color: var(--atom-one-teal)
   }
 
   &.gray {
-    --color-to-use: var(--atom-one-gray)
+    --tag-color: var(--atom-one-gray)
   }
 
   &.white {
-    --color-to-use: var(--atom-one-white)
+    --tag-color: var(--atom-one-white)
   }
 
   position: relative;
@@ -42,8 +42,8 @@
   border: 1px solid transparent;
   border-radius: var(--form-border-radius);
   box-shadow: var(--form-box-shadow);
-  background-color: color-mix(in srgb, var(--color-to-use) 50%, transparent);
-  color: var(--color-to-use);
+  background-color: color-mix(in srgb, var(--tag-color) 50%, transparent);
+  color: var(--tag-color);
 
 
   & .text {
