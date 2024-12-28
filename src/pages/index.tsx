@@ -9,6 +9,7 @@ import {
 } from "@/lib/fetch-terminal-content";
 import { useEffect, useState } from "react";
 import s from "./Home.module.css";
+import { P } from "@/components/text";
 
 export async function getStaticProps() {
   return {
@@ -89,6 +90,14 @@ export default function Home({ terminalData }: HomePageProps) {
                 frameLengthMs={31}
               />
             </section>
+
+            <GridContainer>
+              <P weight="regular" className={s.tagline}>
+                Ghostty is a fast, feature-rich, and cross-platform terminal
+                emulator that uses platform-native UI and GPU acceleration.
+              </P>
+            </GridContainer>
+
             <GridContainer className={s.buttonsList}>
               <ButtonLink href="/download" text="Download" size="large" />
               <ButtonLink

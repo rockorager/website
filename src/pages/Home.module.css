@@ -8,6 +8,12 @@
     overflow: hidden;
   }
 
+  & .tagline {
+    text-align: center;
+    color: var(--gray-5);
+    margin-bottom: 20px;
+  }
+
   & .buttonsList {
     display: flex;
     gap: 20px;
