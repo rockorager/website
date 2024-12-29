@@ -46,6 +46,11 @@ On macOS, this will build the Xcode framework but additional steps are
 required to build the `.app` bundle. See [Mac `.app`](#mac-.app).
 
 <Tip>
+For Linux users: To install system-wide or on your user account, see
+[Installation Directory](#installation-directory).
+</Tip>
+
+<Tip>
 For a debug build, omit the `-Doptimize=ReleaseFast` flag. Debug builds
 are **extremely slow** (over 100x slower) than release builds, so only
 use them for development.
@@ -145,6 +150,12 @@ If Ghostty fails to launch using an app icon in your app launcher,
 ensure that `~/.local/bin` is on your _system_ `PATH`. The desktop environment
 itself must have that path in the `PATH`. Google for your specific desktop
 environment and distribution to learn how to do that.
+
+For system-wide installs, we recommend `/usr` (likely requires `sudo`):
+
+```shell-session
+zig build -p /usr -Doptimize=ReleaseFast
+```
 
 ### Building with Nix
 
