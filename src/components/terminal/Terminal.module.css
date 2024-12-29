@@ -57,7 +57,7 @@
     align-items: center;
     position: relative;
     border-radius: 9px 9px 0px 0px;
-    padding: var(--padding) 11px;
+    padding: var(--padding);
 
     grid-template: "controls title .";
     grid-template-columns: 1fr 1fr 1fr;
