@@ -14,8 +14,7 @@ class AnimationManager {
     this.frameTime = 1000 / fps;
   }
 
-  updateSettings(callback: () => void, fps: number = 30) {
-    this.callback = callback;
+  updateFPS(fps: number) {
     this.frameTime = 1000 / fps;
   }
 
@@ -46,6 +45,19 @@ class AnimationManager {
     this._animation = requestAnimationFrame(this.update);
   };
 }
+
+const KONAMI_CODE = [
+  "arrowup",
+  "arrowup",
+  "arrowdown",
+  "arrowdown",
+  "arrowleft",
+  "arrowright",
+  "arrowleft",
+  "arrowright",
+  "b",
+  "a",
+];
 
 export type AnimationFrame = string[];
 
@@ -81,8 +93,27 @@ export default function AnimatedTerminal({
 
     const handleFocus = () => animationManager.start();
     const handleBlur = () => animationManager.pause();
+    const codeInProgress: string[] = [];
+    const handleKeyUp = (event: KeyboardEvent) => {
+      const key = event.key.toLowerCase();
+      if (KONAMI_CODE[codeInProgress.length] === key) {
+        codeInProgress.push(key);
+      } else {
+        codeInProgress.length = 0;
+      }
+      if (codeInProgress.length !== KONAMI_CODE.length) {
+        return;
+      }
+      if (animationManager.frameTime === 1000 / 30) {
+        animationManager.updateFPS(240);
+      } else {
+        animationManager.updateFPS(30);
+      }
+      codeInProgress.length = 0;
+    };
     window.addEventListener("focus", handleFocus);
     window.addEventListener("blur", handleBlur);
+    window.addEventListener("keyup", handleKeyUp);
 
     if (document.hasFocus()) {
       animationManager.start();
@@ -90,6 +121,7 @@ export default function AnimatedTerminal({
     return () => {
       window.removeEventListener("focus", handleFocus);
       window.removeEventListener("blur", handleBlur);
+      window.removeEventListener("keyup", handleKeyUp);
     };
   }, [animationManager, frames.length]);
 
