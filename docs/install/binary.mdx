@@ -150,3 +150,31 @@ dnf install ghostty
 <Warning>
 This is a user-maintained package and not an official Fedora package.
 </Warning>
+
+#### Silverblue (and other immutable variants)
+
+Add the copr repository to your system:
+
+```sh
+sudo $EDITOR /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:pgdev:ghostty.repo
+```
+
+```ini
+[copr:copr.fedorainfracloud.org:pgdev:ghostty]
+name=Copr repo for Ghostty owned by pgdev
+baseurl=https://download.copr.fedorainfracloud.org/results/pgdev/ghostty/fedora-$releasever-$basearch/
+type=rpm-md
+skip_if_unavailable=True
+gpgcheck=1
+gpgkey=https://download.copr.fedorainfracloud.org/results/pgdev/ghostty/pubkey.gpg
+repo_gpgcheck=0
+enabled=1
+enabled_metadata=1
+```
+
+After adding the repository, install Ghostty:
+
+```sh
+rpm-ostree update --install ghostty
+```
+
