@@ -19,6 +19,21 @@ export default function AnimatedTerminal({
   frameLengthMs,
 }: AnimatedTerminalProps) {
   const [currentFrame, setCurrentFrame] = useState(0);
+  const [isFocused, setIsFocused] = useState(true);
+
+  useEffect(() => {
+    const handleFocus = () => setIsFocused(true);
+    const handleBlur = () => setIsFocused(false);
+
+    window.addEventListener("focus", handleFocus);
+    window.addEventListener("blur", handleBlur);
+
+    return () => {
+      window.removeEventListener("focus", handleFocus);
+      window.removeEventListener("blur", handleBlur);
+    };
+  }, []);
+
   useEffect(() => {
     const reducedMotion =
       window.matchMedia(`(prefers-reduced-motion: reduce)`).matches === true;
@@ -28,13 +43,15 @@ export default function AnimatedTerminal({
       return;
     }
 
+    if (!isFocused) return;
+
     const interval = setInterval(() => {
       setCurrentFrame((currentFrame) => {
         return (currentFrame + 1) % frames.length;
       });
     }, frameLengthMs);
     return () => clearInterval(interval);
-  }, []);
+  }, [isFocused, frameLengthMs, frames.length]);
 
   return (
     <Terminal
