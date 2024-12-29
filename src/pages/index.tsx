@@ -76,7 +76,7 @@ export default function Home({ terminalData }: HomePageProps) {
           of the terminal to the true calculated size */}
         {windowWidth > 0 && (
           <>
-            <section className={s.terminalWrapper}>
+            <section className={s.terminalWrapper} aria-hidden={true}>
               <AnimatedTerminal
                 title={"👻 Ghostty"}
                 fontSize={fontSize}
