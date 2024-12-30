@@ -115,7 +115,7 @@ export default function AnimatedTerminal({
     window.addEventListener("blur", handleBlur);
     window.addEventListener("keyup", handleKeyUp);
 
-    if (document.hasFocus()) {
+    if (document.visibilityState === "visible") {
       animationManager.start();
     }
     return () => {
