@@ -87,7 +87,7 @@ ST = "0x1B" "0x5C"
 
 ## DCS Sequences
 
-DCS Sequences are like an SGR sequence combined with an OSC sequence: they
+DCS Sequences are like a CSI sequence combined with an OSC sequence: they
 natively support integer parameters as well as string values. An example DSC
 sequence is `DCS + P q <string> ST`
 
@@ -104,8 +104,7 @@ ST = "0x1B" "0x5C"
 ## APC Sequences
 
 Ghostty supports APC sequences. Currently there is only one supported APC
-sequence: the Kitty Graphics Protocol sequence. This is documented [here]
-(https://sw.kovidgoyal.net/kitty/graphics-protocol/).
+sequence: the Kitty Graphics Protocol sequence. This is documented [here](https://sw.kovidgoyal.net/kitty/graphics-protocol/).
 
 ```
 apc_sequence = "0x1B" "_" data ST
